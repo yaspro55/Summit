@@ -29,14 +29,14 @@
       }
 
       .logo {
-        margin-top: 20px;
         text-align: center;
         z-index: 10;
         position: relative;
+        height: 100px;
       }
 
       .logo img {
-        height: 200px;
+        height: 500px;
       }
 
       .container {
@@ -46,8 +46,6 @@
         max-width: 1200px;
         flex-grow: 1;
         flex-direction: row;
-        position: relative;
-        z-index: 10;
       }
 
       .text-section {
@@ -55,9 +53,9 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
+        position: relative;
         width: 50%;
         padding-left: 20px;
-        position: relative;
       }
 
       h1:hover {
@@ -67,11 +65,222 @@
       h1 {
         font-size: 45px;
         margin: 0;
-        opacity: 1;
+        opacity: 0;
+        position: relative;
         display: flex;
         align-items: center;
+        transform: translateX(-50px);
+        transition: padding 0.4s;
         color: white;
+      }
+
+      .highlight {
+        color: rgb(255, 145, 11);
+        margin-right: 5px;
+      }
+
+      .animated-text {
+        animation: fadeInDiagonal 1s ease-out forwards;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: rgb(38, 54, 125);
+      }
+
+      @keyframes fadeInDiagonal {
+        from {
+          opacity: 0;
+          transform: translateX(-50px) translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0) translateY(0);
+        }
+      }
+
+      .text-section h1:nth-child(1) {
+        margin-bottom: 40px;
+        animation-delay: 0.5s;
+      }
+
+      .text-section h1:nth-child(2) {
+        margin-left: 30px;
+        margin-bottom: 40px;
+        animation-delay: 1s;
+      }
+
+      .text-section h1:nth-child(3) {
+        margin-left: 60px;
+        margin-bottom: 40px;
+        animation-delay: 1.5s;
+      }
+
+      .text-section h1:nth-child(4) {
+        margin-left: 90px;
+        margin-bottom: 40px;
+        animation-delay: 2s;
+      }
+
+      .button-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+        align-items: center;
+        height: 300px;
+        margin-top: 70px;
+      }
+
+      .button-layer {
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .button-layer.single {
+        justify-content: right;
+        margin-bottom: 50px;
+      }
+
+      .button-layer.spaced {
+        justify-content: right;
+        padding: 0 60px;
+        width: 800px;
+        margin-bottom: 50px;
+      }
+
+      .button-layer.close {
+        justify-content: right;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .button-layer a {
+        text-decoration: none;
+      }
+
+      .animated-btn.pro {
+        margin-right: 150px;
+      }
+
+      .animated-btn.contact {
+        margin-right: 250px;
+      }
+
+      .animated-btn {
+        display: inline-flex; /* Adjust to fit content */
+        align-items: center; /* Center text vertically */
+        justify-content: center; /* Center text horizontally */
+        padding: 10px 20px; /* Adjust padding to fit text */
+        border: none;
+        background: none;
+        color: #ffffff; /* Initial text color */
+        font-size: 45px;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: none;
+        opacity: 0;
+        transform: translateX(50px);
+        animation: fadeInDiagonal 1s ease-out forwards;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.5s ease;
+        border-radius: 10px;
+        cursor: url("pointer.png"), auto;
+      }
+
+      .animated-btn::before {
+        content: "";
         position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgb(15, 0, 98);
+        z-index: 0;
+        transition: left 0.5s ease; /* Transition for sliding effect */
+      }
+
+      .animated-btn:hover::before {
+        left: 100%;
+      }
+
+      .animated-btn:hover {
+        color: rgb(15, 0, 98); /* Change text color on hover */
+      }
+
+      .animated-btn span {
+        position: relative;
+        z-index: 1; /* Ensure the text is above the pseudo-element */
+        transition: color 0.5s ease; /* Transition for text color change */
+      }
+
+      .animated-btn:hover span {
+        color: rgb(15, 0, 98); /* Text color on hover */
+      }
+
+      /* Adding animation delays for buttons */
+      .button-layer.single .animated-btn:nth-child(1) {
+        animation-delay: 0.5s;
+      }
+
+      .button-layer.spaced .animated-btn:nth-child(1) {
+        animation-delay: 1s;
+      }
+
+      .button-layer.spaced .animated-btn:nth-child(2) {
+        animation-delay: 1.5s;
+      }
+
+      .button-layer.close .animated-btn:nth-child(1) {
+        animation-delay: 2s;
+      }
+
+      .button-layer.close .animated-btn:nth-child(2) {
+        animation-delay: 2.5s;
+      }
+
+      /* Media Query for smaller screens */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column; /* Stack the text and button sections vertically */
+        }
+
+        .text-section {
+          width: 100%; /* Full width for the text section */
+          align-items: center; /* Center the text section */
+          padding-left: 0; /* Remove left padding */
+        }
+
+        .button-section {
+          width: 100%; /* Full width for the button section */
+          margin-top: 20px; /* Add space between the text and buttons */
+          align-items: center; /* Center the button section */
+        }
+
+        .button-layer {
+          width: 100%; /* Ensure each button layer takes full width */
+          justify-content: center; /* Center the buttons horizontally */
+          flex-direction: column; /* Stack buttons vertically */
+          margin-bottom: 20px; /* Add space between layers */
+        }
+
+        .button-layer.spaced {
+          padding: 0; /* Remove padding for a more compact layout */
+          gap: 10px; /* Adjust gap between buttons */
+          margin-left: 300px;
+        }
+
+        .button-layer.close {
+          gap: 10px; /* Adjust gap between buttons */
+        }
+
+        .animated-btn {
+          font-size: 40px; /* Adjust font size for smaller screens */
+          padding: 10px 20px; /* Ensure padding scales with font size */
+        }
       }
 
       .highlight {
@@ -95,61 +304,6 @@
       .visible-text {
         opacity: 1;
         transform: translate(-50%, -60%);
-      }
-
-      .button-section {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        justify-content: space-around;
-        align-items: center;
-        height: 300px;
-        margin-top: 70px;
-        z-index: 10;
-        position: relative;
-      }
-
-      .button-layer {
-        display: flex;
-        width: 100%;
-        margin-bottom: 20px;
-      }
-
-      .button-layer.single {
-        justify-content: right;
-        margin-bottom: 50px;
-      }
-
-      .button-layer.spaced {
-        justify-content: right;
-        padding: 0 60px;
-        width: 800px;
-        margin-bottom: 50px;
-      }
-
-      .button-layer a {
-        text-decoration: none;
-      }
-
-      .animated-btn {
-        padding: 10px 20px;
-        font-size: 45px;
-        font-weight: 700;
-        font-family: "Roboto", sans-serif;
-        cursor: pointer;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        opacity: 1;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        transition: color 0.5s ease;
-        border-radius: 10px;
-        background: none;
-        color: #ffffff;
-      }
-
-      .animated-btn:hover {
-        color: #ff9111; /* Highlight color when hovered */
       }
 
       .arrow {
@@ -227,7 +381,7 @@
     </div>
 
     <div class="logo">
-      <img src="logo.png" alt="Summit TECS Logo" />
+      <img class="logoimg" src="toplogo.png" alt="Summit TECS Logo" />
     </div>
 
     <div class="container">
@@ -246,22 +400,22 @@
         </h1>
       </div>
       <div class="button-section">
-        <div class="button-layer single">
+        <div class="button-layer single one">
           <a href="about-us.html"
             ><button class="animated-btn about"><span>About Us</span></button></a
           >
         </div>
-        <div class="button-layer spaced">
+        <div class="button-layer spaced two">
           <a href="partners.html"
             ><button class="animated-btn key"><span>Key Partners</span></button></a
           >
         </div>
-        <div class="button-layer spaced">
+        <div class="button-layer spaced three">
           <a href="projects.html"
             ><button class="animated-btn pro"><span>Services</span></button></a
           >
         </div>
-        <div class="button-layer spaced">
+        <div class="button-layer spaced four">
           <a href="contact-us.html"
             ><button class="animated-btn contact"><span>Contact Us</span></button></a
           >
