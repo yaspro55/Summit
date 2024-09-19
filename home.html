@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpage with Rotating Background</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        cursor: url("cursor.png"), auto;
+        transition: background-image 1s ease-in-out;
+        visibility: hidden; /* Hidden until page loads */
+      }
+
+      .logo {
+        margin-top: 20px;
+        text-align: center;
+        z-index: 10;
+        position: relative;
+      }
+
+      .logo img {
+        height: 200px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        flex-grow: 1;
+        flex-direction: row;
+        position: relative;
+        z-index: 10;
+      }
+
+      .text-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        width: 50%;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      h1:hover {
+        padding: 15px 25px;
+      }
+
+      h1 {
+        font-size: 45px;
+        margin: 0;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        color: white;
+        position: absolute;
+      }
+
+      .highlight {
+        color: rgb(255, 145, 11);
+        margin-right: 5px;
+      }
+
+      .special-text {
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        z-index: 5;
+      }
+
+      .visible-text {
+        opacity: 1;
+        transform: translate(-50%, -60%);
+      }
+
+      .button-section {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+        align-items: center;
+        height: 300px;
+        margin-top: 70px;
+        z-index: 10;
+        position: relative;
+      }
+
+      .button-layer {
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .button-layer.single {
+        justify-content: right;
+        margin-bottom: 50px;
+      }
+
+      .button-layer.spaced {
+        justify-content: right;
+        padding: 0 60px;
+        width: 800px;
+        margin-bottom: 50px;
+      }
+
+      .button-layer a {
+        text-decoration: none;
+      }
+
+      .animated-btn {
+        padding: 10px 20px;
+        font-size: 45px;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        opacity: 1;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.5s ease;
+        border-radius: 10px;
+        background: none;
+        color: #ffffff;
+      }
+
+      .animated-btn:hover {
+        color: #ff9111; /* Highlight color when hovered */
+      }
+
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 50px;
+        color: white;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      .left-arrow {
+        left: 10px;
+      }
+
+      .right-arrow {
+        right: 10px;
+      }
+
+      /* Loading screen */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #000;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 30px;
+        font-family: "Roboto", sans-serif;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* Media Query for smaller screens */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .text-section {
+          width: 100%;
+          align-items: center;
+          padding-left: 0;
+        }
+
+        .button-section {
+          width: 100%;
+          margin-top: 20px;
+        }
+
+        .button-layer {
+          width: 100%;
+          justify-content: center;
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+
+        .button-layer.spaced {
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-screen" id="loading-screen">
+      Loading...
+    </div>
+
+    <div class="logo">
+      <img src="logo.png" alt="Summit TECS Logo" />
+    </div>
+
+    <div class="container">
+      <div class="text-section">
+        <h1 class="animated-text">
+          <span class="highlight">T</span>rading
+        </h1>
+        <h1 class="animated-text">
+          <span class="highlight">E</span>ngineering
+        </h1>
+        <h1 class="animated-text">
+          <span class="highlight">C</span>onstruction
+        </h1>
+        <h1 class="animated-text">
+          <span class="highlight">S</span>olutions
+        </h1>
+      </div>
+      <div class="button-section">
+        <div class="button-layer single">
+          <a href="about-us.html"
+            ><button class="animated-btn about"><span>About Us</span></button></a
+          >
+        </div>
+        <div class="button-layer spaced">
+          <a href="partners.html"
+            ><button class="animated-btn key"><span>Key Partners</span></button></a
+          >
+        </div>
+        <div class="button-layer spaced">
+          <a href="projects.html"
+            ><button class="animated-btn pro"><span>Services</span></button></a
+          >
+        </div>
+        <div class="button-layer spaced">
+          <a href="contact-us.html"
+            ><button class="animated-btn contact"><span>Contact Us</span></button></a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and Right arrows -->
+    <i class="fas fa-chevron-left arrow left-arrow"></i>
+    <i class="fas fa-chevron-right arrow right-arrow"></i>
+
+    <!-- Special text for each background -->
+    <div class="special-text" id="special-text"></div>
+
+    <script>
+      const images = [
+        "background/bg1.png",
+        "background/bg2.png",
+        "background/bg3.png",
+        "background/bg4.png",
+        "background/bg5.png",
+        "background/bg6.png"
+      ];
+
+      const specialTexts = [
+        "Welcome to Summit TECS",
+        "Innovative Engineering Solutions",
+        "Building the Future",
+        "Your Trusted Partner",
+        "Cutting-edge Technology",
+        "Excellence in Construction"
+      ];
+
+      let currentImageIndex = 0;
+      const body = document.body;
+      const specialTextElement = document.getElementById("special-text");
+
+      // Preload images
+      function preloadImages() {
+        images.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+      }
+
+      function updateBackground() {
+        body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+        specialTextElement.innerHTML = specialTexts[currentImageIndex];
+        specialTextElement.classList.add("visible-text");
+        setTimeout(() => {
+          specialTextElement.classList.remove("visible-text");
+        }, 2500); // Remove the animation before the next image
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateBackground();
+      }
+
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        updateBackground();
+      }
+
+      document
+        .querySelector(".right-arrow")
+        .addEventListener("click", nextImage);
+      document
+        .querySelector(".left-arrow")
+        .addEventListener("click", prevImage);
+
+      // Preload images and then hide the loading screen
+      window.onload = function () {
+        preloadImages();
+        document.getElementById("loading-screen").classList.add("hidden");
+        body.style.visibility = "visible"; // Show the page when images are preloaded
+        updateBackground();
+        setInterval(nextImage, 4000); // Change background every 4 seconds
+      };
+    </script>
+  </body>
+</html>

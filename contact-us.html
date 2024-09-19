@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Summit Tecs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #003366;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px; /* Adjust height if needed */
+        }
+
+        .back-button {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+            background-color: #FFA500; /* Orange color */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #e59400; /* Darker orange on hover */
+        }
+
+        .logo {
+            margin-bottom: 10px;
+            position: absolute;
+            left: 20px;
+        }
+
+        .logo img {
+            max-width: 100px; /* Reduced size */
+            height: auto;
+        }
+
+        .company-name {
+            position: absolute;
+            left: 150px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 20px 10px 0; /* Margin to the right only */
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            padding-bottom: 80px; /* Space for footer */
+        }
+
+        .contact-info, .social-media {
+            margin-bottom: 20px;
+        }
+
+        .contact-info h2, .social-media h2 {
+            border-bottom: 2px solid #003366;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            color: #003366;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .contact-info .label {
+            font-weight: bold;
+            color: #003366;
+            display: inline-block;
+            width: 120px;
+        }
+
+        .contact-info .info {
+            display: inline-block;
+            vertical-align: top;
+            color: #555;
+        }
+
+        .contact-info a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            margin-bottom: 40px; /* Increased margin to avoid overlap */
+        }
+
+        .social-media a {
+            margin-right: 10px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .social-media a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="home.html" class="back-button">Back</a> <!-- Back button positioned to the left -->
+        <div class="logo">
+            <img src="logo.png" alt="Summit Tecs Logo">
+        </div>
+        <div class="company-name">
+            Summit TECS
+        </div>
+        <h1>Contact Us</h1>
+    </header>
+    
+    <main>
+        <section class="contact-info">
+            <h2>We're Here to Help</h2>
+            <address>
+                <p><span class="label">Address:</span> <span class="info">426 N Elgesh St, Gate 4 Hadayek Elahram</span></p>
+                <p><span class="label">Phone:</span>
+                    <span class="info">
+                        +201222908983<br>
+                        +201143250666
+                    </span>
+                </p>
+                <p><span class="label">Tel:</span> <span class="info">+233779974</span></p>
+                <p><span class="label">Email:</span> <span class="info"><a href="Info@Summittecs.com">Info@Summittecs.com</a></span></p>
+            </address>
+        </section>
+        
+        <section class="social-media">
+            <h2>Follow Us</h2>
+            <p>Stay connected with Summit Tecs on social media:</p>
+            <a href="#">Facebook</a> | 
+            <a href="#">Twitter</a> | 
+            <a href="#">LinkedIn</a> | 
+            <a href="#">Instagram</a>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Summit TECS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

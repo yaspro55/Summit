@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summit TECS</title>
+    <style>
+      /* Basic resets */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        background-color: #001f3f; /* Dark blue background */
+        overflow: hidden;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: url("cursor.png"), auto;
+      }
+
+      /* Improved Loading screen */
+      #loading-screen {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: #001f3f; /* Dark blue for loading screen */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        color: white;
+      }
+
+      /* Larger loading animation */
+      .spinner {
+        border: 8px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 8px solid #ff851b; /* Orange color for loading animation */
+        width: 60px;
+        height: 60px;
+        animation: spin 1.2s linear infinite;
+        margin-bottom: 20px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Loading text with fade-in effect */
+      .loading-text {
+        font-size: 22px;
+        opacity: 0;
+        animation: fadeIn 2s forwards 1s;
+        color: #ff851b; /* Orange text */
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Background container for random images */
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      /* Larger images with random positions and rotation */
+      .background img {
+        position: absolute;
+        width: 250px;
+        height: auto;
+        object-fit: cover;
+        opacity: 0.7;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.4s ease, opacity 0.4s ease;
+      }
+
+      .background img:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      /* More images with random placement */
+      .background img:nth-child(1) {
+        top: 40%;
+        left: 20%;
+        transform: rotate(10deg);
+      }
+      .background img:nth-child(2) {
+        top: 35%;
+        left: 40%;
+        transform: rotate(-15deg);
+      }
+      .background img:nth-child(3) {
+        top: 75%;
+        left: 20%;
+        transform: rotate(20deg);
+      }
+      .background img:nth-child(4) {
+        top: 7%;
+        left: 20%;
+        transform: rotate(-5deg);
+      }
+      .background img:nth-child(5) {
+        /*updated*/
+        top: 35%;
+        right: 7%;
+        transform: rotate(12deg);
+      }
+      .background img:nth-child(6) {
+        top: 45%;
+        left: 5%;
+        transform: rotate(-18deg);
+      }
+      .background img:nth-child(7) {
+        top: 65%;
+        right: 25%;
+        transform: rotate(8deg);
+      }
+      .background img:nth-child(8) {
+        top: 80%;
+        left: 45%;
+        transform: rotate(-7deg);
+      }
+      .background img:nth-child(9) {
+        top: 12%;
+        right: 12%;
+        transform: rotate(15deg);
+      }
+      .background img:nth-child(10) {
+        top: 5%;
+        left: 60%;
+        transform: rotate(-10deg);
+      }
+      .background img:nth-child(11) {
+        top: 5%;
+        left: 5%;
+        transform: rotate(8deg);
+      }
+      .background img:nth-child(12) {
+        top: 70%;
+        left: 50%;
+        transform: rotate(-5deg);
+      }
+      .background img:nth-child(13) {
+        top: 30%;
+        right: 25%;
+        transform: rotate(18deg);
+      }
+      .background img:nth-child(14) {
+        top: 10%;
+        right: 50%;
+        transform: rotate(-12deg);
+      }
+      .background img:nth-child(15) {
+        top: 18%;
+        left: 5%;
+        transform: rotate(9deg);
+      }
+      .background img:nth-child(16) {
+        top: 60%;
+        left: 70%;
+        transform: rotate(-8deg);
+      }
+      .background img:nth-child(17) {
+        top: 80%;
+        left: 20%;
+        transform: rotate(7deg);
+      }
+      /* Duplicated more images to fill space */
+      .background img:nth-child(18) {
+        top: 55%;
+        right: 15%;
+        transform: rotate(5deg);
+      }
+      .background img:nth-child(19) {
+        top: 15%;
+        left: 25%;
+        transform: rotate(14deg);
+      }
+      .background img:nth-child(20) {
+        top: 65%;
+        left: 60%;
+        transform: rotate(-12deg);
+      }
+      .background img:nth-child(21) {
+        top: 85%;
+        left: 40%;
+        transform: rotate(8deg);
+      }
+      .background img:nth-child(22) {
+        top: 70%;
+        right: 20%;
+        transform: rotate(-10deg);
+      }
+      .background img:nth-child(23) {
+        top: 25%;
+        left: 55%;
+        transform: rotate(11deg);
+      }
+      .background img:nth-child(24) {
+        top: 80%;
+        left: 10%;
+        transform: rotate(-9deg);
+      }
+      .background img:nth-child(25) {
+        top: 50%;
+        right: 30%;
+        transform: rotate(13deg);
+      }
+
+      /* Central content with logo and text */
+      .content {
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        border-radius: 15px;
+      }
+
+      .logo {
+        width: 140px;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      h1 {
+        font-size: 45px;
+        color: #ff851b; /* Orange color */
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: white;
+        font-size: 22px;
+        font-style: italic;
+        margin: 0;
+      }
+
+      /* Button to go back to homepage */
+      .home-button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 20px;
+        background-color: #ff851b; /* Orange */
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 10px;
+        cursor: url("pointer.png"), auto;
+        transition: background-color 0.3s ease;
+      }
+
+      .home-button:hover {
+        background-color: #ff9f2a;
+      }
+
+      /* Media Queries for smaller screens */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 36px;
+        }
+        p {
+          font-size: 18px;
+        }
+        .logo {
+          width: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading screen -->
+    <div id="loading-screen">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading, please wait...</div>
+    </div>
+
+    <div class="background">
+      <!-- Randomly placed images -->
+      <img src="background/1.png" alt="Background Image" />
+      <img src="background/13.png" alt="Background Image" />
+      <img src="background/Allegria_Villa_29.jpg" alt="Background Image" />
+      <img src="background/image1.jpg" alt="Background Image" />
+      <img src="background/image2.jpg" alt="Background Image" />
+      <img src="background/image3.jpg" alt="Background Image" />
+      <img src="background/image4.jpg" alt="Background Image" />
+      <img src="background/image6.jpg" alt="Background Image" />
+      <img src="background/image9.jpg" alt="Background Image" />
+      <img
+        src="background/thumbnail - 2022-05-07T012115.128.jpg"
+        alt="Background Image"
+      />
+      <img src="background/image7.jpg" alt="Background Image" />
+      <img src="background/image5.jpg" alt="Background Image" />
+      <img
+        src="background/thumbnail - 2022-05-07T012535.164.jpg"
+        alt="Background Image"
+      />
+      <img
+        src="background/thumbnail - 2022-05-07T014524.437.jpg"
+        alt="Background Image"
+      />
+      <!-- Additional images as needed -->
+    </div>
+
+    <!-- Central content area -->
+    <div class="content">
+      <img src="logo.png" alt="Summit TECS Logo" class="logo" />
+      <h1>Summit TECS</h1>
+      <p>When scince tend to infinity</p>
+      <button class="home-button" onclick="window.location.href='home.html'">
+        Explore
+      </button>
+    </div>
+
+    <!-- Script to hide loading screen after background images are loaded -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll(".background img");
+        let loadedImages = 0;
+
+        function checkAllImagesLoaded() {
+          if (loadedImages === images.length) {
+            document.getElementById("loading-screen").style.display = "none";
+          }
+        }
+
+        images.forEach((img) => {
+          img.addEventListener("load", () => {
+            loadedImages++;
+            checkAllImagesLoaded();
+          });
+          img.addEventListener("error", () => {
+            loadedImages++;
+            checkAllImagesLoaded();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
