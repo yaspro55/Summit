@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summit TECS - Our Partners</title>
+    <style>
+      /* General Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Body Styling */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #fff;
+        overflow-y: scroll;
+        cursor: url("cursor.png"), auto;
+      }
+
+      /* Header Styling */
+      header {
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center;
+        gap: 20px; /* Space between elements */
+        position: relative;
+      }
+
+      .header-content {
+        text-align: center;
+      }
+
+      .header-content img {
+        max-height: 50px;
+        margin-bottom: 10px;
+      }
+
+      .header-content h1 {
+        font-size: 24px;
+        color: #ffa500;
+        margin-bottom: 10px;
+      }
+
+      .header-content h2 {
+        font-size: 30px;
+        color: #004080;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 10px;
+      }
+
+      /* Button Styling */
+      .home-button {
+        background-color: #ffa500; /* Match company name color */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: url("pointer.png"), auto;
+      }
+
+      .home-button:hover {
+        background-color: #e59400; /* Darker shade on hover */
+        transform: scale(1.05);
+      }
+
+      /* Projects Container Styling */
+      .projects-container {
+        padding: 40px 20px;
+        column-count: 3; /* Create 3 columns */
+        column-gap: 15px; /* 15px gap between columns */
+      }
+
+      .project-item {
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+        padding: 15px;
+        margin-bottom: 15px; /* 15px gap between each div and the one above it */
+        transition: transform 0.3s ease;
+        min-height: 370px; /* Minimum height */
+        max-height: 500px; /* Maximum height */
+        height: auto; /* Allow height to vary */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Space out content evenly */
+        align-items: center; /* Center content horizontally */
+        cursor: url("pointer.png"), auto;
+      }
+
+      .project-item img {
+        width: 80%; /* Adjust width of the image */
+        height: auto;
+        max-width: 300px; /* Ensure image is not too wide */
+        border-radius: 10px;
+        display: block; /* Remove inline spacing issues */
+      }
+
+      .project-item p {
+        margin: 15px 0;
+        font-size: 18px;
+        color: #333;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+
+      .project-item:hover {
+        transform: scale(1.05);
+      }
+
+      /* Random Heights for Divs with Minimum 370px and Maximum 500px */
+      .project-item:nth-child(1) {
+        height: 370px;
+      }
+      .project-item:nth-child(2) {
+        height: 400px;
+      }
+      .project-item:nth-child(3) {
+        height: 430px;
+      }
+      .project-item:nth-child(4) {
+        height: 450px;
+      }
+      .project-item:nth-child(5) {
+        height: 470px;
+      }
+      .project-item:nth-child(6) {
+        height: 380px;
+      }
+      .project-item:nth-child(7) {
+        height: 420px;
+      }
+      .project-item:nth-child(8) {
+        height: 440px;
+      }
+      .project-item:nth-child(9) {
+        height: 460px;
+      }
+      .project-item:nth-child(10) {
+        height: 490px;
+      }
+      .project-item:nth-child(11) {
+        height: 370px;
+      }
+      .project-item:nth-child(12) {
+        height: 410px;
+      }
+      .project-item:nth-child(13) {
+        height: 430px;
+      }
+      .project-item:nth-child(14) {
+        height: 450px;
+      }
+      .project-item:nth-child(15) {
+        height: 470px;
+      }
+      .project-item:nth-child(16) {
+        height: 390px;
+      }
+      .project-item:nth-child(17) {
+        height: 430px;
+      }
+      .project-item:nth-child(18) {
+        height: 450px;
+      }
+      .project-item:nth-child(19) {
+        height: 470px;
+      }
+      .project-item:nth-child(20) {
+        height: 490px;
+      }
+      .project-item:nth-child(21) {
+        height: 370px;
+      }
+      .project-item:nth-child(22) {
+        height: 420px;
+      }
+      .project-item:nth-child(23) {
+        height: 440px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="home-button">Home</a>
+      <div class="header-content">
+        <img src="logo.png" alt="Summit TECS Logo" />
+        <h1>SUMMIT TECS</h1>
+        <h2>Our Key Partners</h2>
+      </div>
+    </header>
+    <main>
+      <section class="projects-container">
+        <!-- 23 project items with the same image URL -->
+        <div class="project-item">
+          <img src="images/partner1.png" alt="Partner 1" />
+          <p>Volvo</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner2.png" alt="Partner 2" />
+          <p>Aspero</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner3.png" alt="Partner 3" />
+          <p>Cafe del sol</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner4.png" alt="Partner 4" />
+          <p>National bank of egypt</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner5.png" alt="Partner 5" />
+          <p>Sodic</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner6.png" alt="Partner 6" />
+          <p>New Giza</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner7.png" alt="Partner 7" />
+          <p>Park st.</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner8.png" alt="Partner 8" />
+          <p>Palm Hills</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner9.png" alt="Partner 9" />
+          <p>Hany saad Inovations <br /></p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner10.png" alt="Partner 10" />
+          <p>Palm valley</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner11.png" alt="Partner 11" />
+          <p>Smart school</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner12.png" alt="Partner 12" />
+          <p>Concord Plaza</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner13.png" alt="Partner 13" />
+          <p>Cairo Festival City Mall <br /></p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner14.png" alt="Partner 14" />
+          <p>Wok and Walk</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner15.png" alt="Partner 15" />
+          <p>Point 90</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner16.png" alt="Partner 16" />
+          <p>Mountain view</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner17.png" alt="Partner 17" />
+          <p>Ain Shams University</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner18.png" alt="Partner 18" />
+          <p>Benha University Hospitals</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner19.png" alt="Partner 19" />
+          <p>arkan</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner20.png" alt="Partner 20" />
+          <p>OplaLine</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner21.png" alt="Partner 21" />
+          <p>Ain Shams University teb</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner22.png" alt="Partner 22" />
+          <p>egyptian police</p>
+        </div>
+        <div class="project-item">
+          <img src="images/partner23.png" alt="Partner 23" />
+          <p>Air Force Specialized Hospital</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -300,11 +300,12 @@
         color: white;
         opacity: 0;
         position: absolute;
-        top: 50%;
+        bottom: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         transition: opacity 1s ease-in-out, transform 1s ease-in-out;
         z-index: 5;
+        text-align: center;
       }
 
       .visible-text {
@@ -337,7 +338,6 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background-image: url(background/preloader.gif);
         z-index: 1000;
         display: flex;
         justify-content: center;
@@ -357,15 +357,29 @@
           flex-direction: column;
         }
 
+        body {
+          background-color: lightblue;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
         .text-section {
           width: 100%;
+          margin-top: 50px;
           align-items: center;
           padding-left: 0;
+          margin-bottom: 100px;
+          padding-bottom: 100px;
         }
 
         .button-section {
           width: 100%;
-          margin-top: 20px;
+        }
+
+        .special-text {
+          width: 100%;
+          position: absolute;
+          top: 55%;
         }
 
         .button-layer {
@@ -374,7 +388,9 @@
           flex-direction: column;
           margin-bottom: 20px;
         }
-
+        .button-layer.single {
+          padding-left: 400px;
+        }
         .button-layer.spaced {
           padding: 0;
         }
@@ -394,33 +410,35 @@
     <div class="loading-screen" id="loading-screen"></div>
 
     <div class="logo">
-      <img class="logoimg" src="toplogo.png" alt="Summit TECS Logo">
+      <img class="logoimg" src="toplogo.png" alt="Summit TECS Logo" />
     </div>
 
     <div class="container">
       <div class="text-section">
-        <h1 class="animated-text">
-          <span class="highlight">T</span>rading
-        </h1>
+        <h1 class="animated-text"><span class="highlight">T</span>rading</h1>
         <h1 class="animated-text">
           <span class="highlight">E</span>ngineering
         </h1>
         <h1 class="animated-text">
           <span class="highlight">C</span>onstruction
         </h1>
-        <h1 class="animated-text">
-          <span class="highlight">S</span>olutions
-        </h1>
+        <h1 class="animated-text"><span class="highlight">S</span>olutions</h1>
       </div>
+      <!-- Special text for each background -->
+      <div class="special-text" id="special-text"></div>
       <div class="button-section">
         <div class="button-layer single one">
           <a href="about-us.html"
-            ><button class="animated-btn about"><span>About Us</span></button></a
+            ><button class="animated-btn about">
+              <span>About Us</span>
+            </button></a
           >
         </div>
         <div class="button-layer spaced two">
           <a href="partners.html"
-            ><button class="animated-btn key"><span>Key Partners</span></button></a
+            ><button class="animated-btn key">
+              <span>Key Partners</span>
+            </button></a
           >
         </div>
         <div class="button-layer spaced three">
@@ -430,7 +448,9 @@
         </div>
         <div class="button-layer spaced four">
           <a href="contact-us.html"
-            ><button class="animated-btn contact"><span>Contact Us</span></button></a
+            ><button class="animated-btn contact">
+              <span>Contact Us</span>
+            </button></a
           >
         </div>
       </div>
@@ -439,9 +459,6 @@
     <!-- Left and Right arrows -->
     <i class="fas fa-chevron-left arrow left-arrow"></i>
     <i class="fas fa-chevron-right arrow right-arrow"></i>
-
-    <!-- Special text for each background -->
-    <div class="special-text" id="special-text"></div>
 
     <script>
       const images = [
@@ -454,20 +471,20 @@
         "background/bg7.png",
         "background/bg8.png",
         "background/bg9.png",
-        "background/bg10.png"
+        "background/bg10.png",
       ];
 
       const specialTexts = [
-        "Welcome to <br> Summit TECS",
-        "Innovative <br> Engineering <br> Solutions",
-        "Building the Future",
-        "Your Trusted Partner",
-        "Excellence in <br>  Construction",
-        "Cutting-edge <br> Technology",
-        "Problem solvers",
-        "Design fixer",
-        "Exelent partner",
-        "Life saver"
+        "Building The Future",
+        "Perfections",
+        "Elegance",
+        "Excellence In <br>  Construction",
+        "Machine Rooms",
+        "Complicated <br> Applications",
+        "Comercial Application",
+        "Hygiene <br> Application",
+        "Pharma Application",
+        "Luxury Residential <br> Building",
       ];
 
       let currentImageIndex = 0;
@@ -510,14 +527,13 @@
         .addEventListener("click", prevImage);
 
       // Preload images and then hide the loading screen
-      window.onload = function () {
+      body.onload = function () {
         preloadImages();
         document.getElementById("loading-screen").classList.add("hidden");
         body.style.visibility = "visible"; // Show the page when images are preloaded
         updateBackground();
         setInterval(nextImage, 4000); // Change background every 4 seconds
       };
-      
     </script>
   </body>
 </html>
