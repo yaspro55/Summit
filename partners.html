@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partners</title>
+    <style>
+      /* Reset margin and padding for full-screen layout */
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        cursor: url('cursor.png'), auto;
+      }
+
+      /* Main container to fill the viewport */
+      .partners-container {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px; /* Increased spacing between divs */
+        width: 90vw;
+        height: 90vh;
+      }
+
+      /* Styling for each partner div */
+      .project-item {
+        height: 160px;
+        width: 190px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.5s ease, box-shadow 0.5s ease; /* Stunning transition */
+      }
+      .project-item img {
+        width: 90%;
+      }
+
+      /* Text styling */
+      .project-item p {
+        margin: 0;
+        font-weight: bold;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7); /* Dark background for text */
+        color: white;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 14px;
+        visibility: hidden;
+      }
+
+      /* Animation for growing */
+      @keyframes grow {
+        0% {
+          transform: scale(1);
+          visibility: hidden;
+          z-index: 100;
+        }
+        50% {
+          transform: scale(1.5);
+          visibility: visible;
+          z-index: 100;
+        }
+        100% {
+          transform: scale(1);
+          visibility: hidden;
+          z-index: 100;
+        }
+      }
+
+      /* Styling for Key Clients text */
+      .key-clients {
+        grid-column: span 4; /* Makes the text span across three columns */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: rgb(34, 9, 196);
+        border-radius: 10px;
+        font-size: 80px;
+        height: 0px;
+      }
+      @media (max-width: 800px) {
+        .partners-container {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .key-clients{
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 600px) {
+        .partners-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .back-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #FFA500;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        text-align: center;
+        border: none;
+        z-index: 100;
+        cursor: url('pointer.png'), auto;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html">
+      <button class="back-btn">Home</button>
+    </a>
+    <div class="partners-container">
+      <!-- Top row with Key Clients text and partners -->
+      <div class="project-item">
+        <img src="images/partner21.png" alt="Partner 22" />
+        <p>Ain Shams University Teb</p>
+      </div>
+      <p class="key-clients">Key Clients</p>
+      <div class="project-item">
+        <img src="images/partner23.png" alt="Partner 23" />
+        <p>Air Force Specialized Hospital</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner24.png" alt="Partner 24" />
+        <p>National Training Academy</p>
+      </div>
+
+      <!-- Rest of the partner items -->
+      <div class="project-item">
+        <img src="images/partner1.png" alt="Partner 1" />
+        <p>Volvo</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner2.png" alt="Partner 2" />
+        <p>Aspero</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner3.png" alt="Partner 3" />
+        <p>Cafe del sol</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner4.png" alt="Partner 4" />
+        <p>National Bank of Egypt</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner5.png" alt="Partner 5" />
+        <p>Sodic</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner6.png" alt="Partner 6" />
+        <p>New Giza</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner7.png" alt="Partner 7" />
+        <p>Park St.</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner8.png" alt="Partner 8" />
+        <p>Palm Hills</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner9.png" alt="Partner 9" />
+        <p>Hany Saad Innovations</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner10.png" alt="Partner 10" />
+        <p>Palm Valley</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner11.png" alt="Partner 11" />
+        <p>Smart School</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner12.png" alt="Partner 12" />
+        <p>Concord Plaza</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner13.png" alt="Partner 13" />
+        <p>Cairo Festival City Mall</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner14.png" alt="Partner 14" />
+        <p>Wok and Walk</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner15.png" alt="Partner 15" />
+        <p>Point 90</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner16.png" alt="Partner 16" />
+        <p>Mountain View</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner17.png" alt="Partner 17" />
+        <p>Ain Shams University</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner18.png" alt="Partner 18" />
+        <p>Benha University Hospitals</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner19.png" alt="Partner 19" />
+        <p>Arkan</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner30.jpeg" alt="Partner 20" />
+        <p>Optaline</p>
+      </div>
+      <div class="project-item">
+        <img src="images/partner22.png" alt="Partner 21" />
+        <p>Egyptian Police</p>
+      </div>
+    </div>
+
+    <script>
+      const projectItems = document.querySelectorAll('.project-item');
+
+      function animateItems(index = 0) {
+        if (index >= projectItems.length) {
+          // Reset and start over
+          setTimeout(() => animateItems(0), 2000); // Wait 2 seconds before starting again
+          return;
+        }
+
+        const item = projectItems[index];
+        const text = item.querySelector('p');
+        text.style.visibility = 'visible';
+        item.style.animation = 'grow 2s forwards';
+
+        setTimeout(() => {
+          text.style.visibility = 'hidden';
+          item.style.animation = '';
+          animateItems(index + 1); // Move to the next item
+        }, 2000); // Duration of text visibility
+      }
+
+      animateItems(); // Start the animation
+    </script>
+  </body>
+</html>
