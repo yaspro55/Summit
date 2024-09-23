@@ -5,263 +5,319 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summit TECS</title>
     <style>
-        /* Include the updated CSS here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto;
             cursor: url('cursor.png'), auto;
         }
 
+        /* Header Styling */
         header {
             width: 100%;
-            background-color: white; /* White background for the header */
-            color: #333; /* Dark color for the text */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Blur effect for modern look */
+            color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
+            padding: 10px; /* Reduced padding */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
         }
 
         .home {
-            position: absolute;
-            right: 50px;
-            display: inline-block;
             background-color: #FFA500;
             color: #fff;
-            padding: 10px 20px;
+            padding: 8px 18px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
-            text-align: center;
+            font-size: 1.1em;
             border: none;
-            top: 20px;
-            cursor: url('pointer.png'), auto;
-            
-            }
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px; /* Reduced margin */
+        }
+
+        .home:hover {
+            background-color: #e59400;
+            transform: scale(1.05); /* Slight zoom on hover */
+        }
 
         header img {
-            height: 50px; /* Adjust logo size as needed */
+            height: 45px; /* Reduced size for logo */
+            margin-bottom: 5px; /* Reduced margin */
         }
 
         .header-title {
-            font-size: 1.5em;
+            font-size: 2em; /* Reduced size */
             font-weight: bold;
-            margin: 10px 0;
-            color: #004d99; /* Dark blue color for the header title */
+            margin: 5px 0;
+            color: #004d99;
+            text-align: center;
         }
 
         .header-description {
-            font-size: 1em;
-            color: #666; /* Light gray color for the description */
+            font-size: 1.1em; /* Slightly smaller description */
+            color: #666;
             text-align: center;
-            max-width: 800px; /* Set max-width for readability */
+            max-width: 900px;
+            margin-bottom: 10px; /* Reduced margin */
+            line-height: 1.4;
         }
 
         .highlight {
-            color: #FFA500; /* Orange color for the highlighted text */
+            color: #FFA500;
         }
 
-        .hover-container {
+        /* New Section Styling */
+        .intro-section {
             width: 100%;
-            position: relative;
-            margin-bottom: 20px;
-            max-width: 1200px; /* Optionally set a max width */
+            color: #004d99;
+            text-align: center;
+            font-size: 3em; /* Large text */
+            font-weight: bold;
+            margin: 20px 0; 
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .t1 {
+            margin-right: 500px;
+        }
+        .t2 {
+            margin-right: 250px;
+        }
+        .t3{
+            margin-right: 0;
+        }
+        .t4 {
+            margin-left: 250px;
+        }
+        .t5 {
+            margin-left: 500px;
         }
 
+        /* Section layout and animations */
         .hover-content {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            height: 300px; /* Set a consistent height */
-            overflow: hidden; /* Prevent overflow issues */
-            opacity: 0; /* Start invisible */
-            visibility: hidden; /* Ensure it's not visible initially */
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .hover-container.active .hover-content {
-            opacity: 1; /* Fully visible */
-            visibility: visible; /* Ensure it's visible */
-        }
-
-        .text-content {
-            flex: 1;
-            padding-left: 20px; /* Adjust padding for spacing */
-            display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 40px 0;
+            width: 90%;
+            max-width: 1200px;
+            opacity: 0; /* Initially invisible */
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+            margin: 20px 0; /* Gap between sections */
+            gap: 30px;
         }
 
+        .hover-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Heading animation */
         .text-content h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            color: darkblue;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #004d99;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
         }
 
+        .hover-content.active .text-content h1 {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Paragraph animation */
         .text-content p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #666;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+            transition-delay: 0.2s;
         }
 
+        .hover-content.active .text-content p {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Image animation */
         .image-content {
-            width: 36%;
-            height: 90%;
+            width: 80%;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateX(-50px);
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.8s ease-out;
+            transition-delay: 0.4s;
+        }
+
+        .hover-content.active .image-content {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .image-content img {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensure the image covers the area while maintaining aspect ratio */
-            border-radius: 8px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle image shadow */
         }
 
-        .image-left {
-            flex-direction: row; /* Image on the left, text on the right */
-        }
-
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             .hover-content {
-                flex-direction: column;
-                height: auto; /* Allow height to adjust naturally on smaller screens */
+                padding: 20px 0;
+                width: 95%;
             }
 
-            .text-content {
-                padding-left: 0;
-                margin-bottom: 20px;
+            .text-content h1 {
+                font-size: 2em;
+            }
+
+            .text-content p {
+                font-size: 1.1em;
             }
 
             .image-content {
-                width: 80%; /* Adjust width on smaller screens */
-                height: auto;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .image-content img {
                 width: 100%;
-                height: auto; /* Adjust height on smaller screens */
             }
+        }
 
-            .image-left {
-                flex-direction: column; /* Stack image and text vertically on small screens */
-            }
+        /* Final Section Styling */
+        #final {
+            background-color: #f9f9f9; /* Light background for contrast */
+            padding: 40px 0;
+            border-top: 1px solid #ddd; /* Light border at the top */
+        }
+
+        #final .text-content h1 {
+            font-size: 2.5em;
+            color: #004d99;
+        }
+
+        #final .text-content p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
+    <!-- Improved Header with Reduced Height -->
     <header>
         <img src="logo.png" alt="Summit TECS Logo">
         <div class="header-title">Summit TECS</div>
-        <p class="header-description">" <span class="highlight">SUMMIT</span> has been established by a group of engineers with variant international background experiences in Engineering and Construction services with years of combined experience."</p>
-        <a href="index.html"><button class="home">home</button></a>
+        <p class="header-description">"<span class="highlight">SUMMIT</span> has been established by a group of engineers with variant international background experiences in Engineering and Construction services."</p>
+        <a href="index.html"><button class="home">Home</button></a>
     </header>
 
-    <!-- First Div -->
-    <div class="hover-container" id="hover1">
-        <div class="hover-content" id="content1">
-            <div class="text-content">
-                <h1>Our Goals</h1>
-                <p>To provide both a superior customer experience and tremendous value for our customers; we are passionate about exceeding your expectations.</p>
-            </div>
-            <div class="image-content">
-                <img src="images/goals.png" alt="Summit TECS Goals Image">
-            </div>
-        </div>
-    </div>
+    <!-- New Section with Prominent Text -->
+    <section class="intro-section">
+        <p class="t1">When</p>
+        <p class="t2">science</p>
+        <p class="t3">tends</p>
+        <p class="t4">to</p>
+        <p class="t5">infinity</p>
+    </section>
 
-    <!-- Second Div -->
-    <div class="hover-container" id="hover2">
-        <div class="hover-content image-left" id="content2">
-            <div class="image-content">
-                <img src="images/culture.jpeg" alt="Summit TECS Values Image">
-            </div>
-            <div class="text-content">
-                <h1>Our Values</h1>
-                <p>Represent the culture of our staff and our dedication to the customer have made the word <span class="highlight">SUMMIT</span> more than a company name – it has become a symbol for a specific way of doing things: with quality, excellence, innovation, and teamwork.</p>
-            </div>
+    <!-- Section 1 -->
+    <section class="hover-content" id="content1">
+        <div class="text-content">
+            <h1>Our Goals</h1>
+            <p>To provide both a superior customer experience and tremendous value for our customers; we are passionate about exceeding your expectations.</p>
         </div>
-    </div>
+        <div class="image-content">
+            <img src="images/goals.png" alt="Summit TECS Goals Image">
+        </div>
+    </section>
 
-    <!-- Copy of First Div (under Second Div) -->
-    <div class="hover-container" id="hover3">
-        <div class="hover-content" id="content3">
-            <div class="text-content">
-                <h1>SUMMIT  Engineering</h1>
-                <p><span class="highlight">SUMMIT</span> Engineering is looking forward to provide our customers with innovative engineering solution through our accumulated experience to support their business.
-                    Our discipline-based cadre of engineering services covers product design from conceptual studies to aftermarket support. Our talented workforce possesses the breadth and depth of technical expertise that sets us apart from our competition. Technical excellence provided on schedule and within budget yields the best overall value. Additionally, we are proud to provide low cost engineering through our Offshore Outsourcing Engineering Services.</p>
-            </div>
-            <div class="image-content">
-                <img src="images/sol.jpeg" alt="Summit TECS Goals Image">
-            </div>
+    <!-- Section 2 -->
+    <section class="hover-content" id="content2">
+        <div class="text-content">
+            <h1>Our Values</h1>
+            <p>Represent the culture of our staff and our dedication to the customer have made the word SUMMIT more than a company name – it has become symbol for a specific way of doing things: with quality, excellence, innovation, and teamwork.</p>
         </div>
-    </div>
+        <div class="image-content">
+            <img src="images/culture.jpeg" alt="Summit TECS Values Image">
+        </div>
+    </section>
 
-    <!-- Copy of Second Div -->
-    <div class="hover-container" id="hover4">
-        <div class="hover-content image-left" id="content4">
-            <div class="image-content">
-                <img src="images/con.webp" alt="Summit TECS Values Image">
-            </div>
-            <div class="text-content">
-                <h1>SUMMIT Contracting</h1>
-                <p><span class="highlight">SUMMIT</span> Contracting is a core value in our business. With precise strategic planning, we navigate through fast-track schedules, rigorous construction standards, and innovative design-build plans. We help ensure constructability, maintainability, and sustainability and we do it all with an optimal blend of technical expertise, and customer focus. 
-                    Our main target to make an adding value to all our customers to reach to Win Win situation  
-                    </p>
-            </div>
+    <!-- Section 3 -->
+    <section class="hover-content" id="content3">
+        <div class="text-content">
+            <h1>SUMMIT Engineering</h1>
+            <p><span class="highlight">SUMMIT</span> Engineering is looking forward to provide our customers with innovative engineering solution through our accumulated experience to support their business. Our discipline-based cadre of engineering services covers product design from conceptual studies to aftermarket support. Our talented workforce possesses the breadth and depth of technical expertise that sets us apart from our competition. Technical excellence provided on schedule and within budget yields the best overall value. Additionally, we are proud to provide low cost engineering through our Offshore Outsourcing Engineering Services.</p>
         </div>
-    </div>
+        <div class="image-content">
+            <img src="images/sol.jpeg" alt="Summit TECS Engineering Image">
+        </div>
+    </section>
 
-    <!-- Duplicate of First Div -->
-    <div class="hover-container" id="hover5">
-        <div class="hover-content" id="content5">
-            <div class="text-content">
-                <h1>Our quality system </h1>
-                <p>Our quality system focuses on sound project management and internal reviews by world-class experts through our USA and Canada based shareholders. In short, <span class="highlight">SUMMIT</span> TECS is well equipped to serve your most challenging engineering business needs.
-                    </p>
-            </div>
-            <div class="image-content">
-                <img src="images/quality.jpg" alt="Summit TECS Goals Image">
-            </div>
+    <!-- Section 4 -->
+    <section class="hover-content" id="content4">
+        <div class="text-content">
+            <h1>SUMMIT Contracting</h1>
+            <p><span class="highlight">SUMMIT</span> Contracting is a core value in our business. With precise strategic planning, we navigate through fast-track schedules, rigorous construction standards, and innovative design-build plans. We help ensure constructability, maintainability, and sustainability and we do it all with an optimal blend of technical expertise and customer focus. Our main target is to add value to all our customers to reach a Win-Win situation.</p>
         </div>
-    </div>
+        <div class="image-content">
+            <img src="images/cont.webp" alt="Summit TECS Contracting Image">
+        </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="hover-content" id="content5">
+        <div class="text-content">
+            <h1>Our Quality System</h1>
+            <p>Our quality system focuses on sound project management and internal reviews by world-class experts through our USA and Canada based shareholders.</p>
+        </div>
+        <div class="image-content">
+            <img src="images/quality.jpg" alt="Summit TECS Quality Image">
+        </div>
+    </section>
+
+    <!-- Final Section -->
+    <section class="hover-content" id="final">
+        <div class="text-content">
+            <h1>In Summary</h1>
+            <p>In short, <span class="highlight">SUMMIT TECS</span> is well equipped to serve your most challenging engineering business needs.</p>
+        </div>
+    </section>
 
     <script>
-        document.querySelectorAll('.hover-container').forEach(container => {
-            container.addEventListener('mouseover', function() {
-                container.classList.add('active');
-            });
+        // Scroll animation logic
+        const sections = document.querySelectorAll('.hover-content');
 
-            container.addEventListener('mouseleave', function() {
-                // Do nothing to keep it visible after hover
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
-        });
+        }, { threshold: 0.3 });
 
-        // Optional: to handle clicks or specific logic to reset visibility if needed
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.hover-container')) {
-                document.querySelectorAll('.hover-container').forEach(container => {
-                    container.classList.remove('active');
-                });
-            }
+        sections.forEach(section => {
+            observer.observe(section);
         });
     </script>
 </body>
