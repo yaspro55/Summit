@@ -106,34 +106,148 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
-      .back-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: #FFA500;
-        color: #fff;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        text-align: center;
-        border: none;
-        z-index: 100;
-        cursor: url('pointer.png'), auto;
-      }
+      /* Hamburger Menu */
+      .nav-menu {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            z-index: 10000;
+            cursor: url("pointer.png"), auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-menu div {
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            position: fixed;
+            z-index: 10000;
+        }
+        .nav-menu span {
+            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+            width: 80%;
+            height: 4px;
+            border-radius: 5px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, width 0.5s;
+        }
+
+        .nav-menu .line1 {
+            transform: translate(-50%, -12px);
+        }
+        .nav-menu .line3 {
+            transform: translate(-50%, 8px);
+        }
+        .openmenu .line1 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .openmenu .line3 {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .openmenu .line2 {
+            width: 0;
+        }
+
+        /* Menu Styling */
+        .nav-btn-menu {
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            position: fixed;
+            z-index: 1000;
+            left: 100%;
+            transition: left 0.5s ease;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .nav-btn-menu button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: #333;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: "Roboto", sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s, transform 0.3s;
+            cursor: url('pointer.png'), auto;
+        }
+
+        .nav-btn-menu button:hover {
+            color: #FF8C00;
+            transform: scale(1.1); /* Scale on hover */
+        }
+
+        .trans-nav-btn-menu {
+            left: 80%;
+        }
+        
+        .slim {
+          display: none;
+        }
+        @media (max-width: 1000px) {
+            .trans-nav-btn-menu {
+            left: 70%;
+        }
+        }
+        @media (max-width: 750px) {
+            .trans-nav-btn-menu {
+            left: 60%;
+        }
+        }
+        @media (max-width: 600px) {
+            .t5 {
+            margin-left: 300px;
+        }
+        .slim {
+          display: initial;
+          margin-bottom: 200px;
+        }
+        .fat {
+          display: none;
+        }
+        }
+        .key-clients span {
+          color: rgb(246, 152, 44);
+        }
     </style>
   </head>
   <body>
-    <a href="index.html">
-      <button class="back-btn">Home</button>
-    </a>
+    <div class="nav-menu">
+      <div>
+          <span class="line1"></span>
+          <span class="line2"></span>
+          <span class="line3"></span>
+      </div>
+  </div>
+  <div class="nav-btn-menu">
+      <a href="index.html"><button>•Home</button></a>
+      <a href="projects.html"><button>•Services</button></a> 
+      <a href="about-us.html"><button>•About-us</button></a> 
+      <a href="contact-us.html"><button>•Contact-us</button></a> 
+  </div>
+
     <div class="partners-container">
       <!-- Top row with Key Clients text and partners -->
+      <p class="key-clients slim">Key  <span> Partners</span></p>
       <div class="project-item">
         <img src="images/partner21.png" alt="Partner 22" />
         <p>Ain Shams University Teb</p>
       </div>
-      <p class="key-clients">Key Clients</p>
+      <p class="key-clients fat">Key  <span> Partners</span></p>
       <div class="project-item">
         <img src="images/partner23.png" alt="Partner 23" />
         <p>Air Force Specialized Hospital</p>
@@ -231,6 +345,13 @@
     </div>
 
     <script>
+      let menu = document.querySelector('.nav-menu');
+        let menubtn = document.querySelector('.nav-btn-menu');
+        menu.addEventListener('click', function() {
+            menu.classList.toggle('openmenu');
+            menubtn.classList.toggle('trans-nav-btn-menu');
+        }); 
+        
       const projectItems = document.querySelectorAll('.project-item');
 
       function animateItems(index = 0) {
