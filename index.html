@@ -11,27 +11,71 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <style>
+      /* Reset and Base Styles */
       body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        overflow-x: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
       header {
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-            backdrop-filter: blur(10px); /* Blur effect for modern look */
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px; /* Reduced padding */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 70px;
-            z-index: 500;
-        }
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+        backdrop-filter: blur(10px); /* Blur effect for a modern look */
+        color: #333;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px; /* Adjust padding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 70px;
+        z-index: 500;
+      }
+
+      header button {
+        background: #0078d7;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .imgDisplay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full screen height */
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        transition: transform 0.5s ease;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+        width: 100%;
+        background-color: white;
+        margin-top: 100vh; /* Start below the background image */
+      }
+
+      .content h1,
+      .content p {
+        text-align: center;
+        margin: 10px 0;
+      }
+
         .logos {
             width: 400px;
             background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
@@ -52,24 +96,6 @@
           width: 100px;
           position: relative;
           top: 270px;
-        }
-        .imgDisplay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 729px;
-          margin: 0;
-          font-family: "Raleway", sans-serif;
-          font-size: 16px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          background-size: cover;
-          background-position: center;
-          cursor: url("cursor.png"), auto;
-          transition: background-image 1s ease-in-out;
-          visibility: hidden; /* Hidden until page loads */
         }
         .highlight {
         color: rgb(15, 0, 98);
@@ -141,17 +167,38 @@
     <div class="loading-screen" id="loading-screen">
       <img src="preloader.gif" alt="Loading..." />
     </div>
-    <div class="imgDisplay"></div>
     <header class="headerone">
-      <button>.</button>
+      <button>Menu</button>
     </header>
+    <div class="imgDisplay"></div>
+    <div class="content">
+      <h1>Welcome to Summit TECS</h1>
+      <p>Discover our innovative solutions for construction and engineering.</p>
+      <p>Scroll down to learn more.</p>
+    </div>
+    
     <div class="logos"><img class="logo" src="logo.png"></div>
 
     <div class="special-text" id="special-text"></div>
+    
+    
 
     <i class="fas fa-chevron-left arrow left-arrow"></i>
     <i class="fas fa-chevron-right arrow right-arrow"></i>
     <script>
+      window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const imgDisplay = document.querySelector(".imgDisplay");
+
+      if (scrollTop <= window.innerHeight) {
+        // Parallax scrolling effect
+        imgDisplay.style.transform = `translateY(${scrollTop * 0.5}px)`;
+      } else {
+        // Ensure image is completely scrolled away
+        imgDisplay.style.transform = "translateY(0)";
+      }
+    });
+
       const images = [
         "background/bg1.png",
         "background/bg2.png",
