@@ -325,6 +325,7 @@
             background-color: #f9f9f9; /* Light background for contrast */
             padding: 40px 0;
             border-top: 1px solid #ddd; /* Light border at the top */
+            margin-bottom: 0;
         }
 
         #final .text-content h1 {
@@ -336,6 +337,96 @@
             font-size: 1.2em;
             color: #666;
             line-height: 1.6;
+        }
+        /* Contact Section */
+        .contact-section {
+            background-color: #fff;
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #d48d08;
+            text-align: center;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+        }
+
+        .contact-info a {
+            color: #d48d08;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            width: 1200px;
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .send-btn {
+            background-color: #d48d08;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        .send-btn:hover {
+            background-color: #d48d08;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 20px;
+            }
+
+            .contact-info, .contact-form {
+                text-align: left;
+            }
         }
     </style>
   </head>
@@ -409,21 +500,67 @@
       </section>
 
       <!-- Section 5 -->
-      <section class="hover-content" id="content5">
-          <div class="text-content">
-              <h1>Our Quality System</h1>
-              <p>Our quality system focuses on sound project management and internal reviews by world-class experts through our USA and Canada based shareholders.</p>
-          </div>
-          <div class="image-content">
-              <img src="images/quality.jpg" alt="Summit TECS Quality Image">
-          </div>
-      </section>
+          <section class="hover-content" id="content5">
+              <div class="text-content">
+                  <h1>Our Quality System</h1>
+                  <p>Our quality system focuses on sound project management and internal reviews by world-class experts through our USA and Canada based shareholders.</p>
+              </div>
+              <div class="image-content">
+                  <img src="images/quality.jpg" alt="Summit TECS Quality Image">
+              </div>
+          </section>
 
-      <!-- Final Section -->
-      <section class="hover-content" id="final">
-          <div class="text-content">
-              <h1>In Summary</h1>
-              <p>In short, <span class="highlight">SUMMIT TECS</span> is well equipped to serve your most challenging engineering business needs.</p>
+          <!-- Final Section -->
+          <section class="hover-content" id="final">
+              <div class="text-content">
+                  <h1>In Summary</h1>
+                  <p>In short, <span class="highlight">SUMMIT TECS</span> is well equipped to serve your most challenging engineering business needs.</p>
+              </div>
+          </section>
+          <!-- Contact Us Section -->
+        <section id="contact" class="contact-section">
+            
+          <div class="container">
+              <h1>Contact Summit TECS</h1>
+              <p class="quote">"Empowering Technology, Innovating Solutions"</p>
+
+              <div class="contact-info">
+                  <h2>Our Address</h2>
+                  <p>426 N Elgesh St, Gate 4 Hadayek Elahram</p>
+
+                  <h2>Phone</h2>
+                  <p>+201222908983, +201143250666</p>
+
+                  <h2>Tel</h2>
+                  <p>+233779974</p>
+
+                  <h2>Email</h2>
+                  <p><a href="mailto:Info@Summittecs.com">Info@Summittecs.com</a></p>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="contact-form">
+                  <h2>Get in Touch</h2>
+                  <form action="https://api.web3forms.com/submit" method="POST">
+                      <input type="hidden" name="access_key" value="e218f665-24ca-4db6-a046-4349016069b3">
+
+                      <div class="form-group">
+                          <label for="first-name">Full Name:</label>
+                          <input type="text" id="first-name" name="name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Email:</label>
+                          <input type="email" id="email" name="email" required>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="message">Message:</label>
+                          <textarea id="message" name="message" rows="5" required></textarea>
+                      </div>
+
+                      <button type="submit" class="send-btn">Send Message</button>
+                  </form>
+              </div>
           </div>
       </section>
     </div>
