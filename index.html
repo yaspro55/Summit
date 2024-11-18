@@ -514,7 +514,7 @@
         /* Menu Styling */
         .nav-btn-menu {
             background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
-            width: 20%;
+            width: 40%;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -547,7 +547,7 @@
         }
 
         .trans-nav-btn-menu {
-            left: 80%;
+            left: 60%;
         }
         @media (max-width: 1050px) {
           .nav-menu {
@@ -560,6 +560,102 @@
             display: none;
           }
         }
+       /* Core Values Container */
+      .switching-container {
+          position: relative;
+          width: 350px;
+          overflow: hidden;
+          height: 500px; /* Fixed height to ensure uniform appearance */
+          display: flex;
+          align-items: center; /* Center vertically */
+          justify-content: center; /* Center horizontally */
+      }
+
+      /* Value Container */
+      .value-container {
+          position: absolute; /* Absolute positioning within the switching container */
+          top: 0;
+          left: 100%; /* Initially off-screen */
+          width: 90%;
+          height: 90%;
+          padding: 20px;
+          background: #f9f9f9;
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 50px 0 0 50px;
+          transition: all 0.6s ease;
+          text-align: center;
+          opacity: 0; /* Hidden by default */
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Align children in the center */
+          justify-content: center; /* Center content vertically */
+      }
+
+      /* Active Value */
+      .value-container.active {
+          left: 0; /* Bring into view */
+          opacity: 1; /* Fully visible */
+          z-index: 1; /* Ensure it's on top */
+      }
+
+      /* Value Name */
+      .valuename {
+          font-size: 1.8em;
+          color: #004d99;
+          margin-bottom: 15px;
+      }
+
+      /* Value Image */
+      .valueimg img {
+          max-width: 300px;
+          margin-bottom: 15px;
+          border-radius: 10px;
+      }
+
+      /* Value Description */
+      .valuedisc {
+          font-size: 1.1em;
+          color: #666;
+          line-height: 1.6;
+      }
+
+      /* Navigation Arrows */
+      .nav-arrows {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          position: absolute;
+          bottom: 10px;
+          width: 100%; /* Spanning the full width of the container */
+          z-index: 2;
+      }
+
+      /* Navigation Buttons */
+      .nav-arrows button {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          position: relative;
+          bottom: 280px;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          border-radius: 50%;
+          color: rgb(214, 107, 0);
+          font-size: 1.5em;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 17px 15px 15px 15px;
+          cursor: pointer;
+          transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+          outline: none;
+      }
+      .nav-arrows button:hover {
+          background: linear-gradient(135deg, #a6a6a6, #535353);
+          transform: scale(1.1); /* Slightly enlarge on hover */
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
     </style>
   </head>
   <body>
@@ -574,12 +670,12 @@
       </div>
   </div>
   <div class="nav-btn-menu">
-      <button id="buttonzero">•Home</button>
-      <button id="buttonthreedotfive">•Services</button>
-      <button id="buttonthree">•Projects</button>
-      <button id="buttonone">•About-us</button>
-      <button id="buttontwo">•partners</button>
-      <button id="buttonfour">•Contact-us</button>
+      <button id="buttoni">•Home</button>
+      <button id="buttoniiiii">•Services</button>
+      <button id="buttoniiii">•Projects</button>
+      <button id="buttonii">•About-us</button>
+      <button id="buttoniii">•partners</button>
+      <button id="buttoniiiiii">•Contact-us</button>
   </div>
     <header>
       <div class="left-buttons">
@@ -639,41 +735,48 @@
 
       <!-- Section 4 -->
       <section class="hover-content" id="content4">
-          <div class="text-content">
-            <h1>SUMMIT<br> 
-              <span class="highlightone">CORE VALUES</span></h1>
-          </div>
-          <div class="switching-divs">
-            <div class="valueone">
-              <h2 class="valuename">collaboration</h2>
-              <div class="valueimg">
-                <img src="images/collaboration.png" alt="Summit TECS Contracting Image">
-              </div>
-              <p class="valuedisc">We believe in the power of teamwork, working closely with our teams,<br> suppliers, partners, and  clients to achieve shared goals and foster lasting relationships.</p>
+        <div class="text-content">
+            <h1>SUMMIT<br>
+                <span class="highlightone">CORE VALUES</span>
+            </h1>
+        </div>
+        <div class="switching-container">
+            <!-- Each value container -->
+            <div class="value-container active">
+                <h2 class="valuename">Collaboration</h2>
+                <div class="valueimg">
+                    <img src="images/collaboration.png" alt="Collaboration Image">
+                </div>
+                <p class="valuedisc">We believe in the power of teamwork, working closely with our teams, suppliers, partners, and clients to achieve shared goals and foster lasting relationships.</p>
             </div>
-            <div class="valuetwo">
-              <h2 class="valuename">Excellence</h2>
-              <div class="valueimg">
-                <img src="images/excellence.jpg" alt="Summit TECS Contracting Image">
-              </div>
-              <p class="valuedisc"> We are committed to delivering high-quality services and products,<br> consistently exceeding expectations and adhering to rigorous construction standards.</p>
+            <div class="value-container">
+                <h2 class="valuename">Excellence</h2>
+                <div class="valueimg">
+                    <img src="images/excellence.jpg" alt="Excellence Image">
+                </div>
+                <p class="valuedisc">We are committed to delivering high-quality services and products, consistently exceeding expectations and adhering to rigorous construction standards.</p>
             </div>
-            <div class="valuethree">
-              <h2 class="valuename">Innovation</h2>
-              <div class="valueimg">
-                <img src="images/innovation.png" alt="Summit TECS Contracting Image">
-              </div>
-              <p class="valuedisc">We embrace creativity and forward-thinking,<br> implementing innovative design-build solutions that enhance project efficiency and sustainability.</p>
+            <div class="value-container">
+                <h2 class="valuename">Innovation</h2>
+                <div class="valueimg">
+                    <img src="images/innovation.png" alt="Innovation Image">
+                </div>
+                <p class="valuedisc">We embrace creativity and forward-thinking, implementing innovative design-build solutions that enhance project efficiency and sustainability.</p>
             </div>
-            <div class="valuefour">
-              <h2 class="valuename">Commitment to Community</h2>
-              <div class="valueimg">
-                <img src="images/comunity.jpg" alt="Summit TECS Contracting Image">
-              </div>
-              <p class="valuedisc">we are dedicated to making a positive impact in our community. We believe that everyone deserves a chance to thrive,<br> and we are committed to helping those around us through outreach, support, and sustainable initiatives.<br> We strive to uplift individuals and families, fostering an environment where everyone can succeed and contribute to a brighter future.</p>
+            <div class="value-container">
+                <h2 class="valuename">Commitment to Community</h2>
+                <div class="valueimg">
+                    <img src="images/community.jpg" alt="Community Image">
+                </div>
+                <p class="valuedisc">We are dedicated to making a positive impact in our community. We strive to uplift individuals and families, fostering an environment where everyone can succeed and contribute to a brighter future.</p>
             </div>
-          </div>
-      </section>
+        </div>
+        <!-- Navigation Arrows -->
+        <div class="nav-arrows">
+            <button id="prev-arrow" style="left: 200px;">&#9664;</button>
+            <button id="next-arrow" style="right: 200px;">&#9654;</button>
+        </div>
+    </section>    
       
           <!-- Final Section -->
           <section class="hover-content" id="final">
@@ -869,6 +972,13 @@
                 block: "start"      // Scroll to the start of the element
             });
         });
+        document.getElementById("buttonii").addEventListener("click", function () {
+            const target = document.getElementById("content");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
 
         // JavaScript
         document.getElementById("buttonfour").addEventListener("click", function () {
@@ -878,7 +988,17 @@
                 block: "start"      // Scroll to the start of the element
             });
         });
+        document.getElementById("buttoniiiiii").addEventListener("click", function () {
+            const target = document.getElementById("final");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
         document.getElementById("buttontwo").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+        document.getElementById("buttoniii").addEventListener("click", function () {
             window.location.href = "partners.html";
         });
 
@@ -886,10 +1006,63 @@
             window.location.href = "index.html";
         });
 
+        document.getElementById("buttoni").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+
 
         document.getElementById("buttonthree").addEventListener("click", function () {
             window.location.href = "projects.html";
         });
+        document.getElementById("buttoniiii").addEventListener("click", function () {
+            window.location.href = "projects.html";
+        });
+        const containers = document.querySelectorAll(".value-container");
+        const prevArrow = document.getElementById("prev-arrow");
+        const nextArrow = document.getElementById("next-arrow");
+
+        let currentIndex = 0;
+
+        // Helper function to update active value
+        function updateActiveValue(newIndex) {
+            containers[currentIndex].classList.remove("active");
+            containers[newIndex].classList.add("active");
+
+            containers.forEach((container, index) => {
+                container.style.transform =
+                    index < newIndex ? "translateX(-100%)" : index > newIndex ? "translateX(100%)" : "translateX(0)";
+            });
+
+            currentIndex = newIndex;
+        }
+
+        // Event listeners for navigation
+        prevArrow.addEventListener("click", () => {
+            const newIndex = (currentIndex - 1 + containers.length) % containers.length;
+            updateActiveValue(newIndex);
+        });
+
+        nextArrow.addEventListener("click", () => {
+            const newIndex = (currentIndex + 1) % containers.length;
+            updateActiveValue(newIndex);
+        });
+
+        setInterval(() => {
+          const newIndex = (currentIndex + 1) % containers.length;
+            updateActiveValue(newIndex);
+        } , 3000);
+
+        // Initialize position for all containers
+        function initializeValues() {
+            containers.forEach((container, index) => {
+                container.style.transform =
+                    index === currentIndex ? "translateX(0)" : index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
+            });
+        }
+
+        initializeValues();
+
+
     </script>
   </body>
 </html>
