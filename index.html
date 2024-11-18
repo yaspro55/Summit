@@ -19,6 +19,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        cursor: url("cursor.png"), auto;
+      }
+
+      body button {
+        cursor: url("pointer.png"), auto;
       }
 
       header {
@@ -47,6 +52,7 @@
         cursor: pointer;
         position: relative;
         transition: color 0.3s;
+        cursor: url("pointer.png"), auto;
       }
 
       header button::after {
@@ -72,12 +78,14 @@
         display: flex;
         gap: 50px;
         margin-left: 100px;
+        transition: margin 1s;
       }
 
       .right-buttons {
         display: flex;
         gap: 50px;
         margin-right: 100px;
+        transition: margin 1s;
       }
 
       .imgDisplay {
@@ -122,9 +130,9 @@
             z-index: 500;
         }
         .logo {
-          width: 100px;
+          width: 300px;
           position: relative;
-          top: 270px;
+          top: 260px;
         }
         .highlight {
         color: rgb(15, 0, 98);
@@ -179,7 +187,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #000; /* Set a background color */
+        background-color: #7a7a7a; /* Set a background color */
       }
 
       .loading-screen img {
@@ -234,7 +242,7 @@
             opacity: 0; /* Initially invisible */
             transform: translateY(50px);
             transition: all 0.8s ease-out;
-            margin: 20px 0; /* Gap between sections */
+            margin: 50px 0; /* Gap between sections */
             gap: 30px;
         }
 
@@ -245,9 +253,10 @@
 
         /* Heading animation */
         .text-content h1 {
-            font-size: 2.5em;
+            font-size: 55px;
             margin-bottom: 15px;
             color: #004d99;
+            font-weight: 900;
             opacity: 0;
             transform: translateX(-50px);
             transition: all 0.8s ease-out;
@@ -267,6 +276,11 @@
             transform: translateX(50px);
             transition: all 0.8s ease-out;
             transition-delay: 0.2s;
+        }
+        .valuep {
+          font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
         }
 
         .hover-content.active .text-content p {
@@ -341,9 +355,7 @@
         /* Contact Section */
         .contact-section {
             background-color: #fff;
-            padding: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 0px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -377,9 +389,8 @@
             background-color: #f9f9f9;
             padding: 30px;
             border-radius: 10px;
-            width: 1200px;
-            max-width: 1040px;
-            margin: 0 auto;
+            margin-right: 50px;
+            margin-left: 50px;
         }
 
         .contact-form h2 {
@@ -428,49 +439,186 @@
                 text-align: left;
             }
         }
+        @media (max-width: 1090px) {
+          .left-buttons{
+            margin-left: 50px;
+          }
+          .right-buttons{
+            margin-right: 50px;
+          }
+        }
+        @media (max-width: 1000px) {
+          .left-buttons{
+            margin-left: 20px;
+          }
+          .right-buttons{
+            margin-right: 20px;
+          }
+        }
+        .highlightone {
+          color: orange;
+          font-weight: 900;
+        }
+
+        /* Hamburger Menu */
+      .nav-menu {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            z-index: 10000;
+            cursor: url("pointer.png"), auto;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-menu div {
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            position: fixed;
+            z-index: 10000;
+        }
+        .nav-menu span {
+            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+            width: 80%;
+            height: 4px;
+            border-radius: 5px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, width 0.5s;
+        }
+
+        .nav-menu .line1 {
+            transform: translate(-50%, -12px);
+        }
+        .nav-menu .line3 {
+            transform: translate(-50%, 8px);
+        }
+        .openmenu .line1 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .openmenu .line3 {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .openmenu .line2 {
+            width: 0;
+        }
+
+        /* Menu Styling */
+        .nav-btn-menu {
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+            width: 20%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 100%;
+            transition: left 0.5s ease;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .nav-btn-menu button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: #333;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: "Roboto", sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s, transform 0.3s;
+            cursor: url('pointer.png'), auto;
+        }
+
+        .nav-btn-menu button:hover {
+            color: #FF8C00;
+            transform: scale(1.1); /* Scale on hover */
+        }
+
+        .trans-nav-btn-menu {
+            left: 80%;
+        }
+        @media (max-width: 1050px) {
+          .nav-menu {
+            display: flex;
+          }
+          .left-buttons {
+            display: none;
+          }
+          .right-buttons {
+            display: none;
+          }
+        }
     </style>
   </head>
   <body>
     <div class="loading-screen" id="loading-screen">
       <img src="preloader.gif" alt="Loading..." />
     </div>
+    <div class="nav-menu">
+      <div>
+          <span class="line1"></span>
+          <span class="line2"></span>
+          <span class="line3"></span>
+      </div>
+  </div>
+  <div class="nav-btn-menu">
+      <button id="buttonzero">•Home</button>
+      <button id="buttonthreedotfive">•Services</button>
+      <button id="buttonthree">•Projects</button>
+      <button id="buttonone">•About-us</button>
+      <button id="buttontwo">•partners</button>
+      <button id="buttonfour">•Contact-us</button>
+  </div>
     <header>
       <div class="left-buttons">
-        <button>About Us</button>
-        <button>Partners</button>
+        <button id="buttonzero">Home</button>
+        <button id="buttonone">About Us</button>
+        <button id="buttontwo">Partners</button>
       </div>
       <div class="right-buttons">
-        <button>Services</button>
-        <button>Contact Us</button>
+        <button id="buttonthree">Projects</button>
+        <button id="buttonthreedotfive">services</button>
+        <button id="buttonfour">Contact Us</button>
       </div>
     </header>
-    <div class="imgDisplay"></div>
+    <div class="imgDisplay" id="contentimg"></div>
     <div class="content" id="content">
-      <!-- New Section with Prominent Text -->
-        <section class="intro-section">
-          <p class="t1">When</p>
-          <p class="t2">science</p>
-          <p class="t3">tends</p>
-          <p class="t4">to</p>
-          <p class="t5">infinity</p>
-      </section>
-
       <!-- Section 1 -->
       <section class="hover-content" id="content1">
           <div class="text-content">
-              <h1>Our Goals</h1>
-              <p>To provide both a superior customer experience and tremendous value for our customers; we are passionate about exceeding your expectations.</p>
+              <h1>WHO<br> 
+              <span class="highlightone">WE ARE?</span></h1>
+              <p><span class="highlight">SUMMIT</span> was established by a group of engineers
+              with diverse backgrounds in Engineering and construction services, bringing together years of 
+            combined experience. This enables us to provide our clients and partners with innovation engineering Solution.
+           Our discipline-based team offers a full range of engineering services, covering
+          product design from conceptual studies to aftermarket support. Our talented workforce,
+        with their extensive technical expertise, sets us apart from the competition. <br>
+      At <span class="highlight">SUMMIT contracting</span>  is one of the core pillars of our business. Through precise strategic planning, we navigate fast-track schedules, meet rigorous construction standards, provide value engineering, and implement innovative design-build solutions. We ensure constructability, maintainability, and sustainability, all while delivering the perfect balance of technical expertise and the highest safety standards. Through collaboration, integrity, and commitment, we strive to build lasting partnerships and contribute positively to the community we serve. <br> Our  primary goal is to add value to our clients and community.</p>
           </div>
           <div class="image-content">
-              <img src="images/goals.png" alt="Summit TECS Goals Image">
+              <img src="images/goals.png" style="height: 450px;" alt="Summit TECS Goals Image">
           </div>
       </section>
 
       <!-- Section 2 -->
       <section class="hover-content" id="content2">
           <div class="text-content">
-              <h1>Our Values</h1>
-              <p>Represent the culture of our staff and our dedication to the customer have made the word SUMMIT more than a company name – it has become symbol for a specific way of doing things: with quality, excellence, innovation, and teamwork.</p>
+            <h1>OUR<br> 
+              <span class="highlightone">VISION</span></h1>
+              <p>"To be the first choice for all our  current and future clients by delivering high-quality projects and innovative engineering <br>solutions that adds value to our clients and exceed their expectations, while contributing to community development."</p>
           </div>
           <div class="image-content">
               <img src="images/culture.jpeg" alt="Summit TECS Values Image">
@@ -480,8 +628,9 @@
       <!-- Section 3 -->
       <section class="hover-content" id="content3">
           <div class="text-content">
-              <h1>SUMMIT Engineering</h1>
-              <p><span class="highlight">SUMMIT</span> Engineering is looking forward to provide our customers with innovative engineering solution through our accumulated experience to support their business. Our discipline-based cadre of engineering services covers product design from conceptual studies to aftermarket support. Our talented workforce possesses the breadth and depth of technical expertise that sets us apart from our competition. Technical excellence provided on schedule and within budget yields the best overall value. Additionally, we are proud to provide low cost engineering through our Offshore Outsourcing Engineering Services.</p>
+            <h1>OUR<br> 
+              <span class="highlightone">MISSION</span></h1>
+              <p>"The culture of our staff and our dedication to the clients have transformed <span class="highlight">SUMMIT</span> into more than just a company <br> name-it has become a symbol of a distinct way of doing things: driven by quality, excellence, innovation, sustainability, and teamwork"</p>
           </div>
           <div class="image-content">
               <img src="images/sol.jpeg" alt="Summit TECS Engineering Image">
@@ -491,25 +640,41 @@
       <!-- Section 4 -->
       <section class="hover-content" id="content4">
           <div class="text-content">
-              <h1>SUMMIT Contracting</h1>
-              <p><span class="highlight">SUMMIT</span> Contracting is a core value in our business. With precise strategic planning, we navigate through fast-track schedules, rigorous construction standards, and innovative design-build plans. We help ensure constructability, maintainability, and sustainability and we do it all with an optimal blend of technical expertise and customer focus. Our main target is to add value to all our customers to reach a Win-Win situation.</p>
+            <h1>SUMMIT<br> 
+              <span class="highlightone">CORE VALUES</span></h1>
           </div>
-          <div class="image-content">
-              <img src="images/cont.webp" alt="Summit TECS Contracting Image">
+          <div class="switching-divs">
+            <div class="valueone">
+              <h2 class="valuename">collaboration</h2>
+              <div class="valueimg">
+                <img src="images/collaboration.png" alt="Summit TECS Contracting Image">
+              </div>
+              <p class="valuedisc">We believe in the power of teamwork, working closely with our teams,<br> suppliers, partners, and  clients to achieve shared goals and foster lasting relationships.</p>
+            </div>
+            <div class="valuetwo">
+              <h2 class="valuename">Excellence</h2>
+              <div class="valueimg">
+                <img src="images/excellence.jpg" alt="Summit TECS Contracting Image">
+              </div>
+              <p class="valuedisc"> We are committed to delivering high-quality services and products,<br> consistently exceeding expectations and adhering to rigorous construction standards.</p>
+            </div>
+            <div class="valuethree">
+              <h2 class="valuename">Innovation</h2>
+              <div class="valueimg">
+                <img src="images/innovation.png" alt="Summit TECS Contracting Image">
+              </div>
+              <p class="valuedisc">We embrace creativity and forward-thinking,<br> implementing innovative design-build solutions that enhance project efficiency and sustainability.</p>
+            </div>
+            <div class="valuefour">
+              <h2 class="valuename">Commitment to Community</h2>
+              <div class="valueimg">
+                <img src="images/comunity.jpg" alt="Summit TECS Contracting Image">
+              </div>
+              <p class="valuedisc">we are dedicated to making a positive impact in our community. We believe that everyone deserves a chance to thrive,<br> and we are committed to helping those around us through outreach, support, and sustainable initiatives.<br> We strive to uplift individuals and families, fostering an environment where everyone can succeed and contribute to a brighter future.</p>
+            </div>
           </div>
       </section>
-
-      <!-- Section 5 -->
-          <section class="hover-content" id="content5">
-              <div class="text-content">
-                  <h1>Our Quality System</h1>
-                  <p>Our quality system focuses on sound project management and internal reviews by world-class experts through our USA and Canada based shareholders.</p>
-              </div>
-              <div class="image-content">
-                  <img src="images/quality.jpg" alt="Summit TECS Quality Image">
-              </div>
-          </section>
-
+      
           <!-- Final Section -->
           <section class="hover-content" id="final">
               <div class="text-content">
@@ -565,7 +730,7 @@
       </section>
     </div>
     
-    <div class="logos"><img class="logo" src="logo.png"></div>
+    <div class="logos"><img class="logo" src="logoname.png"></div>
 
     <div class="special-text" id="special-text"></div>
     
@@ -574,6 +739,13 @@
     <i class="fas fa-chevron-left arrow left-arrow"></i>
     <i class="fas fa-chevron-right arrow right-arrow"></i>
     <script>
+      let menu = document.querySelector('.nav-menu');
+        let menubtn = document.querySelector('.nav-btn-menu');
+        menu.addEventListener('click', function() {
+            menu.classList.toggle('openmenu');
+            menubtn.classList.toggle('trans-nav-btn-menu');
+        }); 
+
       window.addEventListener("scroll", () => {
       const scrollTop = window.scrollY;
       const imgDisplay = document.querySelector(".imgDisplay");
@@ -606,7 +778,7 @@
         "Elegance",
         "Excellence In <br>  Construction",
         "Machine Rooms",
-        "Complicated <br> Applications",
+        "Luxury Comercial <br> Buildings",
         "Comercial Application",
         "Hygiene <br> Application",
         "Pharma Application",
@@ -673,6 +845,50 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+        const contact = document.querySelector('.contact-section');
+        const final = document.getElementById('final');
+
+        // Function to sync widths
+        function syncWidths() {
+            const finalWidth = final.offsetWidth; // Get the width of the #final element
+            contact.style.width = `${finalWidth}px`; // Set the width of the .contact-section
+        }
+
+        // Run the function initially
+        syncWidths();
+
+        // Adjust widths dynamically on window resize
+        window.addEventListener('resize', syncWidths);
+
+        // JavaScript
+        document.getElementById("buttonone").addEventListener("click", function () {
+            const target = document.getElementById("content");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
+
+        // JavaScript
+        document.getElementById("buttonfour").addEventListener("click", function () {
+            const target = document.getElementById("final");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
+        document.getElementById("buttontwo").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+
+        document.getElementById("buttonzero").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+
+
+        document.getElementById("buttonthree").addEventListener("click", function () {
+            window.location.href = "projects.html";
         });
     </script>
   </body>
