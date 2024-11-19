@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Summit TECS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <style>
+      html {
+          scroll-behavior: smooth;
+      }
+
+      /* Reset and Base Styles */
+      body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: url("cursor.png"), auto;
+      }
+
+      body button {
+        cursor: url("pointer.png"), auto;
+      }
+
+      header {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+        backdrop-filter: blur(10px); /* Blur effect for a modern look */
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px; /* Adjust padding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 70px;
+        z-index: 500;
+      }
+
+      /* Button Styles */
+      header button {
+        background: transparent;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.3s;
+        cursor: url("pointer.png"), auto;
+      }
+
+      header button::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: black;
+        transition: width 0.3s;
+      }
+
+      header button:hover {
+        color: #0078d7; /* On hover, text color changes */
+      }
+
+      header button:hover::after {
+        width: 100%; /* Black line appears under the text */
+      }
+
+      .left-buttons {
+        display: flex;
+        gap: 50px;
+        margin-left: 100px;
+        transition: margin 1s;
+      }
+
+      .right-buttons {
+        display: flex;
+        gap: 50px;
+        margin-right: 100px;
+        transition: margin 1s;
+      }
+
+      .imgDisplay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full screen height */
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        transition: transform 1s ease-in-out;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+        width: 100%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center the sections */
+        justify-content: flex-start; /* Start from the top */
+        margin-top: 100vh; /* Start below the background image */
+      }
+
+        .logos {
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Blur effect for modern look */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px; /* Reduced padding */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            position: fixed;
+            top: -270px;
+            height: 400px;
+            border-radius: 5000px;
+            z-index: 500;
+        }
+        .logo {
+          width: 300px;
+          position: relative;
+          top: 260px;
+        }
+        .highlight {
+        color: rgb(15, 0, 98);
+        font-weight: 700;
+        margin-right: 5px;
+      }
+
+      .special-text {
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        opacity: 0;
+        position: absolute;
+        bottom: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        z-index: 5;
+        text-align: center;
+      }
+
+      .visible-text {
+        opacity: 1;
+        transform: translate(-50%, -60%);
+      }
+
+      .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 50px;
+        color: white;
+        cursor: url("pointer.png"), auto;
+        z-index: 100;
+      }
+
+      .left-arrow {
+        left: 10px;
+      }
+
+      .right-arrow {
+        right: 10px;
+      }
+
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white; /* Set a background color */
+      }
+
+      .loading-screen img {
+        width: 500px; /* Adjust size of preloader image */
+      }
+
+      .hidden {
+        display: none;
+      }
+      .highlight {
+            color: #FFA500;
+        }
+
+        /* New Section Styling */
+        .intro-section {
+            width: 100%;
+            color: #004d99;
+            text-align: center;
+            font-size: 3em; /* Large text */
+            font-weight: bold;
+            margin: 20px 0; 
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .t1 {
+            margin-right: 500px;
+        }
+        .t2 {
+            margin-right: 250px;
+        }
+        .t3{
+            margin-right: 0;
+        }
+        .t4 {
+            margin-left: 250px;
+        }
+        .t5 {
+            margin-left: 500px;
+        }
+
+        /* Section layout and animations */
+        .hover-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 0;
+            width: 90%;
+            max-width: 1200px;
+            opacity: 0; /* Initially invisible */
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+            margin: 50px 0; /* Gap between sections */
+            gap: 30px;
+        }
+
+        .hover-content.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Heading animation */
+        .text-content h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+            color: #004d99;
+            font-weight: 900;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .hover-content.active .text-content h1 {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Paragraph animation */
+        .text-content p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+            transition-delay: 0.2s;
+        }
+        .valuep {
+          font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .hover-content.active .text-content p {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Image animation */
+        .image-content {
+            width: 80%;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateX(-50px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.8s ease-out;
+            transition-delay: 0.4s;
+        }
+
+        .hover-content.active .image-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .image-content img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle image shadow */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hover-content {
+                padding: 20px 0;
+                width: 95%;
+            }
+
+            .text-content h1 {
+                font-size: 2em;
+            }
+
+            .text-content p {
+                font-size: 1.1em;
+            }
+
+            .image-content {
+                width: 100%;
+            }
+        }
+
+        /* Final Section Styling */
+        #final {
+            background-color: #f9f9f9; /* Light background for contrast */
+            padding: 40px 0;
+            border-top: 1px solid #ddd; /* Light border at the top */
+            margin-bottom: 0;
+        }
+
+        #final .text-content h1 {
+            font-size: 2.5em;
+            color: #004d99;
+        }
+
+        #final .text-content p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+        }
+        /* Contact Section */
+        .contact-section {
+            background-color: #fff;
+            padding: 0px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #d48d08;
+            text-align: center;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+        }
+
+        .contact-info a {
+            color: #d48d08;
+            text-decoration: none;
+        }
+
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin-right: 50px;
+            margin-left: 50px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .send-btn {
+            background-color: #d48d08;
+            color: #fff;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+        }
+
+        .send-btn:hover {
+            background-color: #d48d08;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 20px;
+            }
+
+            .contact-info, .contact-form {
+                text-align: left;
+            }
+        }
+        @media (max-width: 1090px) {
+          .left-buttons{
+            margin-left: 50px;
+          }
+          .right-buttons{
+            margin-right: 50px;
+          }
+        }
+        @media (max-width: 1000px) {
+          .left-buttons{
+            margin-left: 20px;
+          }
+          .right-buttons{
+            margin-right: 20px;
+          }
+        }
+        .highlightone {
+          color: orange;
+          font-weight: 900;
+        }
+
+        /* Hamburger Menu */
+      .nav-menu {
+            position: fixed;
+            top: 17px;
+            right: 10px;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            z-index: 10000;
+            cursor: url("pointer.png"), auto;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-menu div {
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            position: fixed;
+            z-index: 10000;
+        }
+        .nav-menu span {
+            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+            width: 80%;
+            height: 4px;
+            border-radius: 5px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, width 0.5s;
+        }
+
+        .nav-menu .line1 {
+            transform: translate(-50%, -12px);
+        }
+        .nav-menu .line3 {
+            transform: translate(-50%, 8px);
+        }
+        .openmenu .line1 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .openmenu .line3 {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        .openmenu .line2 {
+            width: 0;
+        }
+
+        /* Menu Styling */
+        .nav-btn-menu {
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 100%;
+            transition: left 0.5s ease;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .nav-btn-menu button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: #333;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: "Roboto", sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s, transform 0.3s;
+            cursor: url('pointer.png'), auto;
+        }
+
+        .nav-btn-menu button:hover {
+            color: #FF8C00;
+            transform: scale(1.1); /* Scale on hover */
+        }
+
+        .trans-nav-btn-menu {
+            left: 60%;
+        }
+        @media (max-width: 1050px) {
+          .nav-menu {
+            display: flex;
+          }
+          .left-buttons {
+            display: none;
+          }
+          .right-buttons {
+            display: none;
+          }
+          .text-content p {
+            font-size: 0.8em;
+        }
+        .highlight {
+          font-size: 0.8em;
+        }
+        }
+       /* Core Values Container */
+      .switching-container {
+          position: relative;
+          width: 350px;
+          overflow: hidden;
+          height: 500px; /* Fixed height to ensure uniform appearance */
+          display: flex;
+          align-items: center; /* Center vertically */
+          justify-content: center; /* Center horizontally */
+      }
+
+      /* Value Container */
+      .value-container {
+          position: absolute; /* Absolute positioning within the switching container */
+          top: 0;
+          left: 100%; /* Initially off-screen */
+          width: 90%;
+          height: 90%;
+          padding: 20px;
+          background: #f9f9f9;
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 50px 0 50px 0;
+          transition: all 0.6s ease;
+          text-align: center;
+          opacity: 0; /* Hidden by default */
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Align children in the center */
+          justify-content: center; /* Center content vertically */
+      }
+
+      /* Active Value */
+      .value-container.active {
+          left: 0; /* Bring into view */
+          opacity: 1; /* Fully visible */
+          z-index: 1; /* Ensure it's on top */
+      }
+
+      /* Value Name */
+      .valuename {
+          font-size: 1.8em;
+          color: #004d99;
+          margin-bottom: 15px;
+      }
+
+      /* Value Image */
+      .valueimg img {
+          max-width: 300px;
+          margin-bottom: 15px;
+          border-radius: 10px;
+      }
+
+      /* Value Description */
+      .valuedisc {
+          font-size: 1.1em;
+          color: #666;
+          line-height: 1.6;
+      }
+
+      /* Navigation Arrows */
+      .nav-arrows {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 20px;
+          position: absolute;
+          bottom: 10px;
+          width: 100%; /* Spanning the full width of the container */
+          z-index: 2;
+      }
+
+      /* Navigation Buttons */
+      .nav-arrows button {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          position: relative;
+          bottom: 280px;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          border-radius: 50%;
+          color: rgb(214, 107, 0);
+          font-size: 1.5em;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          padding: 17px 15px 15px 15px;
+          cursor: url(pointer.png), auto;
+          transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+          outline: none;
+      }
+      .nav-arrows button:hover {
+          background: linear-gradient(135deg, #a6a6a6, #535353);
+          transform: scale(1.1); /* Slightly enlarge on hover */
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="loading-screen" id="loading-screen">
+      <img src="preloader.gif" alt="Loading..." />
+    </div>
+    <div class="nav-menu">
+      <div>
+          <span class="line1"></span>
+          <span class="line2"></span>
+          <span class="line3"></span>
+      </div>
+  </div>
+  <div class="nav-btn-menu">
+      <button id="buttoni">•Home</button>
+      <button id="buttoniiiii">•Services</button>
+      <button id="buttoniiii">•Projects</button>
+      <button id="buttonii">•About-us</button>
+      <button id="buttoniii">•partners</button>
+      <button id="buttoniiiiii">•Contact-us</button>
+  </div>
+    <header>
+      <div class="left-buttons">
+        <button id="buttonzero">Home</button>
+        <button id="buttonone">About Us</button>
+        <button id="buttontwo">Partners</button>
+      </div>
+      <div class="right-buttons">
+        <button id="buttonthree">Projects</button>
+        <button id="buttonthreedotfive">services</button>
+        <button id="buttonfour">Contact Us</button>
+      </div>
+    </header>
+    <div class="imgDisplay" id="contentimg"></div>
+    <div class="content" id="content">
+      <!-- Section 1 -->
+      <section class="hover-content" id="content1">
+          <div class="text-content">
+              <h1>WHO<br> 
+              <span class="highlightone">WE ARE?</span></h1>
+              <p><span class="highlight">SUMMIT</span> was established by a group of engineers
+              with diverse backgrounds in Engineering and construction services, bringing together years of 
+            combined experience. This enables us to provide our clients and partners with innovation engineering Solution.
+           Our discipline-based team offers a full range of engineering services, covering
+          product design from conceptual studies to aftermarket support. Our talented workforce,
+        with their extensive technical expertise, sets us apart from the competition. <br>
+      At <span class="highlight">SUMMIT contracting</span>  is one of the core pillars of our business. Through precise strategic planning, we navigate fast-track schedules, meet rigorous construction standards, provide value engineering, and implement innovative design-build solutions. We ensure constructability, maintainability, and sustainability, all while delivering the perfect balance of technical expertise and the highest safety standards. Through collaboration, integrity, and commitment, we strive to build lasting partnerships and contribute positively to the community we serve. <br> Our  primary goal is to add value to our clients and community.</p>
+          </div>
+          <div class="image-content">
+              <img src="goals.png" style="height: 450px;" alt="Summit TECS Goals Image">
+          </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="hover-content" id="content2">
+          <div class="text-content">
+            <h1>OUR<br> 
+              <span class="highlightone">VISION</span></h1>
+              <p>"To be the first choice for all our  current and future clients by delivering high-quality projects and innovative engineering <br>solutions that adds value to our clients and exceed their expectations, while contributing to community development."</p>
+          </div>
+          <div class="image-content">
+              <img src="culture.jpeg" alt="Summit TECS Values Image">
+          </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="hover-content" id="content3">
+          <div class="text-content">
+            <h1>OUR<br> 
+              <span class="highlightone">MISSION</span></h1>
+              <p>"The culture of our staff and our dedication to the clients have transformed <span class="highlight">SUMMIT</span> into more than just a company <br> name-it has become a symbol of a distinct way of doing things: driven by quality, excellence, innovation, sustainability, and teamwork"</p>
+          </div>
+          <div class="image-content">
+              <img src="sol.jpeg" alt="Summit TECS Engineering Image">
+          </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="hover-content" id="content4">
+        <div class="text-content">
+            <h1>SUMMIT<br>
+                <span class="highlightone">CORE VALUES</span>
+            </h1>
+        </div>
+        <div class="switching-container">
+            <!-- Each value container -->
+            <div class="value-container active">
+                <h2 class="valuename">Collaboration</h2>
+                <div class="valueimg">
+                    <img src="collaboration.png" alt="Collaboration Image">
+                </div>
+                <p class="valuedisc">We believe in the power of teamwork, working closely with our teams, suppliers, partners, and clients to achieve shared goals and foster lasting relationships.</p>
+            </div>
+            <div class="value-container">
+                <h2 class="valuename">Excellence</h2>
+                <div class="valueimg">
+                    <img src="excellence.jpg" alt="Excellence Image">
+                </div>
+                <p class="valuedisc">We are committed to delivering high-quality services and products, consistently exceeding expectations and adhering to rigorous construction standards.</p>
+            </div>
+            <div class="value-container">
+                <h2 class="valuename">Innovation</h2>
+                <div class="valueimg">
+                    <img src="innovation.png" alt="Innovation Image">
+                </div>
+                <p class="valuedisc">We embrace creativity and forward-thinking, implementing innovative design-build solutions that enhance project efficiency and sustainability.</p>
+            </div>
+            <div class="value-container">
+                <h2 class="valuename">Commitment to Community</h2>
+                <div class="valueimg">
+                    <img src="community.jpg" alt="Community Image">
+                </div>
+                <p class="valuedisc">We are dedicated to making a positive impact in our community. We strive to uplift individuals and families, fostering an environment where everyone can succeed and contribute to a brighter future.</p>
+            </div>
+        </div>
+        <!-- Navigation Arrows -->
+        <div class="nav-arrows">
+            <button id="prev-arrow" style="left: 200px;">&#9664;</button>
+            <button id="next-arrow" style="right: 200px;">&#9654;</button>
+        </div>
+    </section>    
+      
+          <!-- Final Section -->
+          <section class="hover-content" id="final">
+              <div class="text-content">
+                  <h1>In Summary</h1>
+                  <p>In short, <span class="highlight">SUMMIT TECS</span> is well equipped to serve your most challenging engineering business needs.</p>
+              </div>
+          </section>
+          <!-- Contact Us Section -->
+        <section id="contact" class="contact-section">
+            
+          <div class="container">
+              <h1>Contact Summit TECS</h1>
+              <p class="quote">"Empowering Technology, Innovating Solutions"</p>
+
+              <div class="contact-info">
+                  <h2>Our Address</h2>
+                  <p>426 N Elgesh St, Gate 4 Hadayek Elahram</p>
+
+                  <h2>Phone</h2>
+                  <p>+201222908983, +201143250666</p>
+
+                  <h2>Tel</h2>
+                  <p>+233779974</p>
+
+                  <h2>Email</h2>
+                  <p><a href="mailto:Info@Summittecs.com">Info@Summittecs.com</a></p>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="contact-form">
+                  <h2>Get in Touch</h2>
+                  <form action="https://api.web3forms.com/submit" method="POST">
+                      <input type="hidden" name="access_key" value="e218f665-24ca-4db6-a046-4349016069b3">
+
+                      <div class="form-group">
+                          <label for="first-name">Full Name:</label>
+                          <input type="text" id="first-name" name="name" required>
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Email:</label>
+                          <input type="email" id="email" name="email" required>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="message">Message:</label>
+                          <textarea id="message" name="message" rows="5" required></textarea>
+                      </div>
+
+                      <button type="submit" class="send-btn" style="cursor: url(pointer.png), auto;">Send Message</button>
+                  </form>
+              </div>
+          </div>
+      </section>
+    </div>
+    
+    <div class="logos"><img class="logo" src="logoname.png"></div>
+
+    <div class="special-text" id="special-text"></div>
+    
+    
+
+    <i class="fas fa-chevron-left arrow left-arrow"></i>
+    <i class="fas fa-chevron-right arrow right-arrow"></i>
+    <script>
+      let menu = document.querySelector('.nav-menu');
+        let menubtn = document.querySelector('.nav-btn-menu');
+        menu.addEventListener('click', function() {
+            menu.classList.toggle('openmenu');
+            menubtn.classList.toggle('trans-nav-btn-menu');
+        }); 
+
+      window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const imgDisplay = document.querySelector(".imgDisplay");
+
+      if (scrollTop <= window.innerHeight) {
+        // Parallax scrolling effect
+        imgDisplay.style.transform = `translateY(${scrollTop * 0.5}px)`;
+      } else {
+        // Ensure image is completely scrolled away
+        imgDisplay.style.transform = "translateY(0)";
+      }
+    });
+
+      const images = [
+        "bg1.png",
+        "bg2.png",
+        "bg3.png",
+        "bg4.png",
+        "bg5.png",
+        "bg6.png",
+        "bg7.png",
+        "bg8.png",
+        "bg9.png",
+        "bg10.png",
+      ];
+
+      const specialTexts = [
+        "Building The Future",
+        "Perfections",
+        "Elegance",
+        "Excellence In <br>  Construction",
+        "Machine Rooms",
+        "Luxury Comercial <br> Buildings",
+        "Comercial Application",
+        "Hygiene <br> Application",
+        "Pharma Application",
+        "Luxury Residential <br> Building",
+      ];
+
+      let currentImageIndex = 0;
+      const body = document.querySelector('.imgDisplay');
+      const specialTextElement = document.getElementById("special-text");
+
+      function preloadImages() {
+        images.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+      }
+
+      function updateBackground() {
+        body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+        specialTextElement.innerHTML = specialTexts[currentImageIndex];
+        specialTextElement.classList.add("visible-text");
+        setTimeout(() => {
+          specialTextElement.classList.remove("visible-text");
+        }, 2500); 
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateBackground();
+      }
+
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + images.length) % images.length;
+        updateBackground();
+      }
+
+      document
+        .querySelector(".right-arrow")
+        .addEventListener("click", nextImage);
+      document
+        .querySelector(".left-arrow")
+        .addEventListener("click", prevImage);
+
+        window.onload = function () {
+          preloadImages();
+          document.getElementById("loading-screen").classList.add("hidden");
+          body.style.visibility = "visible";
+          updateBackground();
+          setInterval(nextImage, 4000); 
+        };
+
+        
+        // Scroll animation logic
+        const sections = document.querySelectorAll('.hover-content');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        const contact = document.querySelector('.contact-section');
+        const final = document.getElementById('final');
+
+        // Function to sync widths
+        function syncWidths() {
+            const finalWidth = final.offsetWidth; // Get the width of the #final element
+            contact.style.width = `${finalWidth}px`; // Set the width of the .contact-section
+        }
+
+        // Run the function initially
+        syncWidths();
+
+        // Adjust widths dynamically on window resize
+        window.addEventListener('resize', syncWidths);
+
+        // JavaScript
+        document.getElementById("buttonone").addEventListener("click", function () {
+            const target = document.getElementById("content");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
+        document.getElementById("buttonii").addEventListener("click", function () {
+            const target = document.getElementById("content");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
+
+        // JavaScript
+        document.getElementById("buttonfour").addEventListener("click", function () {
+            const target = document.getElementById("final");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
+        document.getElementById("buttoniiiiii").addEventListener("click", function () {
+            const target = document.getElementById("final");
+            target.scrollIntoView({
+                behavior: "smooth", // Enables smooth scrolling
+                block: "start"      // Scroll to the start of the element
+            });
+        });
+        document.getElementById("buttontwo").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+        document.getElementById("buttoniii").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+
+        document.getElementById("buttonzero").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+
+        document.getElementById("buttoni").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+        document.getElementById("buttoniiiii").addEventListener("click", function () {
+            window.location.href = "servises.html";
+        });
+        document.getElementById("buttonthreedotfive").addEventListener("click", function () {
+            window.location.href = "servises.html";
+        });
+
+
+        document.getElementById("buttonthree").addEventListener("click", function () {
+            window.location.href = "projects.html";
+        });
+        document.getElementById("buttoniiii").addEventListener("click", function () {
+            window.location.href = "projects.html";
+        });
+        const containers = document.querySelectorAll(".value-container");
+        const prevArrow = document.getElementById("prev-arrow");
+        const nextArrow = document.getElementById("next-arrow");
+
+        let currentIndex = 0;
+
+        // Helper function to update active value
+        function updateActiveValue(newIndex) {
+            containers[currentIndex].classList.remove("active");
+            containers[newIndex].classList.add("active");
+
+            containers.forEach((container, index) => {
+                container.style.transform =
+                    index < newIndex ? "translateX(-100%)" : index > newIndex ? "translateX(100%)" : "translateX(0)";
+            });
+
+            currentIndex = newIndex;
+        }
+
+        // Event listeners for navigation
+        prevArrow.addEventListener("click", () => {
+            const newIndex = (currentIndex - 1 + containers.length) % containers.length;
+            updateActiveValue(newIndex);
+        });
+
+        nextArrow.addEventListener("click", () => {
+            const newIndex = (currentIndex + 1) % containers.length;
+            updateActiveValue(newIndex);
+        });
+
+        setInterval(() => {
+          const newIndex = (currentIndex + 1) % containers.length;
+            updateActiveValue(newIndex);
+        } , 5000);
+
+        // Initialize position for all containers
+        function initializeValues() {
+            containers.forEach((container, index) => {
+                container.style.transform =
+                    index === currentIndex ? "translateX(0)" : index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
+            });
+        }
+
+        initializeValues();
+
+
+    </script>
+  </body>
+</html>
