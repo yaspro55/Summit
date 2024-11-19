@@ -860,16 +860,7 @@
         }); 
 
       window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY;
       const imgDisplay = document.querySelector(".imgDisplay");
-
-      if (scrollTop <= window.innerHeight) {
-        // Parallax scrolling effect
-        imgDisplay.style.transform = `translateY(${scrollTop * 0.5}px)`;
-      } else {
-        // Ensure image is completely scrolled away
-        imgDisplay.style.transform = "translateY(0)";
-      }
     });
 
       const images = [
