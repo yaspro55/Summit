@@ -852,224 +852,170 @@
     <i class="fas fa-chevron-left arrow left-arrow"></i>
     <i class="fas fa-chevron-right arrow right-arrow"></i>
     <script>
+      // Preloading Images and Initial Background Setup
+      window.onload = function () {
+          const body = document.querySelector('.imgDisplay');
+          const loadingScreen = document.getElementById("loading-screen");
+          const specialTextElement = document.getElementById("special-text");
+
+          const images = [
+              "bg1.png", "bg2.png", "bg3.png", "bg4.png", "bg5.png",
+              "bg6.png", "bg7.png", "bg8.png", "bg9.png", "bg10.png"
+          ];
+
+          const specialTexts = [
+              "Building The Future", "Perfections", "Elegance",
+              "Excellence In <br> Construction", "Machine Rooms",
+              "Luxury Commercial <br> Buildings", "Commercial Application",
+              "Hygiene <br> Application", "Pharma Application",
+              "Luxury Residential <br> Building"
+          ];
+
+          let currentImageIndex = 0;
+
+          // Preload images
+          function preloadImages(callback) {
+              let imagesLoaded = 0;
+              images.forEach((src) => {
+                  const img = new Image();
+                  img.src = src;
+
+                  img.onload = () => {
+                      imagesLoaded++;
+                      if (imagesLoaded === images.length) callback();
+                  };
+
+                  img.onerror = () => {
+                      console.error(`Failed to load image: ${src}`);
+                      imagesLoaded++;
+                      if (imagesLoaded === images.length) callback();
+                  };
+              });
+          }
+
+          function updateBackground() {
+              body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+              specialTextElement.innerHTML = specialTexts[currentImageIndex];
+              specialTextElement.classList.add("visible-text");
+              setTimeout(() => specialTextElement.classList.remove("visible-text"), 2500);
+          }
+
+          function nextImage() {
+              currentImageIndex = (currentImageIndex + 1) % images.length;
+              updateBackground();
+          }
+
+          function prevImage() {
+              currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+              updateBackground();
+          }
+
+          preloadImages(() => {
+              loadingScreen.classList.add("hidden");
+              body.style.visibility = "visible";
+              updateBackground();
+              setInterval(nextImage, 4000);
+          });
+
+          document.querySelector(".right-arrow").addEventListener("click", nextImage);
+          document.querySelector(".left-arrow").addEventListener("click", prevImage);
+      };
+
+      // Navigation Menu Toggle
       let menu = document.querySelector('.nav-menu');
-        let menubtn = document.querySelector('.nav-btn-menu');
-        menu.addEventListener('click', function() {
-            menu.classList.toggle('openmenu');
-            menubtn.classList.toggle('trans-nav-btn-menu');
-        }); 
+      let menuBtn = document.querySelector('.nav-btn-menu');
 
-      window.addEventListener("scroll", () => {
-      const imgDisplay = document.querySelector(".imgDisplay");
-    });
+      menu.addEventListener('click', () => {
+          menu.classList.toggle('openmenu');
+          menuBtn.classList.toggle('trans-nav-btn-menu');
+      });
 
-      const images = [
-        "bg1.png",
-        "bg2.png",
-        "bg3.png",
-        "bg4.png",
-        "bg5.png",
-        "bg6.png",
-        "bg7.png",
-        "bg8.png",
-        "bg9.png",
-        "bg10.png",
-      ];
+      // Scroll Animation
+      const sections = document.querySelectorAll('.hover-content');
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.classList.add('active');
+              }
+          });
+      }, { threshold: 0.3 });
 
-      const specialTexts = [
-        "Building The Future",
-        "Perfections",
-        "Elegance",
-        "Excellence In <br>  Construction",
-        "Machine Rooms",
-        "Luxury Comercial <br> Buildings",
-        "Comercial Application",
-        "Hygiene <br> Application",
-        "Pharma Application",
-        "Luxury Residential <br> Building",
-      ];
+      sections.forEach(section => observer.observe(section));
 
-      let currentImageIndex = 0;
-      const body = document.querySelector('.imgDisplay');
-      const specialTextElement = document.getElementById("special-text");
+      // Sync Widths for Contact Section
+      const contact = document.querySelector('.contact-section');
+      const final = document.getElementById('final');
 
-      function preloadImages() {
-        images.forEach((src) => {
-          const img = new Image();
-          img.src = src;
-        });
+      function syncWidths() {
+          const finalWidth = final.offsetWidth;
+          contact.style.width = `${finalWidth}px`;
       }
 
-      function updateBackground() {
-        body.style.backgroundImage = `url(${images[currentImageIndex]})`;
-        specialTextElement.innerHTML = specialTexts[currentImageIndex];
-        specialTextElement.classList.add("visible-text");
-        setTimeout(() => {
-          specialTextElement.classList.remove("visible-text");
-        }, 2500); 
+      syncWidths();
+      window.addEventListener('resize', syncWidths);
+
+      // Smooth Scrolling Navigation
+      document.getElementById("buttonone").addEventListener("click", () => {
+          document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.getElementById("buttonii").addEventListener("click", () => {
+          document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.getElementById("buttonfour").addEventListener("click", () => {
+          document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.getElementById("buttoniiiiii").addEventListener("click", () => {
+          document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      // Page Navigation Buttons
+      document.getElementById("buttontwo").addEventListener("click", () => window.location.href = "partners.html");
+      document.getElementById("buttoniii").addEventListener("click", () => window.location.href = "partners.html");
+      document.getElementById("buttonthree").addEventListener("click", () => window.location.href = "projects.html");
+      document.getElementById("buttoniiii").addEventListener("click", () => window.location.href = "projects.html");
+      document.getElementById("buttonzero").addEventListener("click", () => window.location.href = "index.html");
+      document.getElementById("buttoni").addEventListener("click", () => window.location.href = "index.html");
+      document.getElementById("buttoniiiii").addEventListener("click", () => window.location.href = "servises.html");
+      document.getElementById("buttonthreedotfive").addEventListener("click", () => window.location.href = "servises.html");
+
+      // Value Slider Logic
+      const containers = document.querySelectorAll(".value-container");
+      const prevArrow = document.getElementById("prev-arrow");
+      const nextArrow = document.getElementById("next-arrow");
+      let currentIndex = 0;
+
+      function updateActiveValue(newIndex) {
+          containers[currentIndex].classList.remove("active");
+          containers[newIndex].classList.add("active");
+          containers.forEach((container, index) => {
+              container.style.transform =
+                  index < newIndex ? "translateX(-100%)" :
+                  index > newIndex ? "translateX(100%)" : "translateX(0)";
+          });
+          currentIndex = newIndex;
       }
 
-      function nextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        updateBackground();
-      }
+      prevArrow.addEventListener("click", () => {
+          const newIndex = (currentIndex - 1 + containers.length) % containers.length;
+          updateActiveValue(newIndex);
+      });
 
-      function prevImage() {
-        currentImageIndex =
-          (currentImageIndex - 1 + images.length) % images.length;
-        updateBackground();
-      }
-
-      document
-        .querySelector(".right-arrow")
-        .addEventListener("click", nextImage);
-      document
-        .querySelector(".left-arrow")
-        .addEventListener("click", prevImage);
-
-        window.onload = function () {
-          preloadImages();
-          document.getElementById("loading-screen").classList.add("hidden");
-          body.style.visibility = "visible";
-          updateBackground();
-          setInterval(nextImage, 4000); 
-        };
-
-        
-        // Scroll animation logic
-        const sections = document.querySelectorAll('.hover-content');
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.3 });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        const contact = document.querySelector('.contact-section');
-        const final = document.getElementById('final');
-
-        // Function to sync widths
-        function syncWidths() {
-            const finalWidth = final.offsetWidth; // Get the width of the #final element
-            contact.style.width = `${finalWidth}px`; // Set the width of the .contact-section
-        }
-
-        // Run the function initially
-        syncWidths();
-
-        // Adjust widths dynamically on window resize
-        window.addEventListener('resize', syncWidths);
-
-        // JavaScript
-        document.getElementById("buttonone").addEventListener("click", function () {
-            const target = document.getElementById("content");
-            target.scrollIntoView({
-                behavior: "smooth", // Enables smooth scrolling
-                block: "start"      // Scroll to the start of the element
-            });
-        });
-        document.getElementById("buttonii").addEventListener("click", function () {
-            const target = document.getElementById("content");
-            target.scrollIntoView({
-                behavior: "smooth", // Enables smooth scrolling
-                block: "start"      // Scroll to the start of the element
-            });
-        });
-
-        // JavaScript
-        document.getElementById("buttonfour").addEventListener("click", function () {
-            const target = document.getElementById("final");
-            target.scrollIntoView({
-                behavior: "smooth", // Enables smooth scrolling
-                block: "start"      // Scroll to the start of the element
-            });
-        });
-        document.getElementById("buttoniiiiii").addEventListener("click", function () {
-            const target = document.getElementById("final");
-            target.scrollIntoView({
-                behavior: "smooth", // Enables smooth scrolling
-                block: "start"      // Scroll to the start of the element
-            });
-        });
-        document.getElementById("buttontwo").addEventListener("click", function () {
-            window.location.href = "partners.html";
-        });
-        document.getElementById("buttoniii").addEventListener("click", function () {
-            window.location.href = "partners.html";
-        });
-
-        document.getElementById("buttonzero").addEventListener("click", function () {
-            window.location.href = "index.html";
-        });
-
-        document.getElementById("buttoni").addEventListener("click", function () {
-            window.location.href = "index.html";
-        });
-        document.getElementById("buttoniiiii").addEventListener("click", function () {
-            window.location.href = "servises.html";
-        });
-        document.getElementById("buttonthreedotfive").addEventListener("click", function () {
-            window.location.href = "servises.html";
-        });
-
-
-        document.getElementById("buttonthree").addEventListener("click", function () {
-            window.location.href = "projects.html";
-        });
-        document.getElementById("buttoniiii").addEventListener("click", function () {
-            window.location.href = "projects.html";
-        });
-        const containers = document.querySelectorAll(".value-container");
-        const prevArrow = document.getElementById("prev-arrow");
-        const nextArrow = document.getElementById("next-arrow");
-
-        let currentIndex = 0;
-
-        // Helper function to update active value
-        function updateActiveValue(newIndex) {
-            containers[currentIndex].classList.remove("active");
-            containers[newIndex].classList.add("active");
-
-            containers.forEach((container, index) => {
-                container.style.transform =
-                    index < newIndex ? "translateX(-100%)" : index > newIndex ? "translateX(100%)" : "translateX(0)";
-            });
-
-            currentIndex = newIndex;
-        }
-
-        // Event listeners for navigation
-        prevArrow.addEventListener("click", () => {
-            const newIndex = (currentIndex - 1 + containers.length) % containers.length;
-            updateActiveValue(newIndex);
-        });
-
-        nextArrow.addEventListener("click", () => {
-            const newIndex = (currentIndex + 1) % containers.length;
-            updateActiveValue(newIndex);
-        });
-
-        setInterval(() => {
+      nextArrow.addEventListener("click", () => {
           const newIndex = (currentIndex + 1) % containers.length;
-            updateActiveValue(newIndex);
-        } , 5000);
+          updateActiveValue(newIndex);
+      });
 
-        // Initialize position for all containers
-        function initializeValues() {
-            containers.forEach((container, index) => {
-                container.style.transform =
-                    index === currentIndex ? "translateX(0)" : index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
-            });
-        }
+      setInterval(() => {
+          const newIndex = (currentIndex + 1) % containers.length;
+          updateActiveValue(newIndex);
+      }, 5000);
 
-        initializeValues();
-
-
+      // Initialize container positions
+      containers.forEach((container, index) => {
+          container.style.transform =
+              index === currentIndex ? "translateX(0)" :
+              index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
+      });
     </script>
   </body>
 </html>
