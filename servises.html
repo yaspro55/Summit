@@ -15,9 +15,9 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f4f4;
+      background: linear-gradient(to right, #f4f4f4, #e0e0e0);
       color: #333;
-      cursor: url(cursor.png), auto;
+      overflow-x: hidden;
     }
 
     /* Header Section */
@@ -29,36 +29,33 @@
     }
 
     .logo {
-      width: 200px;
+      width: 150px;
       display: block;
       margin: 0 auto 20px;
     }
 
     header h1 {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: bold;
-      color: #FF6D1A;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
     }
 
     header p {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       line-height: 1.8;
-      margin-top: 20px;
-      color: #f9f9f9;
-      max-width: 900px;
+      margin-top: 15px;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
 
     /* Services Section */
     .services {
-      padding: 60px 20px;
-      background: #fff;
+      padding: 50px 20px;
     }
 
     .services h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: #00498F;
       text-align: center;
       margin-bottom: 40px;
@@ -67,46 +64,83 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
       max-width: 1200px;
       margin: 0 auto;
     }
 
     .service-item {
-      background: #00498F;
+      background: linear-gradient(to bottom, #00498F, #006BB5);
       color: white;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 16px;
       text-align: center;
-      font-size: 1.5rem;
       position: relative;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .service-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
 
-    .service-item:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: -20px;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      clip-path: polygon(0 0, 100% 50%, 0 100%);
-      background: #FF6D1A;
+    .service-item.expanded {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+
+    .service-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .service-item.expanded img {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .service-item .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .service-item .content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .service-item.expanded .content {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .service-item span {
       display: block;
+      font-size: 0.9rem;
       margin-top: 10px;
-      font-size: 1rem;
       font-style: italic;
+      opacity: 0.8;
+    }
+
+    .description {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .service-item.expanded .description {
+      display: block;
     }
     /* Navigation Menu Styling */
     .nav-menu {
@@ -189,7 +223,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation Menu -->
   <div class="nav-menu">
     <div>
         <span class="line1"></span>
@@ -206,7 +239,7 @@
   </div>
   <!-- Header Section -->
   <header>
-    <img src="logoname.png" alt="Logo" class="logo">
+    <img src="logo.png" alt="Logo" class="logo">
     <h1>OUR SERVICES</h1>
     <p>
       We offer comprehensive engineering and construction solutions for electromechanical works across various sectors, including commercial, administrative, residential, and presidential buildings, restaurants, factories (with a focus on pharmaceutical plants), hospitals, airports, and farms.
@@ -215,26 +248,83 @@
 
   <!-- Services Section -->
   <section class="services">
-    <h2>Our services encompass the following trades:</h2>
+    <h2>Explore Our Expert Services</h2>
     <div class="services-grid">
       <div class="service-item">
-        Central air conditioning systems
-        <span>(chilled water, VRF, and DX)</span>
+        <div class="title">Central Air Conditioning Systems</div>
+        <img src="images/air-conditioning.jpg" alt="Air Conditioning">
+        <div class="content">
+          <span>(Chilled water, VRF, and DX)</span>
+          <p class="description">Advanced cooling solutions for residential and commercial spaces.</p>
+        </div>
       </div>
-      <div class="service-item">Plumbing</div>
-      <div class="service-item">Firefighting systems</div>
       <div class="service-item">
-        Electrical works
-        <span>(power, lighting, and low current)</span>
+        <div class="title">Plumbing</div>
+        <img src="images/plumbing.jpg" alt="Plumbing">
+        <div class="content">
+          <p class="description">Efficient and modern plumbing systems for all structures.</p>
+        </div>
       </div>
-      <div class="service-item">Smart home technologies</div>
-      <div class="service-item">Steam systems</div>
-      <div class="service-item">Compressed air systems</div>
-      <div class="service-item">Heating systems</div>
-      <div class="service-item">Swimming pools</div>
-      <div class="service-item">Medical gas systems</div>
+      <div class="service-item">
+        <div class="title">Firefighting Systems</div>
+        <img src="images/firefighting.jpg" alt="Firefighting">
+        <div class="content">
+          <p class="description">State-of-the-art fire prevention and safety installations.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Electrical Works</div>
+        <img src="images/electrical.jpg" alt="Electrical Works">
+        <div class="content">
+          <span>(Power, Lighting, and Low Current)</span>
+          <p class="description">Comprehensive electrical solutions for varied needs.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Smart Home Technologies</div>
+        <img src="images/smart-home.jpg" alt="Smart Home">
+        <div class="content">
+          <p class="description">Integrated smart solutions for modern living.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Steam Systems</div>
+        <img src="images/steam.jpg" alt="Steam Systems">
+        <div class="content">
+          <p class="description">Reliable steam systems for industrial and commercial use.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Compressed Air Systems</div>
+        <img src="images/compressed-air.jpg" alt="Compressed Air Systems">
+        <div class="content">
+          <p class="description">High-efficiency compressed air solutions for your needs.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Heating Systems</div>
+        <img src="images/heating.jpg" alt="Heating Systems">
+        <div class="content">
+          <p class="description">Modern and energy-efficient heating solutions.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Swimming Pools</div>
+        <img src="images/swimming-pools.jpg" alt="Swimming Pools">
+        <div class="content">
+          <p class="description">Custom-designed swimming pools for homes and resorts.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="title">Medical Gas Systems</div>
+        <img src="images/medical-gas.jpg" alt="Medical Gas Systems">
+        <div class="content">
+          <p class="description">Specialized gas systems for medical facilities.</p>
+        </div>
+      </div>
     </div>
   </section>
+
   <script>
     const menu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.nav-btn-menu');
@@ -242,7 +332,6 @@
       menu.classList.toggle('openmenu');
       menuBtn.classList.toggle('trans-nav-btn-menu');
     });
-
     document.getElementById("buttoniiii").addEventListener("click", function () {
             window.location.href = "projects.html";
         });
@@ -259,6 +348,37 @@
         document.getElementById("buttoniiiiii").addEventListener("click", function () {
             window.location.href = "index.html#final";
         });
+
+    const serviceItems = document.querySelectorAll('.service-item');
+    let index = 0;
+
+    // Expand and collapse logic
+    function expandServiceItem(item) {
+      serviceItems.forEach(i => i.classList.remove('expanded'));
+      item.classList.add('expanded');
+    }
+
+    // Auto-loop through services
+    function loopServices() {
+      setInterval(() => {
+        expandServiceItem(serviceItems[index]);
+        index = (index + 1) % serviceItems.length;
+      }, 3000); // Change every 3 seconds
+    }
+
+    // Click to expand
+    serviceItems.forEach(item => {
+      item.addEventListener('click', () => {
+        serviceItems.forEach(i => i.classList.remove('expanded'));
+        item.classList.add('expanded');
+      });
+    });
+
+    // Start loop on page load
+    window.onload = () => {
+      expandServiceItem(serviceItems[0]);
+      loopServices();
+    };
   </script>
 </body>
 </html>
