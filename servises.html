@@ -142,9 +142,101 @@
     .service-item.expanded .description {
       display: block;
     }
+    /* Navigation Menu Styling */
+    .nav-menu {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      cursor: url(pointer.png), auto;
+    }
+
+    .nav-menu span {
+      display: block;
+      background: #fff;
+      width: 30px;
+      height: 4px;
+      margin: 6px 0;
+      transition: all 0.5s;
+    }
+    .openmenu {
+      cursor: url(pointer.png), auto;
+    }
+
+    .openmenu span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .openmenu span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .openmenu span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-btn-menu {
+      position: fixed;
+      top: 0;
+      left: 100%;
+      width: 40%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: left 0.5s ease;
+      z-index: 900;
+    }
+
+    .trans-nav-btn-menu {
+      left: 60%;
+      z-index: 999;
+    }
+
+    .nav-btn-menu button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      margin: 15px 0;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s, color 0.3s;
+      cursor: url(pointer.png), auto;
+    }
+
+    .nav-btn-menu button:hover {
+      transform: scale(1.1);
+      color: #ffa500;
+    }
   </style>
 </head>
 <body>
+  <div class="nav-menu">
+    <div>
+        <span class="line1"></span>
+        <span class="line2"></span>
+        <span class="line3"></span>
+    </div>
+  </div>
+  <div class="nav-btn-menu">
+    <button id="buttoni">•Home</button>
+    <button id="buttoniiiii">•Partners</button>
+    <button id="buttoniiii">•Projects</button>
+    <button id="buttonii">•About-us</button>
+    <button id="buttoniiiiii">•Contact-us</button>
+  </div>
   <!-- Header Section -->
   <header>
     <img src="logo.png" alt="Logo" class="logo">
@@ -234,6 +326,29 @@
   </section>
 
   <script>
+    const menu = document.querySelector('.nav-menu');
+    const menuBtn = document.querySelector('.nav-btn-menu');
+    menu.addEventListener('click', () => {
+      menu.classList.toggle('openmenu');
+      menuBtn.classList.toggle('trans-nav-btn-menu');
+    });
+    document.getElementById("buttoniiii").addEventListener("click", function () {
+            window.location.href = "projects.html";
+        });
+        document.getElementById("buttoni").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+        document.getElementById("buttoniiiii").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+        document.getElementById("buttonii").addEventListener("click", function () {
+            window.location.href = "index.html#content";
+        });
+
+        document.getElementById("buttoniiiiii").addEventListener("click", function () {
+            window.location.href = "index.html#final";
+        });
+
     const serviceItems = document.querySelectorAll('.service-item');
     let index = 0;
 
