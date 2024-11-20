@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partners</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
   <style>
     /* Reset and Body Styling */
     body {
@@ -13,6 +14,7 @@
       background: linear-gradient(135deg, #7e7e7e, #dedede);
       color: #fff;
       overflow-x: hidden;
+      cursor: url(cursor.png), auto;
     }
 
     /* Navigation Menu Styling */
@@ -28,7 +30,7 @@
       justify-content: center;
       background: rgba(255, 255, 255, 0.1);
       z-index: 1000;
-      cursor: pointer;
+      cursor: url(pointer.png), auto;
     }
 
     .nav-menu span {
@@ -38,6 +40,9 @@
       height: 4px;
       margin: 6px 0;
       transition: all 0.5s;
+    }
+    .openmenu {
+      cursor: url(pointer.png), auto;
     }
 
     .openmenu span:nth-child(1) {
@@ -83,6 +88,7 @@
       cursor: pointer;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
       transition: transform 0.3s, color 0.3s;
+      cursor: url(pointer.png), auto;
     }
 
     .nav-btn-menu button:hover {
@@ -156,9 +162,28 @@
         z-index: 800;
       }
     }
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white; /* Set a background color */
+      }
+
+      .loading-screen img {
+        width: 500px; /* Adjust size of preloader image */
+      }
   </style>
 </head>
 <body>
+  <div class="loading-screen">
+    <img src="preloader.gif" alt="Loading...">
+  </div>
   <!-- Navigation Menu -->
   <div class="nav-menu">
     <div>
@@ -180,92 +205,111 @@
     <p class="key-clients">Key <span style="color: darkblue;">Partners</span></p>
     <!-- Partner Items -->
     <div class="project-item">
-      <img src="images/partner1.png" alt="Partner 1" />
+      <img src="partner1.png" alt="Partner 1" />
       <p>Volvo</p>
     </div>
     <div class="project-item">
-      <img src="images/partner2.png" alt="Partner 2" />
+      <img src="partner2.png" alt="Partner 2" />
       <p>Aspero</p>
     </div>
     <div class="project-item">
-      <img src="images/partner3.png" alt="Partner 3" />
+      <img src="partner3.png" alt="Partner 3" />
       <p>Cafe del sol</p>
     </div>
     <div class="project-item">
-      <img src="images/partner4.png" alt="Partner 4" />
+      <img src="partner4.png" alt="Partner 4" />
       <p>National Bank of Egypt</p>
     </div>
     <div class="project-item">
-      <img src="images/partner5.png" alt="Partner 5" />
+      <img src="partner5.png" alt="Partner 5" />
       <p>Sodic</p>
     </div>
     <div class="project-item">
-      <img src="images/partner6.png" alt="Partner 6" />
+      <img src="partner6.png" alt="Partner 6" />
       <p>New Giza</p>
     </div>
     <div class="project-item">
-      <img src="images/partner7.png" alt="Partner 7" />
+      <img src="partner7.png" alt="Partner 7" />
       <p>Park St.</p>
     </div>
     <div class="project-item">
-      <img src="images/partner8.png" alt="Partner 8" />
+      <img src="partner8.png" alt="Partner 8" />
       <p>Palm Hills</p>
     </div>
     <div class="project-item">
-      <img src="images/partner9.png" alt="Partner 9" />
+      <img src="partner9.png" alt="Partner 9" />
       <p>Hany Saad Innovations</p>
     </div>
     <div class="project-item">
-      <img src="images/partner10.png" alt="Partner 10" />
+      <img src="partner10.png" alt="Partner 10" />
       <p>Palm Valley</p>
     </div>
     <div class="project-item">
-      <img src="images/partner11.png" alt="Partner 11" />
+      <img src="partner11.png" alt="Partner 11" />
       <p>Smart School</p>
     </div>
     <div class="project-item">
-      <img src="images/partner12.png" alt="Partner 12" />
+      <img src="partner12.png" alt="Partner 12" />
       <p>Concord Plaza</p>
     </div>
     <div class="project-item">
-      <img src="images/partner13.png" alt="Partner 13" />
+      <img src="partner13.png" alt="Partner 13" />
       <p>Cairo Festival City Mall</p>
     </div>
     <div class="project-item">
-      <img src="images/partner14.png" alt="Partner 14" />
+      <img src="partner14.png" alt="Partner 14" />
       <p>Wok and Walk</p>
     </div>
     <div class="project-item">
-      <img src="images/partner15.png" alt="Partner 15" />
+      <img src="partner15.png" alt="Partner 15" />
       <p>Point 90</p>
     </div>
     <div class="project-item">
-      <img src="images/partner16.png" alt="Partner 16" />
+      <img src="partner16.png" alt="Partner 16" />
       <p>Mountain View</p>
     </div>
     <div class="project-item">
-      <img src="images/partner17.png" alt="Partner 17" />
+      <img src="partner17.png" alt="Partner 17" />
       <p>Ain Shams University</p>
     </div>
     <div class="project-item">
-      <img src="images/partner18.png" alt="Partner 18" />
+      <img src="partner18.png" alt="Partner 18" />
       <p>Benha University Hospitals</p>
     </div>
     <div class="project-item">
-      <img src="images/partner19.png" alt="Partner 19" />
+      <img src="partner19.png" alt="Partner 19" />
       <p>Arkan</p>
     </div>
     <div class="project-item">
-      <img src="images/partner30.jpeg" alt="Partner 20" />
+      <img src="partner30.jpeg" alt="Partner 20" />
       <p>Optaline</p>
     </div>
     <div class="project-item">
-      <img src="images/partner22.png" alt="Partner 21" />
+      <img src="partner22.png" alt="Partner 21" />
       <p>Egyptian Police</p>
     </div>
   </div>
 
   <script>
+    // Show loading screen until all images are loaded
+    const loadingScreen = document.querySelector('.loading-screen');
+    const images = document.querySelectorAll('img');
+    let imagesLoaded = 0;
+
+    images.forEach((image) => {
+      image.addEventListener('load', () => {
+        imagesLoaded++;
+        if (imagesLoaded === images.length) {
+          loadingScreen.style.display = 'none';
+        }
+      });
+
+      // Handle cached images in browsers
+      if (image.complete) {
+        image.dispatchEvent(new Event('load'));
+      }
+    });
+
     const menu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.nav-btn-menu');
     menu.addEventListener('click', () => {
