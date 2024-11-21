@@ -22,16 +22,6 @@
       .content {
         margin-top: 100vh;
       }
-      .projectsp {
-        z-index: 2;
-        position: absolute;
-        top: 160px;
-        left: 390px;
-        color: white;
-        font-family: Arial, sans-serif;
-        font-weight: 900;
-        font-size: 100px;
-      }
       header {
         width: 100%;
         background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
@@ -150,6 +140,13 @@
         .trans-nav-btn-menu {
             left: 60%;
         }
+        @media (max-width: 1050px) {
+          .projectsimg {
+            position: absolute;
+            height: auto;
+            margin-top: 60px;
+        }
+        }
     </style>
   </head>
   <body>
@@ -168,8 +165,7 @@
       <button id="buttoniii">•Clients</button>
       <button id="buttoniiiiii">•Contact-us</button>
   </div>
-    <img src="bg6.png" class="projectsimg">
-    <p class="projectsp">Our Projects</p>
+    <img src="projects.png" class="projectsimg">
     <div class="content">
       <div class="projectsectionone"><img src=""></div>
     </div>
