@@ -273,6 +273,7 @@
 
         /* Paragraph animation */
         .text-content p {
+            display: inline;
             font-size: 1.2em;
             color: #666;
             line-height: 1.6;
@@ -680,7 +681,10 @@
           transform: scale(1.1); /* Slightly enlarge on hover */
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       }
-
+      .highlightmaster {
+        display: inline;
+        font-size: 35px;
+      }
     </style>
   </head>
   <body>
@@ -727,15 +731,337 @@
            Our discipline-based team offers a full range of engineering services, covering
           product design from conceptual studies to aftermarket support. Our talented workforce,
         with their extensive technical expertise, sets us apart from the competition. <br>
-      At <span class="highlight">SUMMIT contracting</span>  is one of the core pillars of our business. Through precise strategic planning, we navigate fast-track schedules, meet rigorous construction standards, provide value engineering, and implement innovative design-build solutions. We ensure constructability, maintainability, and sustainability, all while delivering the perfect balance of technical expertise and the highest safety standards. Through collaboration, integrity, and commitment, we strive to build lasting partnerships and contribute positively to the community we serve. <br> Our  primary goal is to add value to our clients and community.</p>
           </div>
           <div class="image-content">
               <img src="goals.png" style="height: 450px;" alt="Summit TECS Goals Image">
           </div>
       </section>
 
-      <!-- Section 2 -->
       <section class="hover-content" id="content2">
+        <div class="text-content">
+            <span class="highlightmaster">At <span class="highlight">SUMMIT contracting</span></span>  <p></p>is one of the core pillars of our business. Through precise strategic planning, we navigate fast-track schedules, meet rigorous construction standards, provide value engineering, and implement innovative design-build solutions. We ensure constructability, maintainability, and sustainability, all while delivering the perfect balance of technical expertise and the highest safety standards. Through collaboration, integrity, and commitment, we strive to build lasting partnerships and contribute positively to the community we serve. <br> Our  primary goal is to add value to our clients and community.</p>
+        </div>
+        <div class="image-content">
+            <img src="first.jpeg" alt="Summit TECS Values Image">
+        </div>
+    </section>
+
+      <!-- Section 2```html
+<!DOCTYPE html>```ht```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Summit TECS</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <style>
+      /* Global Styles */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Reset and Base Styles */
+      body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: url("cursor.png"), auto;
+      }
+
+      body button {
+        cursor: url("pointer.png"), auto;
+      }
+
+      /* Header Styles */
+      header {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+        backdrop-filter: blur(10px); /* Blur effect for a modern look */
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px; /* Adjust padding */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 70px;
+        z-index: 500;
+      }
+
+      /* Button Styles */
+      header button {
+        background: transparent;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.3s;
+        cursor: url("pointer.png"), auto;
+      }
+
+      header button::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: black;
+        transition: width 0.3s;
+      }
+
+      header button:hover {
+        color: #0078d7; /* On hover, text color changes */
+      }
+
+      header button:hover::after {
+        width: 100%; /* Black line appears under the text */
+      }
+
+      /* Navigation Menu Styles */
+      .nav-menu {
+        position: fixed;
+        top: 17px;
+        right: 10px;
+        height: 50px;
+        width: 50px;
+        border-radius: 10px;
+        z-index: 10000;
+        cursor: url("pointer.png"), auto;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-menu div {
+        width: 40px;
+        height: 40px;
+        margin: 2px;
+        position: fixed;
+        z-index: 10000;
+      }
+
+      .nav-menu span {
+        background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+        width: 80%;
+        height: 4px;
+        border-radius: 5px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 0.5s, width 0.5s;
+      }
+
+      .nav-menu .line1 {
+        transform: translate(-50%, -12px);
+      }
+
+      .nav-menu .line3 {
+        transform: translate(-50%, 8px);
+      }
+
+      .openmenu .line1 {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      .openmenu .line3 {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      .openmenu .line2 {
+        width: 0;
+      }
+
+      /* Menu Styles */
+      .nav-btn-menu {
+        background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 100%;
+        transition: left 0.5s ease;
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+      }
+
+      .nav-btn-menu button {
+        padding: 10px 20px;
+        border: none;
+        background: none;
+        color: #333;
+        font-size: 40px;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        transition: color 0.3s, transform 0.3s;
+        cursor: url('pointer.png'), auto;
+      }
+
+      .nav-btn-menu button:hover {
+        color: #FF8C00;
+        transform: scale(1.1); /* Scale on hover */
+      }
+
+      .trans-nav-btn-menu {
+        left: 60%;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1050px) {
+        .nav-menu {
+          display: flex;
+        }
+
+        .left-buttons {
+          display: none;
+        }
+
+        .right-buttons {
+          display: none;
+        }
+
+        .text-content p {
+          font-size: 0.8em;
+        }
+
+        .highlight {
+          font-size: 0.8em;
+        }
+
+        .imgDisplay {
+          position: absolute;
+          height: 600px;
+        }
+
+        .special-text {
+          bottom: 78%;
+        }
+
+        .arrow {
+          top: 17%;
+        }
+
+        .content {
+          margin-top: 600px;
+        }
+      }
+
+      /* Core Values Container */
+      .switching-container {
+        position: relative;
+        width: 600px;
+        overflow: hidden;
+        height: 850px; /* Fixed height to ensure uniform appearance */
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+      }
+
+      /* Value Container */
+      .value-container {
+        position: absolute; /* Absolute positioning within the switching container */
+        top: 0;
+        left: 100%; /* Initially off-screen */
+        width: 90%;
+        height: 90%;
+        padding: 20px;
+        background: #f9f9f9;
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 50px 0 50px 0;
+        transition: all 0.6s ease;
+        text-align: center;
+        opacity: 0; /* Hidden by default */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Align children in the center */
+        justify-content: center; /* Center content vertically */
+      }
+
+      /* Active Value */
+      .value-container.active {
+        left: 0; /* Bring into view */
+        opacity: 1; /* Fully visible */
+        z-index: 1; /* Ensure it's on top */
+      }
+
+      /* Value Name */
+      .valuename {
+        font-size: 3.5em;
+        color: #004d99;
+        margin-bottom: 15px;
+      }
+
+      /* Value Image */
+      .valueimg img {
+        width: 400px;
+        height: 300px;
+        max-width: 300px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+      }
+
+      /* Value Description */
+      .valuedisc {
+        font-size: 2em;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Navigation Arrows */
+      .nav-arrows {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        position: absolute;
+        bottom: 10px;
+        width: 100%; /* Spanning the full width of the container */
+        z-index: 2;
+      }
+
+      /* Navigation Buttons */
+      .nav-arrows button {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        position: relative;
+        bottom: 280px;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        border-radius: 50%;
+        color: rgb(214, 107, 0);
+        font-size: 100px;
+        padding-bottom: 25px;
+        padding: 17px 15px 15px 15px;
+        cursor: url(pointer.png), auto;
+        transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        outline: none;
+      }
+
+      .nav-arrows button:hover {
+        background: linear-gradient(135deg, #a6a6a6, #535353);
+        transform: scale(1.1); /* Slightly enlarge on hoverr-content" id="content3">
           <div class="text-content">
             <h1>OUR<br> 
               <span class="highlightone">VISION</span></h1>
@@ -747,7 +1073,7 @@
       </section>
 
       <!-- Section 3 -->
-      <section class="hover-content" id="content3">
+      <section class="hover-content" id="content4">
           <div class="text-content">
             <h1>OUR<br> 
               <span class="highlightone">MISSION</span></h1>
@@ -759,7 +1085,7 @@
       </section>
 
       <!-- Section 4 -->
-      <section class="hover-content" id="content4">
+      <section class="hover-content" id="content5">
         <div class="text-content">
             <h1>SUMMIT<br>
                 <span class="highlightone">CORE VALUES</span>
@@ -767,7 +1093,7 @@
         </div>
         <div class="switching-container">
             <!-- Each value container -->
-            <div class="value-container active">
+            <div class="hover-content value-container active" id="content6">
                 <h2 class="valuename">Collaboration</h2>
                 <div class="valueimg">
                     <img src="collaboration.png" alt="Collaboration Image">
