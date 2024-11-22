@@ -192,11 +192,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: white; /* Set a background color */
+        background-color: #fbfbfb; /* Set a background color */
       }
 
       .loading-screen img {
-        width: 500px; /* Adjust size of preloader image */
+        width: 100px; /* Adjust size of preloader image */
       }
 
       .hidden {
@@ -264,6 +264,7 @@
             opacity: 0;
             transform: translateX(-50px);
             transition: all 0.8s ease-out;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .hover-content.active .text-content h1 {
@@ -273,7 +274,9 @@
 
         /* Paragraph animation */
         .text-content p {
-            font-size: 1.2em;
+            line-height: 15px;
+            display: inline;
+            font-size: 1.5em;
             color: #666;
             line-height: 1.6;
             opacity: 0;
@@ -582,6 +585,9 @@
         .content {
             margin-top: 600px;
         }
+        .loading-screen img {
+            width: 200px; /* Adjust size of preloader image */
+        }
         }
        /* Core Values Container */
       .switching-container {
@@ -680,7 +686,10 @@
           transform: scale(1.1); /* Slightly enlarge on hover */
           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       }
-
+      .highlightmaster {
+        display: inline;
+        font-size: 35px;
+      }
     </style>
   </head>
   <body>
@@ -727,27 +736,25 @@
            Our discipline-based team offers a full range of engineering services, covering
           product design from conceptual studies to aftermarket support. Our talented workforce,
         with their extensive technical expertise, sets us apart from the competition. <br>
-      At <span class="highlight">SUMMIT contracting</span>  is one of the core pillars of our business. Through precise strategic planning, we navigate fast-track schedules, meet rigorous construction standards, provide value engineering, and implement innovative design-build solutions. We ensure constructability, maintainability, and sustainability, all while delivering the perfect balance of technical expertise and the highest safety standards. Through collaboration, integrity, and commitment, we strive to build lasting partnerships and contribute positively to the community we serve. <br> Our  primary goal is to add value to our clients and community.</p>
           </div>
           <div class="image-content">
               <img src="goals.png" style="height: 450px;" alt="Summit TECS Goals Image">
           </div>
       </section>
 
-      <!-- Section 2 -->
       <section class="hover-content" id="content2">
-          <div class="text-content">
-            <h1>OUR<br> 
-              <span class="highlightone">VISION</span></h1>
-              <p>"To be the first choice for all our  current and future clients by delivering high-quality projects and innovative engineering <br>solutions that adds value to our clients and exceed their expectations, while contributing to community development."</p>
-          </div>
-          <div class="image-content">
-              <img src="culture.jpeg" alt="Summit TECS Values Image">
-          </div>
-      </section>
+        <div class="text-content">
+            <span class="highlightmaster">At <span class="highlight">SUMMIT contracting</span></span>  
+            <p>is one of the core pillars of our business. Through precise strategic planning, we navigate fast-track schedules, meet rigorous construction standards, provide value engineering, and implement innovative design-build solutions. We ensure constructability, maintainability, and sustainability, all while delivering the perfect balance of technical expertise and the highest safety standards. Through collaboration, integrity, and commitment, we strive to build lasting partnerships and contribute positively to the community we serve. <br> Our  primary goal is to add value to our clients and community.</p>
+        </div>
+        <div class="image-content">
+            <img src="first.jpeg" alt="Summit TECS Values Image">
+        </div>
+    </section>
 
+      
       <!-- Section 3 -->
-      <section class="hover-content" id="content3">
+      <section class="hover-content" id="content4">
           <div class="text-content">
             <h1>OUR<br> 
               <span class="highlightone">MISSION</span></h1>
@@ -759,7 +766,7 @@
       </section>
 
       <!-- Section 4 -->
-      <section class="hover-content" id="content4">
+      <section class="hover-content" id="content5">
         <div class="text-content">
             <h1>SUMMIT<br>
                 <span class="highlightone">CORE VALUES</span>
@@ -767,7 +774,7 @@
         </div>
         <div class="switching-container">
             <!-- Each value container -->
-            <div class="value-container active">
+            <div class="hover-content value-container active" id="content6">
                 <h2 class="valuename">Collaboration</h2>
                 <div class="valueimg">
                     <img src="collaboration.png" alt="Collaboration Image">
