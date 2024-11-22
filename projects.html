@@ -182,6 +182,20 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
       margin: 0;
       white-space: nowrap;
+      cursor: url(pointer.png), auto;
+      transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .projects p:hover {
+      transform: translate(-50%, -50%) scale(1.2) rotate(5deg);
+      color: #FF8C00;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
+    }
+
+    .projects p:active {
+      transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+      color: #cc3d00;
+      text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
     }
 
     /* Responsive Design */
@@ -238,27 +252,27 @@
   <div class="content">
     <div class="projects">
       <img src="bg2.png">
-      <p>Commercial Buildings</p>
+      <a href="pro1.html"><p>Commercial Buildings</p></a>
     </div>
     <div class="projects">
       <img src="pro2.jpg">
-      <p>Health Care</p>
+      <a href="pro2.html"><p>Health Care</p></a>
     </div>
     <div class="projects">
       <img src="pro3.jpg">
-      <p>Admin Buildings</p>
+      <a href="pro3.html"><p>Admin Buildings</p></a>
     </div>
     <div class="projects">
       <img src="pro4.jpg">
-      <p>Pharmaceutical Factories</p>
+      <a href="pro4.html"><p>Pharmaceutical Factories</p></a>
     </div>
     <div class="projects">
       <img src="bg10.png">
-      <p>Residential Buildings</p>
+      <a href="pro5.html"><p>Residential Buildings</p></a>
     </div>
     <div class="projects">
       <img src="pro6.jpg">
-      <p>Educational Buildings</p>
+      <a href="pro6.html"><p>Educational Buildings</p></a>
     </div>
   </div>
   
