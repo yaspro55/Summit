@@ -225,7 +225,7 @@
     <button id="buttoni">•Home</button>
     <button id="buttoniiiii">•Services</button>
     <button id="buttonii">•About-us</button>
-    <button id="buttoniii">•Clients</button>
+    <button id="buttoniiii">•Clients</button>
     <button id="buttoniiiiii">•Contact-us</button>
 </div>
 
@@ -271,6 +271,22 @@
           menu.classList.toggle('openmenu');
           menuBtn.classList.toggle('trans-nav-btn-menu');
       });
+      document.getElementById("buttoniiii").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+        document.getElementById("buttoni").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+        document.getElementById("buttoniiiii").addEventListener("click", function () {
+            window.location.href = "servises.html";
+        });
+        document.getElementById("buttonii").addEventListener("click", function () {
+            window.location.href = "index.html#content";
+        });
+
+        document.getElementById("buttoniiiiii").addEventListener("click", function () {
+            window.location.href = "index.html#final";
+        });
   </script>
 </body>
 </html>
