@@ -39,7 +39,7 @@
      /* Hamburger Menu */
      .nav-menu {
             position: fixed;
-            top: 10px;
+            top: 15px;
             right: 10px;
             height: 50px;
             width: 50px;
@@ -327,7 +327,7 @@
         dot.addEventListener('click', () => showImage(index));
       });
 
-      setInterval(nextImage, 2000); // Change image every 2 seconds
+      setInterval(nextImage, 3000); // Change image every 2 seconds
     });
     // Navigation Menu Toggle
     let menu = document.querySelector('.nav-menu');
@@ -356,6 +356,56 @@
         document.getElementById("buttoniiiiii").addEventListener("click", function () {
             window.location.href = "index.html#final";
         });
+        carousels.forEach(project => {
+        const images = project.querySelectorAll('.carousel img');
+        const dots = project.querySelectorAll('.dots button');
+        let currentIndex = 0;
+        let startX = 0;
+        let endX = 0;
+
+        function showImage(index) {
+          images.forEach((img, i) => {
+            img.classList.toggle('active', i === index);
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+          });
+          currentIndex = index;
+        }
+
+        function nextImage() {
+          const nextIndex = (currentIndex + 1) % images.length;
+          showImage(nextIndex);
+        }
+
+        function previousImage() {
+          const prevIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(prevIndex);
+        }
+
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => showImage(index));
+        });
+
+        project.querySelector('.carousel').addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+        });
+
+        project.querySelector('.carousel').addEventListener('touchmove', (e) => {
+          endX = e.touches[0].clientX;
+        });
+
+        project.querySelector('.carousel').addEventListener('touchend', () => {
+          if (startX - endX > 50) {
+            nextImage(); // Swipe left
+          } else if (endX - startX > 50) {
+            previousImage(); // Swipe right
+          }
+        });
+
+        setInterval(nextImage, 2000); // Change image every 2 seconds
+      });
+
   </script>
 </body>
 </html>
