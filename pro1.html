@@ -315,7 +315,7 @@
       <p>SCOPE: Supply & install HVAC & Mechanical  works  for the Top floor with area 3000 m2</p>
     </div>
   </div>
-  
+
     <!-- Second Project -->
     <div class="projects">
       <div class="carousel">
@@ -338,34 +338,67 @@
   </div>
 
   <script>
-    const carousels = document.querySelectorAll('.projects');
+    document.querySelectorAll('.projects').forEach((project) => {
+    const images = project.querySelectorAll('.carousel img');
+    const dots = project.querySelectorAll('.dots button');
+    let currentIndex = 0;
+    let startX = 0, endX = 0;
+    let timer;
 
-    carousels.forEach(project => {
-      const images = project.querySelectorAll('.carousel img');
-      const dots = project.querySelectorAll('.dots button');
-      let currentIndex = 0;
-
-      function showImage(index) {
-        images.forEach((img, i) => {
-          img.classList.toggle('active', i === index);
-        });
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === index);
-        });
-        currentIndex = index;
-      }
-
-      function nextImage() {
-        const nextIndex = (currentIndex + 1) % images.length;
-        showImage(nextIndex);
-      }
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => showImage(index));
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
       });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
 
-      setInterval(nextImage, 3000); // Change image every 2 seconds
+    function nextImage() {
+      showImage((currentIndex + 1) % images.length);
+    }
+
+    function previousImage() {
+      showImage((currentIndex - 1 + images.length) % images.length);
+    }
+
+    // Dot click event
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer); // Pause automatic slide on manual interaction
+        showImage(index);
+        startAutoSlide(); // Restart automatic slide
+      });
     });
+
+    // Swipe detection
+    project.querySelector('.carousel').addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    project.querySelector('.carousel').addEventListener('touchmove', (e) => {
+      endX = e.touches[0].clientX;
+    });
+
+    project.querySelector('.carousel').addEventListener('touchend', () => {
+      if (startX - endX > 50) {
+        nextImage();
+      } else if (endX - startX > 50) {
+        previousImage();
+      }
+    });
+
+    // Auto-slide functionality
+    function startAutoSlide() {
+      timer = setInterval(nextImage, 2500); // Change image every 3 seconds
+    }
+
+    // Initialize
+    showImage(0); // Show the first image
+    startAutoSlide(); // Start automatic sliding
+  });
+
     // Navigation Menu Toggle
     let menu = document.querySelector('.nav-menu');
       let menuBtn = document.querySelector('.nav-btn-menu');
@@ -393,56 +426,6 @@
         document.getElementById("buttoniiiiii").addEventListener("click", function () {
             window.location.href = "index.html#final";
         });
-        carousels.forEach(project => {
-        const images = project.querySelectorAll('.carousel img');
-        const dots = project.querySelectorAll('.dots button');
-        let currentIndex = 0;
-        let startX = 0;
-        let endX = 0;
-
-        function showImage(index) {
-          images.forEach((img, i) => {
-            img.classList.toggle('active', i === index);
-          });
-          dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-          });
-          currentIndex = index;
-        }
-
-        function nextImage() {
-          const nextIndex = (currentIndex + 1) % images.length;
-          showImage(nextIndex);
-        }
-
-        function previousImage() {
-          const prevIndex = (currentIndex - 1 + images.length) % images.length;
-          showImage(prevIndex);
-        }
-
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => showImage(index));
-        });
-
-        project.querySelector('.carousel').addEventListener('touchstart', (e) => {
-          startX = e.touches[0].clientX;
-        });
-
-        project.querySelector('.carousel').addEventListener('touchmove', (e) => {
-          endX = e.touches[0].clientX;
-        });
-
-        project.querySelector('.carousel').addEventListener('touchend', () => {
-          if (startX - endX > 50) {
-            nextImage(); // Swipe left
-          } else if (endX - startX > 50) {
-            previousImage(); // Swipe right
-          }
-        });
-
-        setInterval(nextImage, 2000); // Change image every 2 seconds
-      });
-
   </script>
 </body>
 </html>
