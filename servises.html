@@ -368,9 +368,9 @@
 
 function preloadImages(callback) {
           let imagesLoaded = 0;
-          images.forEach((src) => {
+          images.forEach((image) => {
               const img = new Image();
-              img.src = src;
+              img.src = image.src;
 
               img.onload = () => {
                   imagesLoaded++;
