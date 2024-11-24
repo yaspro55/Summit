@@ -36,6 +36,32 @@
       height: 40px;
     }
 
+    /*loading screen*/
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbfbfb;
+      }
+      .loading-screen img {
+        width: 150px; /* Adjust size of preloader image */
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 200px;
+          }
+      }
+      .loading-screen {
+          transition: opacity 0.5s ease-out;
+      }
+
+
      /* Hamburger Menu */
      .nav-menu {
             position: fixed;
@@ -235,6 +261,10 @@
   </style>
 </head>
 <body>
+  <div class="loading-screen" id="loading-screen">
+    <img src="preloader.gif" alt="Loading..." />
+  </div>
+
   <div class="nav-menu">
     <div>
         <span class="line1"></span>
@@ -404,6 +434,42 @@
 </div>
 
   <script>
+    const images = [
+      'picture1.png', 'picture2.png', 'picture3.png', 'picture4.png', 'picture5.png', 'picture6.png',
+      'picture7.png', 'picture8.png', 'picture9.png', 'picture10.png', 'picture11.png', 'picture12.png',
+      'picture13.png', 'picture14.png', 'picture15.png', 'picture16.png', 'picture17.png', 'picture18.png',
+      'picture19.png', 'picture20.png', 'picture21.png', 'picture22.png', 'picture23.png', 'picture24.png',
+      'picture25.png', 'picture26.png', 'picture27.png', 'picture28.png', 'picture29.png', 'picture30.png',
+      'picture31.png', 'picture32.png', 'picture33.png', 'picture34.png', 'picture35.png'
+    ];
+
+    function preloadImages(callback) {
+              let imagesLoaded = 0;
+              images.forEach((src) => {
+                  const img = new Image();
+                  img.src = src;
+
+                  img.onload = () => {
+                      imagesLoaded++;
+                      if (imagesLoaded === images.length) callback();
+                  };
+
+                  img.onerror = () => {
+                      console.error(`Failed to load image: ${src}`);
+                      imagesLoaded++;
+                      if (imagesLoaded === images.length) callback();
+                  };
+              });
+          }
+          document.addEventListener("DOMContentLoaded", () => {
+            preloadImages(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0'; // Add fade-out effect
+                setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+            });
+        });
+
+
     document.querySelectorAll('.projects').forEach((project) => {
     const images = project.querySelectorAll('.carousel img');
     const dots = project.querySelectorAll('.dots button');
