@@ -71,6 +71,20 @@
       .loading-screen {
           transition: opacity 0.5s ease-out;
       }
+      .skip {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .skip button {
+        border: none;
+        background: none;
+        font: 1em sans-serif;
+        color: #ff8000;
+      }
+      .skip p {
+        font: 0.8em sans-serif;
+      }
 
      /* Hamburger Menu */
      .nav-menu {
@@ -258,6 +272,12 @@
 <body>
   <div class="loading-screen" id="loading-screen">
     <img src="preloader.gif" alt="Loading..." />
+    <div class="skip">
+      <button onclick="const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Add fade-out effect
+      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out">skip loading...</button>
+      <p>images may not appear properly</p>
+    </div>
   </div>
   <div class="nav-menu">
     <div>
