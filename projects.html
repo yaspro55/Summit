@@ -308,33 +308,28 @@
   </div>
   
   <script>
-    const images = document.querySelectorAll('img');
+    function preloadImages(callback) {
+    const images = document.querySelectorAll('img'); // Select all img elements
+    let imagesLoaded = 0;
 
-function preloadImages(callback) {
-          let imagesLoaded = 0;
-          images.forEach((src) => {
-              const img = new Image();
-              img.src = src;
-
-              img.onload = () => {
-                  imagesLoaded++;
-                  if (imagesLoaded === images.length) callback();
-              };
-
-              img.onerror = () => {
-                  console.error(`Failed to load image: ${src}`);
-                  imagesLoaded++;
-                  if (imagesLoaded === images.length) callback();
-              };
-          });
+    images.forEach((img) => {
+      if (img.complete) {
+        // If the image is already cached, count it as loaded
+        imagesLoaded++;
+        if (imagesLoaded === images.length) callback();
+      } else {
+        img.onload = () => {
+          imagesLoaded++;
+          if (imagesLoaded === images.length) callback();
+        };
+        img.onerror = () => {
+          console.error(`Failed to load image: ${img.src}`);
+          imagesLoaded++;
+          if (imagesLoaded === images.length) callback();
+        };
       }
-      document.addEventListener("DOMContentLoaded", () => {
-        preloadImages(() => {
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.style.opacity = '0'; // Add fade-out effect
-            setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
-        });
     });
+  }
     
     // Navigation Menu Toggle
     let menu = document.querySelector('.nav-menu');
