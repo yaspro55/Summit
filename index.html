@@ -182,7 +182,8 @@
         right: 10px;
       }
 
-      .loading-screen {
+      /*loading screen*/
+    .loading-screen {
         position: fixed;
         top: 0;
         left: 0;
@@ -194,9 +195,16 @@
         align-items: center;
         background-color: #fbfbfb;
       }
-
       .loading-screen img {
         width: 150px; /* Adjust size of preloader image */
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 200px;
+          }
+      }
+      .loading-screen {
+          transition: opacity 0.5s ease-out;
       }
 
       .hidden {
@@ -452,9 +460,6 @@
           }
           .right-buttons{
             margin-right: 50px;
-          }
-          .loading-screen img{
-            width: 200px;
           }
         }
         @media (max-width: 1000px) {
@@ -906,7 +911,6 @@
 
           let currentImageIndex = 0;
 
-          // Preload images
           function preloadImages(callback) {
               let imagesLoaded = 0;
               images.forEach((src) => {
@@ -925,6 +929,13 @@
                   };
               });
           }
+          document.addEventListener("DOMContentLoaded", () => {
+            preloadImages(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0'; // Add fade-out effect
+                setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+            });
+        });
 
           function updateBackground() {
               body.style.backgroundImage = `url(${images[currentImageIndex]})`;
