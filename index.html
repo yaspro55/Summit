@@ -182,7 +182,8 @@
         right: 10px;
       }
 
-      .loading-screen {
+      /*loading screen*/
+    .loading-screen {
         position: fixed;
         top: 0;
         left: 0;
@@ -192,11 +193,32 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #fbfbfb; /* Set a background color */
+        background-color: #fbfbfb;
       }
-
       .loading-screen img {
-        width: 100px; /* Adjust size of preloader image */
+        width: 130px; /* Adjust size of preloader image */
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 80px;
+          }
+      }
+      .loading-screen {
+          transition: opacity 0.5s ease-out;
+      }
+      .skip {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .skip button {
+        border: none;
+        background: none;
+        font: 1em sans-serif;
+        color: #ff8000;
+      }
+      .skip p {
+        font: 0.8em sans-serif;
       }
 
       .hidden {
@@ -585,9 +607,6 @@
         .content {
             margin-top: 600px;
         }
-        .loading-screen img {
-            width: 200px; /* Adjust size of preloader image */
-        }
         }
        /* Core Values Container */
       .switching-container {
@@ -695,6 +714,12 @@
   <body>
     <div class="loading-screen" id="loading-screen">
       <img src="preloader.gif" alt="Loading..." />
+      <div class="skip">
+        <button onclick="const loadingScreen = document.getElementById('loading-screen');
+        loadingScreen.style.opacity = '0'; // Add fade-out effect
+        setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out">skip loading...</button>
+        <p>images may not appear properly</p>
+      </div>
     </div>
     <div class="nav-menu">
       <div>
@@ -886,169 +911,172 @@
     <i class="fas fa-chevron-right arrow right-arrow"></i>
     <script>
       // Preloading Images and Initial Background Setup
-      window.onload = function () {
-          const body = document.querySelector('.imgDisplay');
-          const loadingScreen = document.getElementById("loading-screen");
-          const specialTextElement = document.getElementById("special-text");
+window.onload = function () {
+    const body = document.querySelector('.imgDisplay');
+    const loadingScreen = document.getElementById("loading-screen");
+    const specialTextElement = document.getElementById("special-text");
 
-          const images = [
-              "bg1.png", "bg2.png", "bg3.png", "bg4.png", "bg5.png",
-              "bg6.png", "bg7.png", "bg8.png", "bg9.png", "bg10.png"
-          ];
+    const images = [
+        "bg1.png", "bg2.png", "bg3.png", "bg4.png", "bg5.png",
+        "bg6.png", "bg7.png", "bg8.png", "bg9.png", "bg10.png"
+    ];
 
-          const specialTexts = [
-              "Building The Future", "Perfections", "Elegance",
-              "Excellence In <br> Construction", "Machine Rooms",
-              "Luxury Commercial <br> Buildings", "Commercial Application",
-              "Hygiene <br> Application", "Pharma Application",
-              "Luxury Residential <br> Building"
-          ];
+    const specialTexts = [
+        "Building The Future", "Perfections", "Elegance",
+        "Excellence In <br> Construction", "Machine Rooms",
+        "Luxury Commercial <br> Buildings", "Commercial Application",
+        "Hygiene <br> Application", "Pharma Application",
+        "Luxury Residential <br> Building"
+    ];
 
-          let currentImageIndex = 0;
+    let currentImageIndex = 0;
 
-          // Preload images
-          function preloadImages(callback) {
-              let imagesLoaded = 0;
-              images.forEach((src) => {
-                  const img = new Image();
-                  img.src = src;
+    function preloadImages(callback) {
+        let imagesLoaded = 0;
+        images.forEach((src) => {
+            const img = new Image();
+            img.src = src;
 
-                  img.onload = () => {
-                      imagesLoaded++;
-                      if (imagesLoaded === images.length) callback();
-                  };
+            img.onload = () => {
+                imagesLoaded++;
+                if (imagesLoaded === images.length) callback();
+            };
 
-                  img.onerror = () => {
-                      console.error(`Failed to load image: ${src}`);
-                      imagesLoaded++;
-                      if (imagesLoaded === images.length) callback();
-                  };
-              });
-          }
+            img.onerror = () => {
+                console.error(`Failed to load image: ${src}`);
+                imagesLoaded++;
+                if (imagesLoaded === images.length) callback();
+            };
+        });
+    }
 
-          function updateBackground() {
-              body.style.backgroundImage = `url(${images[currentImageIndex]})`;
-              specialTextElement.innerHTML = specialTexts[currentImageIndex];
-              specialTextElement.classList.add("visible-text");
-              setTimeout(() => specialTextElement.classList.remove("visible-text"), 2500);
-          }
+    preloadImages(() => {
+        loadingScreen.style.transition = 'opacity 0.5s ease-out'; // Smooth fade-out transition
+        loadingScreen.style.opacity = '0'; // Fade out
+        setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
 
-          function nextImage() {
-              currentImageIndex = (currentImageIndex + 1) % images.length;
-              updateBackground();
-          }
+        body.style.visibility = "visible";
+        updateBackground();
+        setInterval(nextImage, 4000);
+    });
 
-          function prevImage() {
-              currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-              updateBackground();
-          }
+    function updateBackground() {
+        body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+        specialTextElement.innerHTML = specialTexts[currentImageIndex];
+        specialTextElement.classList.add("visible-text");
+        setTimeout(() => specialTextElement.classList.remove("visible-text"), 2500);
+    }
 
-          preloadImages(() => {
-              loadingScreen.classList.add("hidden");
-              body.style.visibility = "visible";
-              updateBackground();
-              setInterval(nextImage, 4000);
-          });
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateBackground();
+    }
 
-          document.querySelector(".right-arrow").addEventListener("click", nextImage);
-          document.querySelector(".left-arrow").addEventListener("click", prevImage);
-      };
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateBackground();
+    }
 
-      // Navigation Menu Toggle
-      let menu = document.querySelector('.nav-menu');
-      let menuBtn = document.querySelector('.nav-btn-menu');
+    document.querySelector(".right-arrow").addEventListener("click", nextImage);
+    document.querySelector(".left-arrow").addEventListener("click", prevImage);
+};
 
-      menu.addEventListener('click', () => {
-          menu.classList.toggle('openmenu');
-          menuBtn.classList.toggle('trans-nav-btn-menu');
-      });
+// Navigation Menu Toggle
+let menu = document.querySelector('.nav-menu');
+let menuBtn = document.querySelector('.nav-btn-menu');
 
-      // Scroll Animation
-      const sections = document.querySelectorAll('.hover-content');
-      const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  entry.target.classList.add('active');
-              }
-          });
-      }, { threshold: 0.3 });
+menu.addEventListener('click', () => {
+    menu.classList.toggle('openmenu');
+    menuBtn.classList.toggle('trans-nav-btn-menu');
+});
 
-      sections.forEach(section => observer.observe(section));
+// Scroll Animation
+const sections = document.querySelectorAll('.hover-content');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.3 });
 
-      // Sync Widths for Contact Section
-      const contact = document.querySelector('.contact-section');
-      const final = document.getElementById('final');
+sections.forEach(section => observer.observe(section));
 
-      function syncWidths() {
-          const finalWidth = final.offsetWidth;
-          contact.style.width = `${finalWidth}px`;
-      }
+// Sync Widths for Contact Section
+const contact = document.querySelector('.contact-section');
+const final = document.getElementById('final');
 
-      syncWidths();
-      window.addEventListener('resize', syncWidths);
+function syncWidths() {
+    const finalWidth = final.offsetWidth;
+    contact.style.width = `${finalWidth}px`;
+}
 
-      // Smooth Scrolling Navigation
-      document.getElementById("buttonone").addEventListener("click", () => {
-          document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      document.getElementById("buttonii").addEventListener("click", () => {
-          document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      document.getElementById("buttonfour").addEventListener("click", () => {
-          document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      document.getElementById("buttoniiiiii").addEventListener("click", () => {
-          document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+syncWidths();
+window.addEventListener('resize', syncWidths);
 
-      // Page Navigation Buttons
-      document.getElementById("buttontwo").addEventListener("click", () => window.location.href = "partners.html");
-      document.getElementById("buttoniii").addEventListener("click", () => window.location.href = "partners.html");
-      document.getElementById("buttonthree").addEventListener("click", () => window.location.href = "projects.html");
-      document.getElementById("buttoniiii").addEventListener("click", () => window.location.href = "projects.html");
-      document.getElementById("buttonzero").addEventListener("click", () => window.location.href = "index.html");
-      document.getElementById("buttoni").addEventListener("click", () => window.location.href = "index.html");
-      document.getElementById("buttoniiiii").addEventListener("click", () => window.location.href = "servises.html");
-      document.getElementById("buttonthreedotfive").addEventListener("click", () => window.location.href = "servises.html");
+// Smooth Scrolling Navigation
+document.getElementById("buttonone").addEventListener("click", () => {
+    document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("buttonii").addEventListener("click", () => {
+    document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("buttonfour").addEventListener("click", () => {
+    document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.getElementById("buttoniiiiii").addEventListener("click", () => {
+    document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
-      // Value Slider Logic
-      const containers = document.querySelectorAll(".value-container");
-      const prevArrow = document.getElementById("prev-arrow");
-      const nextArrow = document.getElementById("next-arrow");
-      let currentIndex = 0;
+// Page Navigation Buttons
+document.getElementById("buttontwo").addEventListener("click", () => window.location.href = "partners.html");
+document.getElementById("buttoniii").addEventListener("click", () => window.location.href = "partners.html");
+document.getElementById("buttonthree").addEventListener("click", () => window.location.href = "projects.html");
+document.getElementById("buttoniiii").addEventListener("click", () => window.location.href = "projects.html");
+document.getElementById("buttonzero").addEventListener("click", () => window.location.href = "index.html");
+document.getElementById("buttoni").addEventListener("click", () => window.location.href = "index.html");
+document.getElementById("buttoniiiii").addEventListener("click", () => window.location.href = "servises.html");
+document.getElementById("buttonthreedotfive").addEventListener("click", () => window.location.href = "servises.html");
 
-      function updateActiveValue(newIndex) {
-          containers[currentIndex].classList.remove("active");
-          containers[newIndex].classList.add("active");
-          containers.forEach((container, index) => {
-              container.style.transform =
-                  index < newIndex ? "translateX(-100%)" :
-                  index > newIndex ? "translateX(100%)" : "translateX(0)";
-          });
-          currentIndex = newIndex;
-      }
+// Value Slider Logic
+const containers = document.querySelectorAll(".value-container");
+const prevArrow = document.getElementById("prev-arrow");
+const nextArrow = document.getElementById("next-arrow");
+let currentIndex = 0;
 
-      prevArrow.addEventListener("click", () => {
-          const newIndex = (currentIndex - 1 + containers.length) % containers.length;
-          updateActiveValue(newIndex);
-      });
+function updateActiveValue(newIndex) {
+    containers[currentIndex].classList.remove("active");
+    containers[newIndex].classList.add("active");
+    containers.forEach((container, index) => {
+        container.style.transform =
+            index < newIndex ? "translateX(-100%)" :
+            index > newIndex ? "translateX(100%)" : "translateX(0)";
+    });
+    currentIndex = newIndex;
+}
 
-      nextArrow.addEventListener("click", () => {
-          const newIndex = (currentIndex + 1) % containers.length;
-          updateActiveValue(newIndex);
-      });
+prevArrow.addEventListener("click", () => {
+    const newIndex = (currentIndex - 1 + containers.length) % containers.length;
+    updateActiveValue(newIndex);
+});
 
-      setInterval(() => {
-          const newIndex = (currentIndex + 1) % containers.length;
-          updateActiveValue(newIndex);
-      }, 5000);
+nextArrow.addEventListener("click", () => {
+    const newIndex = (currentIndex + 1) % containers.length;
+    updateActiveValue(newIndex);
+});
 
-      // Initialize container positions
-      containers.forEach((container, index) => {
-          container.style.transform =
-              index === currentIndex ? "translateX(0)" :
-              index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
-      });
+setInterval(() => {
+    const newIndex = (currentIndex + 1) % containers.length;
+    updateActiveValue(newIndex);
+}, 5000);
+
+// Initialize container positions
+containers.forEach((container, index) => {
+    container.style.transform =
+        index === currentIndex ? "translateX(0)" :
+        index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
+});
+
 
     </script>
   </body>

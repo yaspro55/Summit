@@ -47,6 +47,45 @@
       height: 40px;
     }
 
+    /*loading screen*/
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbfbfb;
+      }
+      .loading-screen img {
+        width: 130px; /* Adjust size of preloader image */
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 80px;
+          }
+      }
+      .loading-screen {
+          transition: opacity 0.5s ease-out;
+      }
+      .skip {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .skip button {
+        border: none;
+        background: none;
+        font: 1em sans-serif;
+        color: #ff8000;
+      }
+      .skip p {
+        font: 0.8em sans-serif;
+      }
+
      /* Hamburger Menu */
      .nav-menu {
             position: fixed;
@@ -187,17 +226,20 @@
     }
 
     .projects p:hover {
-      transform: translate(-50%, -50%) scale(1.2) rotate(5deg);
       color: #FF8C00;
       text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
     }
 
     .projects p:active {
-      transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
       color: #cc3d00;
       text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
     }
 
+    @media (max-width: 1060px) {
+      .projects {
+        font-size: 2rem;
+      }
+    }
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
@@ -228,6 +270,15 @@
   </style>
 </head>
 <body>
+  <div class="loading-screen" id="loading-screen">
+    <img src="preloader.gif" alt="Loading..." />
+    <div class="skip">
+      <button onclick="const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Add fade-out effect
+      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out">skip loading...</button>
+      <p>images may not appear properly</p>
+    </div>
+  </div>
   <div class="nav-menu">
     <div>
         <span class="line1"></span>
@@ -252,7 +303,7 @@
   <div class="content">
     <div class="projects">
       <img src="bg2.png">
-      <a href="pro1.html"><p>Commercial Buildings</p></a>
+      <a href="pro1.html"><p>Commercial <br> Buildings</p></a>
     </div>
     <div class="projects">
       <img src="pro2.jpg">
@@ -264,7 +315,7 @@
     </div>
     <div class="projects">
       <img src="pro4.jpg">
-      <a href="pro4.html"><p>Pharmaceutical Factories</p></a>
+      <a href="pro4.html"><p>Pharmaceutical <br> Factories</p></a>
     </div>
     <div class="projects">
       <img src="bg10.png">
@@ -277,6 +328,37 @@
   </div>
   
   <script>
+    function preloadImages(callback) {
+    const images = document.querySelectorAll('img'); // Select all img elements
+    let imagesLoaded = 0;
+
+    images.forEach((img) => {
+      if (img.complete) {
+        // If the image is already cached, count it as loaded
+        imagesLoaded++;
+        if (imagesLoaded === images.length) callback();
+      } else {
+        img.onload = () => {
+          imagesLoaded++;
+          if (imagesLoaded === images.length) callback();
+        };
+        img.onerror = () => {
+          console.error(`Failed to load image: ${img.src}`);
+          imagesLoaded++;
+          if (imagesLoaded === images.length) callback();
+        };
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    preloadImages(() => {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Add fade-out effect
+      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+    });
+  });
+    
     // Navigation Menu Toggle
     let menu = document.querySelector('.nav-menu');
       let menuBtn = document.querySelector('.nav-btn-menu');

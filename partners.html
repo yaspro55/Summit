@@ -6,162 +6,182 @@
   <title>Partners</title>
   <link rel="icon" href="logo.png" type="image/x-icon">
   <style>
-    /* Reset and Body Styling */
+    /* Reset and Base Styling */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(135deg, #7e7e7e, #dedede);
       color: #fff;
-      overflow-x: hidden;
-      cursor: url(cursor.png), auto;
-    }
-
-    /* Navigation Menu Styling */
-    .nav-menu {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      height: 50px;
-      width: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      z-index: 1000;
-      cursor: url(pointer.png), auto;
-    }
-
-    .nav-menu span {
-      display: block;
-      background: #fff;
-      width: 30px;
-      height: 4px;
-      margin: 6px 0;
-      transition: all 0.5s;
-    }
-    .openmenu {
-      cursor: url(pointer.png), auto;
-    }
-
-    .openmenu span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .openmenu span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .openmenu span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    .nav-btn-menu {
-      position: fixed;
-      top: 0;
-      left: 100%;
-      width: 40%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: left 0.5s ease;
-      z-index: 900;
-    }
-
-    .trans-nav-btn-menu {
-      left: 60%;
-      z-index: 999;
-    }
-
-    .nav-btn-menu button {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
-      margin: 15px 0;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s, color 0.3s;
-      cursor: url(pointer.png), auto;
-    }
-
-    .nav-btn-menu button:hover {
-      transform: scale(1.1);
-      color: #ffa500;
     }
 
     /* Partners Section */
     .partners-container {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 20px;
-      padding: 80px 40px;
+      padding: 40px;
       justify-content: center;
     }
 
     .project-item {
-      position: relative;
-      background: rgb(255, 255, 255);
-      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      grid-column: span 2;
+      height: 300px;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transform: scale(1); /* Default size */
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+      cursor: url(pointer.png), auto;
+    }
+
+    .project-item.expanded {
+      transform: scale(1.2); /* Expansion size */
+      z-index: 10;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
     .project-item img {
       width: 100%;
-      height: 150px;
+      height: 100%;
       object-fit: contain;
+      padding: 10px;
+      background: #f9f9f9;
+      transition: transform 0.6s ease;
     }
 
-    .project-item p {
-      margin: 0;
-      padding: 15px;
-      text-align: center;
-      font-size: 18px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #ffa500;
+    .project-item.expanded img {
+      transform: scale(1.1); /* Slight zoom-in for images */
+    }
+
+    .project-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     }
 
     /* Key Clients Header */
     .key-clients {
       text-align: center;
-      font-size: 48px;
+      font-size: 4rem;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin-top: 40px;
+      margin-bottom: 40px;
       color: #ffa500;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    /* Media Queries */
+    .key-clients span {
+      color: darkblue;
+    }
+
+    /* Responsive Layout */
     @media (max-width: 768px) {
+      .partners-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        padding: 20px;
+        gap: 15px;
+      }
+
       .key-clients {
-        font-size: 36px;
+        font-size: 3rem;
+        margin-bottom: 20px;
       }
     }
 
-    /* Pop-Out Animation */
-    @keyframes popOut {
-      0% {
-        transform: scale(1);
-        z-index: 800;
+    @media (max-width: 480px) {
+      .partners-container {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
       }
-      50% {
-        transform: scale(1.2);
-        z-index: 800;
-      }
-      100% {
-        transform: scale(1);
-        z-index: 800;
+
+      .key-clients {
+        font-size: 3rem;
       }
     }
+    /* Navigation Menu Styling */
+    .nav-menu {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+        cursor: url(pointer.png), auto;
+    }
+
+    .nav-menu span {
+        display: block;
+        background: #fff;
+        width: 30px;
+        height: 4px;
+        margin: 6px 0;
+        transition: all 0.5s;
+    }
+
+    .openmenu {
+        cursor: url(pointer.png), auto;
+    }
+
+    .openmenu span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .openmenu span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .openmenu span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-btn-menu {
+        position: fixed;
+        top: 0;
+        left: 100%;
+        width: 40%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: left 0.5s ease;
+        z-index: 900;
+    }
+
+    .trans-nav-btn-menu {
+        left: 60%;
+        z-index: 999;
+    }
+
+    .nav-btn-menu button {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        margin: 15px 0;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s, color 0.3s;
+        cursor: url(pointer.png), auto;
+    }
+
+    .nav-btn-menu button:hover {
+        transform: scale(1.1);
+        color: #ffa500;
+    }
+
+    /* Loading Screen */
     .loading-screen {
         position: fixed;
         top: 0;
@@ -172,238 +192,249 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: white; /* Set a background color */
+        background-color: #fbfbfb;
+    }
+
+    .loading-screen img {
+        width: 130px;
+    }
+
+    @media (max-width: 1050px) {
+        .loading-screen img {
+            width: 80px;
+        }
+    }
+
+    .loading-screen {
+        transition: opacity 0.5s ease-out;
+    }
+    .skip {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .skip button {
+        border: none;
+        background: none;
+        font: 1em sans-serif;
+        color: #ff8000;
+      }
+      .skip p {
+        font: 0.8em sans-serif;
       }
 
-      .loading-screen img {
-        width: 500px; /* Adjust size of preloader image */
-      }
   </style>
 </head>
 <body>
-  <div class="loading-screen">
-    <img src="preloader.gif" alt="Loading...">
-  </div>
-  <!-- Navigation Menu -->
-  <div class="nav-menu">
+  <div class="loading-screen" id="loading-screen">
+    <img src="preloader.gif" alt="Loading..." />
+    <div class="skip">
+      <button onclick="const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Add fade-out effect
+      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out">skip loading...</button>
+      <p>images may not appear properly</p>
+    </div>
+</div>
+
+<!-- Navigation Menu -->
+<div class="nav-menu">
     <div>
         <span class="line1"></span>
         <span class="line2"></span>
         <span class="line3"></span>
     </div>
-  </div>
-  <div class="nav-btn-menu">
+</div>
+
+<div class="nav-btn-menu">
     <button id="buttoni">•Home</button>
     <button id="buttoniiiii">•Services</button>
     <button id="buttoniiii">•Projects</button>
     <button id="buttonii">•About-us</button>
     <button id="buttoniiiiii">•Contact-us</button>
-  </div>
+</div>
+
+  <!-- Key Clients Header -->
+  <div class="key-clients">Key <span>Clients</span></div>
 
   <!-- Partners Section -->
   <div class="partners-container">
-    <p class="key-clients">Key <span style="color: darkblue;">Partners</span></p>
-    <!-- Partner Items -->
     <div class="project-item">
-      <img src="images/partner1.png" alt="Partner 1" />
-      <p>Volvo</p>
+      <img src="images/partner1.png" alt="partner 1">
     </div>
     <div class="project-item">
-      <img src="images/partner2.png" alt="Partner 2" />
-      <p>Aspero</p>
+      <img src="images/partner2.png" alt="partner 2">
     </div>
     <div class="project-item">
-      <img src="images/partner3.png" alt="Partner 3" />
-      <p>Cafe del sol</p>
+      <img src="images/partner3.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner4.png" alt="Partner 4" />
-      <p>National Bank of Egypt</p>
+      <img src="images/partner4.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner5.png" alt="Partner 5" />
-      <p>Sodic</p>
+      <img src="images/partner5.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner6.png" alt="Partner 6" />
-      <p>New Giza</p>
+      <img src="images/partner6.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner7.png" alt="Partner 7" />
-      <p>Park St.</p>
+      <img src="images/partner7.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner8.png" alt="Partner 8" />
-      <p>Palm Hills</p>
+      <img src="images/partner8.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner9.png" alt="Partner 9" />
-      <p>Hany Saad Innovations</p>
+      <img src="images/partner9.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner10.png" alt="Partner 10" />
-      <p>Palm Valley</p>
+      <img src="images/partner10.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner11.png" alt="Partner 11" />
-      <p>Smart School</p>
+      <img src="images/partner11.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner12.png" alt="Partner 12" />
-      <p>Concord Plaza</p>
+      <img src="images/partner12.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner13.png" alt="Partner 13" />
-      <p>Cairo Festival City Mall</p>
+      <img src="images/partner13.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner14.png" alt="Partner 14" />
-      <p>Wok and Walk</p>
+      <img src="images/partner14.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner15.png" alt="Partner 15" />
-      <p>Point 90</p>
+      <img src="images/partner15.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner16.png" alt="Partner 16" />
-      <p>Mountain View</p>
+      <img src="images/partner16.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner17.png" alt="Partner 17" />
-      <p>Ain Shams University</p>
+      <img src="images/partner17.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner18.png" alt="Partner 18" />
-      <p>Benha University Hospitals</p>
+      <img src="images/partner18.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner19.png" alt="Partner 19" />
-      <p>Arkan</p>
+      <img src="images/partner19.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner20.png" alt="Partner 20" />
-      <p>Tradex</p>
+      <img src="images/partner20.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner21.png" alt="Partner 21" />
-      <p>Ain shams University</p>
+      <img src="images/partner21.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner22.png" alt="Partner 22" />
-      <p>Egyptian Police</p>
+      <img src="images/partner22.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner23.png" alt="Partner 23" />
-      <p>Air force Specialized hospital</p>
+      <img src="images/partner23.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner24.png" alt="Partner 24" />
-      <p>National training academy</p>
+      <img src="images/partner24.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner25.png" alt="Partner 25" />
-      <p>StarLight</p>
+      <img src="images/partner25.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner26.png" alt="Partner 26" />
-      <p>AFT chemicals</p>
+      <img src="images/partner26.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner27.png" alt="Partner 27" />
-      <p>Bitter Sweet</p>
+      <img src="images/partner27.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner28.png" alt="Partner 28" />
-      <p>Nour Al-haya Eye center</p>
+      <img src="images/partner28.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner29.png" alt="Partner 29" />
-      <p>Variegato</p>
+      <img src="images/partner29.png" alt="Partner 5">
     </div>
     <div class="project-item">
-      <img src="images/partner30.png" alt="Partner 30" />
-      <p>Optaline</p>
+      <img src="images/partner30.png" alt="Partner 6">
     </div>
     <div class="project-item">
-      <img src="images/partner31.png" alt="Partner 31" />
-      <p>Grand heights</p>
+      <img src="images/partner31.png" alt="Partner 3">
     </div>
     <div class="project-item">
-      <img src="images/partner32.png" alt="Partner 32" />
-      <p>I-CON Smart Solutions</p>
+      <img src="images/partner32.png" alt="Partner 4">
     </div>
     <div class="project-item">
-      <img src="images/partner33.png" alt="Partner 33" />
-      <p>Takhteet</p>
+      <img src="images/partner33.png" alt="Partner 5">
+    </div>
+    <div class="project-item">
+      <img src="images/partner34.png" alt="Partner 6">
     </div>
   </div>
-
   <script>
     // Show loading screen until all images are loaded
-    const loadingScreen = document.querySelector('.loading-screen');
     const images = document.querySelectorAll('img');
-    let imagesLoaded = 0;
 
-    images.forEach((image) => {
-      image.addEventListener('load', () => {
-        imagesLoaded++;
-        if (imagesLoaded === images.length) {
-          loadingScreen.style.display = 'none';
-        }
-      });
+    function preloadImages(callback) {
+        let imagesLoaded = 0;
+        images.forEach((image) => {
+            const img = new Image();
+            img.src = image.src;
 
-      // Handle cached images in browsers
-      if (image.complete) {
-        image.dispatchEvent(new Event('load'));
-      }
+            img.onload = () => {
+                imagesLoaded++;
+                if (imagesLoaded === images.length) callback();
+            };
+
+            img.onerror = () => {
+                console.error(`Failed to load image: ${src}`);
+                imagesLoaded++;
+                if (imagesLoaded === images.length) callback();
+            };
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        preloadImages(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.opacity = '0'; // Add fade-out effect
+            setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+        });
     });
 
     const menu = document.querySelector('.nav-menu');
     const menuBtn = document.querySelector('.nav-btn-menu');
     menu.addEventListener('click', () => {
-      menu.classList.toggle('openmenu');
-      menuBtn.classList.toggle('trans-nav-btn-menu');
+        menu.classList.toggle('openmenu');
+        menuBtn.classList.toggle('trans-nav-btn-menu');
     });
-    document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll(".project-item");
 
-  let current = 0;
-  const interval = 3000; // 3 seconds per partner
+    document.getElementById("buttoniiii").addEventListener("click", function () {
+        window.location.href = "projects.html";
+    });
+    document.getElementById("buttoni").addEventListener("click", function () {
+        window.location.href = "index.html";
+    });
+    document.getElementById("buttoniiiii").addEventListener("click", function () {
+        window.location.href = "servises.html";
+    });
+    document.getElementById("buttonii").addEventListener("click", function () {
+        window.location.href = "index.html#content";
+    });
+
+    document.getElementById("buttoniiiiii").addEventListener("click", function () {
+        window.location.href = "index.html#final";
+    });
+
+    // Sequential animation for partners
+  const partners = document.querySelectorAll(".project-item");
+  let currentPartner = 0;
 
   function animatePartners() {
-    // Remove animation class from all items
-    items.forEach((item) => item.style.animation = "");
+    // Reset all partners
+    partners.forEach(partner => partner.classList.remove("expanded"));
 
-    // Apply animation to the current item
-    items[current].style.animation = "popOut 3s ease-in-out";
+    // Expand the current partner
+    partners[currentPartner].classList.add("expanded");
 
-    // Move to the next item, looping back if at the end
-    current = (current + 1) % items.length;
+    // Move to the next partner, looping back if at the end
+    currentPartner = (currentPartner + 1) % partners.length;
   }
 
-  // Start the loop
+  // Start the animation loop
   animatePartners(); // Initial call
-  setInterval(animatePartners, interval);
-});
+  setInterval(animatePartners, 3000);
+</script>
 
-        
-        document.getElementById("buttoniiii").addEventListener("click", function () {
-            window.location.href = "projects.html";
-        });
-        document.getElementById("buttoni").addEventListener("click", function () {
-            window.location.href = "index.html";
-        });
-        document.getElementById("buttoniiiii").addEventListener("click", function () {
-            window.location.href = "servises.html";
-        });
-        document.getElementById("buttonii").addEventListener("click", function () {
-            window.location.href = "index.html#content";
-        });
-
-        document.getElementById("buttoniiiiii").addEventListener("click", function () {
-            window.location.href = "index.html#final";
-        });
-
-  </script>
 </body>
 </html>
