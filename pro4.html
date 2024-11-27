@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villas Projects</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  <style>
+    body {
+      cursor: url(cursor.png), auto;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* Header Styling */
+    header {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 60px;
+      z-index: 500;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    /*loading screen*/
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fbfbfb;
+      }
+      .loading-screen img {
+        width: 130px; /* Adjust size of preloader image */
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 80px;
+          }
+      }
+      .loading-screen {
+          transition: opacity 0.5s ease-out;
+      }
+      .skip {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+      .skip button {
+        border: none;
+        background: none;
+        font: 1em sans-serif;
+        color: #ff8000;
+      }
+      .skip p {
+        font: 0.8em sans-serif;
+      }
+
+     /* Hamburger Menu */
+     .nav-menu {
+            position: fixed;
+            top: 15px;
+            right: 10px;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            z-index: 900;
+            cursor: url("pointer.png"), auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .openmenu {
+          z-index: 900;
+        }
+
+        .nav-menu div {
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            position: fixed;
+            z-index: 900;
+        }
+        .nav-menu span {
+            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+            width: 80%;
+            height: 4px;
+            border-radius: 5px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, width 0.5s;
+        }
+
+        .openmenu {
+          z-index: 900;
+        }
+        .nav-menu .line1 {
+            transform: translate(-50%, -12px);
+            z-index: 900;
+        }
+        .nav-menu .line3 {
+            transform: translate(-50%, 8px);
+            z-index: 900;
+        }
+        .openmenu .line1 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+            z-index: 900;
+        }
+        .openmenu .line3 {
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 900;
+        }
+        .openmenu .line2 {
+            width: 0;
+            z-index: 900;
+        }
+
+        /* Menu Styling */
+        .nav-btn-menu {
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            position: fixed;
+            z-index: 800;
+            top: 0;
+            left: 100%;
+            transition: left 0.5s ease;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .nav-btn-menu button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: #333;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: "Roboto", sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s, transform 0.3s;
+            cursor: url('pointer.png'), auto;
+        }
+
+        .nav-btn-menu button:hover {
+            color: #FF8C00;
+            transform: scale(1.1); /* Scale on hover */
+        }
+
+        .trans-nav-btn-menu {
+            left: 60%;
+        }
+
+    .villa-info {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .villa-info h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    /* Projects Section */
+    .content {
+      padding: 20px;
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .projects {
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dots button {
+      width: 12px;
+      height: 12px;
+      border: none;
+      border-radius: 50%;
+      background-color: #ccc;
+      cursor: url(pointer.png), auto;
+      transition: background-color 0.3s;
+    }
+
+    .dots button.active {
+      background-color: #333;
+    }
+
+    .carousel-content {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .carousel-content h3 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .carousel-content p {
+      margin: 5px 0 0;
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Responsive Dots Placement */
+    @media (max-width: 900px) {
+      .dots {
+        bottom: 10px;
+      }
+      .nav-btn-menu {
+        width: 50%;
+      }
+      .trans-nav-btn-menu {
+        left: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-screen" id="loading-screen">
+    <img src="preloader.gif" alt="Loading..." />
+    <div class="skip">
+      <button onclick="const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Add fade-out effect
+      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out">skip loading...</button>
+      <p>images may not appear properly</p>
+    </div>
+  </div>
+
+  <div class="nav-menu">
+    <div>
+        <span class="line1"></span>
+        <span class="line2"></span>
+        <span class="line3"></span>
+    </div>
+</div>
+<div class="nav-btn-menu">
+    <button id="buttoni">•Home</button>
+    <button id="buttoniiiii">•Services</button>
+    <button id="buttoniii">•Projects</button>
+    <button id="buttonii">•About-us</button>
+    <button id="buttoniiii">•Clients</button>
+    <button id="buttoniiiiii">•Contact-us</button>
+</div>
+
+  <header>
+    <img src="logoname.png" alt="Logo">
+  </header>
+  <div class="content">
+    <div class="villa-info">
+      <h2>Villas Projects</h2>
+      <p>Palm Hills: 9 villas</p>
+      <p>New Giza: 11 villas</p>
+      <p>Katameya Creeks: 14 villas & Apartments</p>
+      <p>Mountain View: 4 villas</p>
+      <p>Alrabwa: 3 villas</p>
+      <p>Alpathio: 2 villas</p>
+      <p>Concord: 2 villas</p>
+      <p>Sodic: 2 villas</p>
+      <p>Hacienda: 2 villas</p>
+      <p>Beverly Hills: 1 villa</p>
+      <p>Grand Heights: 1 villa</p>
+    </div>
+      
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa1.png" class="active" alt="Project Image 1">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In Lerev</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa2.png" class="active" alt="Project Image 2">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In Sodic</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa3.png" class="active" alt="Project Image 3">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In Sodic</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa4.png" class="active" alt="Project Image 4">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In Hacienda</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa5.png" class="active" alt="Project Image 5">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In NewGiza</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa6.png" class="active" alt="Project Image 6">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In Rabwa</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa7.png" class="active" alt="Project Image 7">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In PalmHills</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa8.png" class="active" alt="Project Image 8">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In PalmHills</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa9.png" class="active" alt="Project Image 9">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In PalmHills</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="projects">
+        <div class="carousel">
+          <img src="images/villa10.png" class="active" alt="Project Image 10">
+        </div>
+        <div class="carousel-content">
+          <h3>Villa In PalmHills</h3>
+          <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- other villas -->
+        <div class="projects">
+          <div class="carousel">
+            <img src="images/villa11.png" class="active" alt="Project Image 11">
+            <img src="images/villa12.png" alt="Project Image 12">
+            <img src="images/villa13.png" alt="Project Image 13">
+            <img src="images/villa14.png" alt="Project Image 14">
+            <div class="dots">
+              <button class="active"></button>
+              <button></button>
+              <button></button>
+              <button></button>
+            </div>
+          </div>
+          <div class="carousel-content">
+            <h3>Other Villas</h3>
+            <p>SCOPE: Supply & install Electromechanical works Including Hygiene production area</p>
+          </div>
+        </div>
+
+  </div>
+  <script>
+    function preloadImages(callback) {
+    const images = document.querySelectorAll('img'); // Select all img elements
+    let imagesLoaded = 0;
+
+    images.forEach((img) => {
+      if (img.complete) {
+        // If the image is already cached, count it as loaded
+        imagesLoaded++;
+        if (imagesLoaded === images.length) callback();
+      } else {
+        img.onload = () => {
+          imagesLoaded++;
+          if (imagesLoaded === images.length) callback();
+        };
+        img.onerror = () => {
+          console.error(`Failed to load image: ${img.src}`);
+          imagesLoaded++;
+          if (imagesLoaded === images.length) callback();
+        };
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    preloadImages(() => {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Add fade-out effect
+      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+    });
+  });
+
+
+
+    document.querySelectorAll('.projects').forEach((project) => {
+    const images = project.querySelectorAll('.carousel img');
+    const dots = project.querySelectorAll('.dots button');
+    let currentIndex = 0;
+    let startX = 0, endX = 0;
+    let timer;
+
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    function nextImage() {
+      showImage((currentIndex + 1) % images.length);
+    }
+
+    function previousImage() {
+      showImage((currentIndex - 1 + images.length) % images.length);
+    }
+
+    // Dot click event
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        clearInterval(timer); // Pause automatic slide on manual interaction
+        showImage(index);
+        startAutoSlide(); // Restart automatic slide
+      });
+    });
+
+    // Swipe detection
+    project.querySelector('.carousel').addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    project.querySelector('.carousel').addEventListener('touchmove', (e) => {
+      endX = e.touches[0].clientX;
+    });
+
+    project.querySelector('.carousel').addEventListener('touchend', () => {
+      if (startX - endX > 50) {
+        nextImage();
+      } else if (endX - startX > 50) {
+        previousImage();
+      }
+    });
+
+    // Auto-slide functionality
+    function startAutoSlide() {
+      timer = setInterval(nextImage, 2500); // Change image every 3 seconds
+    }
+
+    // Initialize
+    showImage(0); // Show the first image
+    startAutoSlide(); // Start automatic sliding
+  });
+
+    // Navigation Menu Toggle
+    let menu = document.querySelector('.nav-menu');
+      let menuBtn = document.querySelector('.nav-btn-menu');
+
+      menu.addEventListener('click', () => {
+          menu.classList.toggle('openmenu');
+          menuBtn.classList.toggle('trans-nav-btn-menu');
+      });
+      document.getElementById("buttoniiii").addEventListener("click", function () {
+            window.location.href = "partners.html";
+        });
+        document.getElementById("buttoni").addEventListener("click", function () {
+            window.location.href = "index.html";
+        });
+        document.getElementById("buttoniiiii").addEventListener("click", function () {
+            window.location.href = "servises.html";
+        });
+        document.getElementById("buttoniii").addEventListener("click", function () {
+            window.location.href = "projects.html";
+        });
+        document.getElementById("buttonii").addEventListener("click", function () {
+            window.location.href = "index.html#content";
+        });
+
+        document.getElementById("buttoniiiiii").addEventListener("click", function () {
+            window.location.href = "index.html#final";
+        });
+  </script>
+</body>
+</html>
