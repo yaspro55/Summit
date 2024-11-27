@@ -201,7 +201,17 @@
       position: relative;
       border-radius: 15%;
       overflow: hidden;
+      cursor: url(pointer.png), auto;
+      transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
     }
+
+    .projects:hover {
+      transform: scale(1.05); /* Slightly expand the project div */
+      border: 4px solid #FF8C00; /* Add orange border */
+      box-shadow: 0 8px 20px rgba(255, 140, 0, 0.5); /* Add orange shadow */
+      cursor: url(pointer.png), auto;
+    }
+
 
     .projects img {
       width: 100%;
@@ -222,16 +232,6 @@
       white-space: nowrap;
       cursor: url(pointer.png), auto;
       transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .projects p:hover {
-      color: #FF8C00;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 1);
-    }
-
-    .projects p:active {
-      color: #cc3d00;
-      text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
     }
 
     @media (max-width: 1060px) {
@@ -301,29 +301,41 @@
   
   <div class="content">
     <div class="projects">
-      <img src="bg2.png">
-      <a href="pro1.html"><p>Commercial <br> Buildings</p></a>
+      <a href="pro1.html">
+        <img src="bg2.png">
+        <p>Commercial <br> Buildings</p>
+      </a>
     </div>
     <div class="projects">
-      <img src="pro4.jpg">
-      <a href="pro2.html"><p>Pharmaceutical <br> Factories</p></a>
+      <a href="pro2.html">
+        <img src="pro4.jpg">
+        <p>Pharmaceutical <br> Factories</p>
+      </a>
     </div>
     <div class="projects">
-      <img src="pro3.jpg">
-      <a href="pro3.html"><p>Admin Buildings</p></a>
+      <a href="pro3.html">
+        <img src="pro3.jpg">
+        <p>Admin Buildings</p>
+      </a>
     </div>
     <div class="projects">
-      <img src="bg10.png">
-      <a href="pro4.html"><p>Residential Buildings</p></a>
+      <a href="pro4.html">
+        <img src="bg10.png">
+        <p>Residential Buildings</p>
+      </a>
     </div>
     <div class="projects">
-      <img src="pro2.jpg">
-      <a href="pro5.html"><p>Health Care</p></a>
+      <a href="pro5.html">
+        <img src="pro2.jpg">
+        <p>Health Care</p>
+      </a>
     </div>
     <div class="projects">
-      <img src="pro6.jpg">
-      <a href="pro6.html"><p>Educational Buildings</p></a>
-    </div>
+      <a href="pro6.html">
+        <img src="pro6.jpg">
+        <p>Educational Buildings</p>
+      </a>
+    </div>    
   </div>
   
   <script>
