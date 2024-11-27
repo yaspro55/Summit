@@ -152,13 +152,13 @@
         color: white;
         opacity: 0;
         position: absolute;
-        bottom: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, -50%); /* Adjust centering due to top and left */
         transition: opacity 1s ease-in-out, transform 1s ease-in-out;
         z-index: 5;
         text-align: center;
-      }
+    }
 
       .visible-text {
         opacity: 1;
