@@ -32,6 +32,35 @@
         cursor: url("pointer.png"), auto;
       }
 
+      a {
+            color: inherit; /* Keeps the base text color */
+            cursor: url(pointer.png), auto;
+            text-decoration: none; /* Removes the default underline */
+            position: relative; /* For hover effects */
+            transition: color 0.3s, border-bottom 0.3s; /* Smooth hover transition */
+        }
+
+        a:hover {
+            color: #FFA500; /* Highlighted color on hover */
+            cursor: url(pointer.png), auto;
+        }
+
+        a h1, a span {
+            cursor: url(pointer.png), auto; /* Ensures child elements indicate clickability */
+        }
+
+        .image-content a img {
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+            cursor: url(pointer.png), auto;
+        }
+
+        .image-content a img:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow */
+            cursor: url(pointer.png), auto;
+        }
+
+
       header {
         width: 100%;
         background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
@@ -752,7 +781,9 @@
         <button id="buttonfour">Contact Us</button>
       </div>
     </header>
-    <div class="imgDisplay" id="contentimg"></div>
+    <div class="imgDisplay" id="contentimg">
+        <div class="special-text" id="special-text"></div>
+    </div>
     <div class="content" id="content">
       <!-- Section 1 -->
       <section class="hover-content" id="content1">
@@ -805,8 +836,44 @@
           </div>
       </section>
 
-      <!-- Section 4 -->
       <section class="hover-content" id="content5">
+        <div class="text-content">
+          <a href="projects.html"><h1>OUR<br> 
+            <span class="highlightone">PROJECTS</span></h1></a>
+            <p></p>
+        </div>
+        <div class="image-content">
+            <a href="projects.html"><img src="bg6.png" alt="Summit TECS Engineering Image"  style="height: 380px; width: 755px;"></a>
+        </div>
+        <a href="projects.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
+    </section>
+
+    <section class="hover-content" id="content6">
+        <div class="text-content">
+            <a href="partners.html"><h1>OUR<br> 
+            <span class="highlightone">CLIENTS</span></h1></a>
+            <p></p>
+        </div>
+        <div class="image-content">
+            <a href="partners.html"><img src="partners.png" alt="Summit TECS Engineering Image" style="height: 380px; width: 755px;"></a>
+        </div>
+        <a href="partners.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
+    </section>
+
+    <section class="hover-content" id="content7">
+        <div class="text-content">
+            <a href="servises.html"><h1>OUR<br> 
+            <span class="highlightone">SERVICES</span></h1></a>
+            <p></p>
+        </div>
+        <div class="image-content">
+            <a href="servises.html"><img src="images/compressed-air.jpg" alt="Summit TECS Engineering Image" style="height: 380px; width: 755px;"></a>
+        </div>
+        <a href="servises.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
+    </section>
+
+      <!-- Section 4 -->
+      <section class="hover-content" id="content8">
         <div class="text-content">
             <h1>SUMMIT<br>
                 <span class="highlightone">CORE VALUES</span>
@@ -814,7 +881,7 @@
         </div>
         <div class="switching-container">
             <!-- Each value container -->
-            <div class="hover-content value-container active" id="content6">
+            <div class="hover-content value-container active" id="content9">
                 <h2 class="valuename">Collaboration</h2>
                 <div class="valueimg">
                     <img src="collaboration.png" alt="Collaboration Image">
@@ -866,7 +933,7 @@
 
               <div class="contact-info">
                   <h2>Our Address</h2>
-                  <a href="https://maps.app.goo.gl/yET9U19aXqi8xQAh9">426 N Elgesh St, Gate 4 Hadayek Elahram</a>
+                  <a href="https://maps.app.goo.gl/vkZzDTWbznwzx9mo9">426 N Elgesh St, Gate 4 Hadayek Elahram</a>
 
                   <h2>Phone</h2>
                   <p><a href="tel:+201222908983">+201222908983</a>, <a href="tel:+201064649914">+201064649914</a></p>
@@ -906,10 +973,6 @@
     </div>
     
     <div class="logos"><img class="logo" src="logoname.png"></div>
-
-    <div class="special-text" id="special-text"></div>
-    
-    
 
     <i class="fas fa-chevron-left arrow left-arrow"></i>
     <i class="fas fa-chevron-right arrow right-arrow"></i>

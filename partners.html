@@ -14,6 +14,129 @@
       color: #fff;
     }
 
+    /* Header Styling */
+    header {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.341);
+      backdrop-filter: blur(10px);
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 60px;
+      z-index: 500;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    /* Hamburger Menu */
+    .nav-menu {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+            z-index: 900;
+            cursor: url("pointer.png"), auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .openmenu {
+          z-index: 900;
+        }
+
+        .nav-menu div {
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            position: fixed;
+            z-index: 900;
+        }
+        .nav-menu span {
+            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+            width: 80%;
+            height: 4px;
+            border-radius: 5px;
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s, width 0.5s;
+        }
+
+        .openmenu {
+          z-index: 900;
+        }
+        .nav-menu .line1 {
+            transform: translate(-50%, -12px);
+            z-index: 900;
+        }
+        .nav-menu .line3 {
+            transform: translate(-50%, 8px);
+            z-index: 900;
+        }
+        .openmenu .line1 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+            z-index: 900;
+        }
+        .openmenu .line3 {
+            transform: translate(-50%, -50%) rotate(45deg);
+            z-index: 900;
+        }
+        .openmenu .line2 {
+            width: 0;
+            z-index: 900;
+        }
+
+        /* Menu Styling */
+        .nav-btn-menu {
+            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+            width: 40%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            position: fixed;
+            z-index: 800;
+            top: 0;
+            left: 100%;
+            transition: left 0.5s ease;
+            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        }
+
+        .nav-btn-menu button {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            color: #333;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: "Roboto", sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: color 0.3s, transform 0.3s;
+            cursor: url('pointer.png'), auto;
+        }
+
+        .nav-btn-menu button:hover {
+            color: #FF8C00;
+            transform: scale(1.1); /* Scale on hover */
+        }
+
+        .trans-nav-btn-menu {
+            left: 60%;
+        }
+
     /* Partners Section */
     .partners-container {
       display: grid;
@@ -66,7 +189,7 @@
       text-align: center;
       font-size: 4rem;
       font-weight: bold;
-      margin-top: 40px;
+      margin-top: 100px;
       margin-bottom: 40px;
       color: #ffa500;
       text-transform: uppercase;
@@ -100,86 +223,7 @@
         font-size: 3rem;
       }
     }
-    /* Navigation Menu Styling */
-    .nav-menu {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.1);
-        z-index: 1000;
-        cursor: url(pointer.png), auto;
-    }
-
-    .nav-menu span {
-        display: block;
-        background: #fff;
-        width: 30px;
-        height: 4px;
-        margin: 6px 0;
-        transition: all 0.5s;
-    }
-
-    .openmenu {
-        cursor: url(pointer.png), auto;
-    }
-
-    .openmenu span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-    }
-
-    .openmenu span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .openmenu span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    .nav-btn-menu {
-        position: fixed;
-        top: 0;
-        left: 100%;
-        width: 40%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transition: left 0.5s ease;
-        z-index: 900;
-    }
-
-    .trans-nav-btn-menu {
-        left: 60%;
-        z-index: 999;
-    }
-
-    .nav-btn-menu button {
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        margin: 15px 0;
-        padding: 10px 20px;
-        cursor: pointer;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-        transition: transform 0.3s, color 0.3s;
-        cursor: url(pointer.png), auto;
-    }
-
-    .nav-btn-menu button:hover {
-        transform: scale(1.1);
-        color: #ffa500;
-    }
-
+    
     /*loading screen*/
     .loading-screen {
         position: fixed;
@@ -234,6 +278,9 @@
       <p>images may not appear properly</p>
     </div>
 </div>
+<header>
+  <img src="logoname.png" alt="Logo">
+</header>
 
 <!-- Navigation Menu -->
 <div class="nav-menu">
@@ -280,9 +327,6 @@
     </div>
     <div class="project-item">
       <img src="images/partner8.png" alt="Partner 4">
-    </div>
-    <div class="project-item">
-      <img src="images/partner9.png" alt="Partner 5">
     </div>
     <div class="project-item">
       <img src="images/partner10.png" alt="Partner 6">
