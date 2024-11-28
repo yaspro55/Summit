@@ -132,7 +132,7 @@
     }
 
     .service-item.expanded {
-      transform: scale(1.1);
+      transform: scale(1.2);
       z-index: 10;
     }
 
@@ -141,7 +141,7 @@
       height: 150px;
       object-fit: cover;
       border-radius: 10px;
-      display: none;
+      display: block;
     }
 
     .service-item.expanded img {
@@ -156,7 +156,7 @@
     }
 
     .service-item .content {
-      opacity: 0;
+      opacity: 1;
       transform: translateY(20px);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
@@ -178,7 +178,7 @@
       font-size: 1rem;
       line-height: 1.5;
       margin-top: 15px;
-      display: none;
+      display: block;
     }
 
     .service-item.expanded .description {
@@ -311,7 +311,7 @@
     <h2>Explore Our Expert Services</h2>
     <div class="services-grid">
       <div class="service-item">
-        <div class="title">Central Air Conditioning Systems</div>
+        <div class="title">Central Air Conditioning</div>
         <img src="images/air-conditioning.jpg" alt="Air Conditioning">
         <div class="content">
           <span>(Chilled water, VRF, and DX)</span>
@@ -326,17 +326,17 @@
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Firefighting Systems</div>
+        <div class="title">Firefighting</div>
         <img src="images/firefighting.jpg" alt="Firefighting">
         <div class="content">
           <p class="description">State-of-the-art fire prevention and safety installations.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Electrical Works</div>
+        <div class="title">Electrical</div>
         <img src="images/electrical.jpg" alt="Electrical Works">
         <div class="content">
-          <span>(Power, Lighting, and Low Current)</span>
+          <span style="font-size: 20px;">(Power, Lighting, and Low Current)</span>
           <p class="description">Comprehensive electrical solutions for varied needs.</p>
         </div>
       </div>
@@ -348,21 +348,21 @@
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Steam Systems</div>
+        <div class="title">Steam Networks</div>
         <img src="images/steam.jpg" alt="Steam Systems">
         <div class="content">
           <p class="description">Reliable steam systems for industrial and commercial use.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Compressed Air Systems</div>
+        <div class="title">Compressed Air</div>
         <img src="images/compressed-air.jpg" alt="Compressed Air Systems">
         <div class="content">
           <p class="description">High-efficiency compressed air solutions for your needs.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Heating Systems</div>
+        <div class="title">Heating Networks</div>
         <img src="images/heating.jpg" alt="Heating Systems">
         <div class="content">
           <p class="description">Modern and energy-efficient heating solutions.</p>
@@ -376,7 +376,7 @@
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Medical Gas Systems</div>
+        <div class="title">Medical Gas</div>
         <img src="images/medical-gas.jpg" alt="Medical Gas Systems">
         <div class="content">
           <p class="description">Specialized gas systems for medical facilities.</p>
@@ -451,7 +451,7 @@ function preloadImages(callback) {
       setInterval(() => {
         expandServiceItem(serviceItems[index]);
         index = (index + 1) % serviceItems.length;
-      }, 3000); // Change every 3 seconds
+      }, 4000); // Change every 3 seconds
     }
 
     // Click to expand
