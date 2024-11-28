@@ -52,11 +52,6 @@
       .loading-screen img {
         width: 130px; /* Adjust size of preloader image */
       }
-      @media (max-width: 1050px) {
-        .loading-screen img{
-            width: 80px;
-          }
-      }
       .loading-screen {
           transition: opacity 0.5s ease-out;
       }
@@ -73,6 +68,14 @@
       }
       .skip p {
         font: 0.8em sans-serif;
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 180px;
+          }
+          .skip {
+            bottom: 100px;
+          }
       }
 
      /* Hamburger Menu */
@@ -426,8 +429,6 @@
           <p>SCOPE: Supply & install HVAC, PLUMBING AND ELECTRICAL works</p>
         </div>
       </div>
-
-      <div class="content">
         <!-- other villas -->
         <div class="projects">
           <div class="carousel">
@@ -447,7 +448,6 @@
             <p>SCOPE: Supply & install Electromechanical works Including Hygiene production area</p>
           </div>
         </div>
-
   </div>
   <script>
     function preloadImages(callback) {
