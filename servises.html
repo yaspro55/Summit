@@ -127,65 +127,54 @@
     }
 
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
       margin: 0 auto;
     }
 
     .service-item {
-      background: linear-gradient(to bottom, #00498F, #006BB5);
-      color: white;
       padding: 20px;
       border-radius: 16px;
+      width: 100%;
       text-align: center;
+      margin-bottom: 30px;
       position: relative;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       overflow: hidden;
       cursor: url(pointer.png), auto;
-      transform: scale(1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .service-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    .service-item.expanded {
-      transform: scale(1.2);
-      z-index: 10;
     }
 
     .service-item img {
       width: 100%;
-      height: 150px;
+      height: auto;
       object-fit: cover;
-      border-radius: 10px;
+      border-radius: 16px;
       display: block;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .service-item.expanded img {
-      display: block;
-      margin-bottom: 10px;
+    .imageContent {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .service-item .title {
-      font-size: 1.5rem;
+    .title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 6rem; /* Adjust font size */
       font-weight: bold;
-      margin-bottom: 10px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      z-index: 2; /* Ensures the title stays on top of the image */
+      text-align: center;
+      pointer-events: none; /* Prevents interaction with the title */
     }
 
+    /* Adjust Description Position and Styling */
     .service-item .content {
-      opacity: 1;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .service-item.expanded .content {
-      opacity: 1;
-      transform: translateY(0);
+      margin-top: 20px;
+      padding: 15px;
     }
 
     .service-item span {
@@ -196,15 +185,13 @@
       opacity: 0.8;
     }
 
-    .description {
+    .service-item .description {
+      color: #333;
+      text-align: left;
+      line-height: 1.6;
       font-size: 1rem;
-      line-height: 1.5;
-      margin-top: 15px;
-      display: block;
-    }
-
-    .service-item.expanded .description {
-      display: block;
+      font-weight: 400;
+      padding: 10px;
     }
     /* Hamburger Menu */
     .nav-menu {
@@ -355,22 +342,40 @@
     <h2>Explore Our Expert Services</h2>
     <div class="services-grid">
       <div class="service-item">
-        <div class="title">Central Air Conditioning</div>
-        <img src="images/air-conditioning.jpg" alt="Air Conditioning">
+        <div class="imageContent">
+          <div class="title">Central Air Conditioning</div>
+          <img src="images/service1.jpg" alt="Air Conditioning">
+        </div>
         <div class="content">
-          <p class="description">Advanced Air Conditioning solutions for commercial,industrials, administrative and residential application. Using chilled water systems, VRV systems, DX package units and split units.</p>
+          <p class="description">we specialize in providing high-quality air-conditioning solutions for residential, commercial, and industrial spaces. With a strong commitment to comfort, energy efficiency, and reliability, we are dedicated to delivering the best cooling systems tailored to meet the unique needs of every client.
+            <br><br>
+            Our Services
+            <br><br>
+            Air Conditioning Systems: Installation and maintenance of central air conditioning systems, split units, VRF systems, and more.
+            <br><br>
+            Maintenance & Repair: Comprehensive servicing to ensure your AC systems run smoothly and efficiently year-round.
+            <br><br>
+            Energy-Efficient Solutions: Eco-friendly and energy-saving systems to help reduce cooling costs.
+            <br><br>
+            HVAC System Design: Custom design of air conditioning and ventilation systems for optimal airflow and comfort.
+            <br><br>
+            Indoor Air Quality: Installation of air purifiers and filtration systems to ensure cleaner, healthier air—particularly for pharmaceutical factories, healthcare facilities, and other critical environments.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Plumbing</div>
-        <img src="images/plumbing.jpg" alt="Plumbing">
+        <div class="imageContent">
+          <div class="title">Plumbing</div>
+          <img src="images/service2.jpg" alt="Plumbing">
+        </div>
         <div class="content">
           <p class="description">We are specialised in providing professional solutions for water and drainage systems in residential, commercial, and industrial applications. These services ensure the efficient and safe management of water supply and waste dispos.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Firefighting</div>
-        <img src="images/firefighting.jpg" alt="Firefighting">
+        <div class="imageContent">
+          <div class="title">Firefighting</div>
+          <img src="images/service3.jpg" alt="Firefighting">
+        </div>
         <div class="content">
           <p class="description">With a team of experienced professionals, state-of-the-art equipment, and a commitment to safety, we provide top-tier fire protection and safety solutions for all types of buildings. 
             Our mission is to safeguard lives and property by delivering comprehensive fire detection, suppression, and prevention services tailored to meet the unique needs of each client.
@@ -378,53 +383,79 @@
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Electrical</div>
-        <img src="images/electrical.jpg" alt="Electrical Works">
+        <div class="imageContent">
+          <div class="title">Electrical</div>
+          <img src="images/service4.jpg" alt="Electrical Works">
+        </div>
         <div class="content">
           <span style="font-size: 20px;">(Power, Lighting, and Low Current)</span>
-          <p class="description">Comprehensive electrical solutions for varied needs.</p>
+          <p class="description">we provide comprehensive electrical solutions tailored to a wide range of needs. Our services are designed to ensure safety, efficiency, and reliability for both new and existing buildings.
+            <br><br>
+            Our Services
+            <br><br>
+            Wiring and Panel Upgrades: Expert installation and upgrades to meet modern standards.
+            <br><br>
+            Energy-Efficient Lighting Systems: Advanced solutions to reduce energy consumption and costs.
+            <br><br>
+            Backup Power Systems: Reliable installation of generators and UPS for uninterrupted power supply.
+            <br><br>
+            Custom Electrical Solutions: Specialized services for factories, warehouses, restaurants, residential properties, and offices.
+            <br><br>
+            With a focus on quality and compliance with all safety standards, we are committed to delivering exceptional results for projects of all sizes. Let us power your success!</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Smart Home Technologies</div>
-        <img src="images/smart-home.jpg" alt="Smart Home">
+        <div class="imageContent">
+          <div class="title">Smart Home Technologies</div>
+          <img src="images/service5.jpg" alt="Smart Home">
+        </div>
         <div class="content">
-          <p class="description">Integrated smart solutions for modern living.</p>
+          <p class="description">we specialize in transforming living spaces into intelligent, connected environments with cutting-edge smart home solutions. Our mission is to enhance comfort, convenience, and security by integrating advanced technology into homes, tailored to meet the unique needs of every client.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Steam Networks</div>
-        <img src="images/steam.jpg" alt="Steam Systems">
+        <div class="imageContent">
+          <div class="title">Steam Networks</div>
+          <img src="images/service6.jpg" alt="Steam Systems">
+        </div>
         <div class="content">
-          <p class="description">Reliable steam systems for industrial and commercial use.</p>
+          <p class="description">With extensive experience in steam generation, distribution, and management, we are dedicated to deliver efficient, reliable, and safe steam systems that are tailored to meet the specific needs of each client. Our goal is to ensure that every system we design, install, and maintain operates at peak performance, maximizing energy efficiency and safety while minimizing downtime and operational costs.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Compressed Air</div>
-        <img src="images/compressed-air.jpg" alt="Compressed Air Systems">
+        <div class="imageContent">
+          <div class="title">Compressed Air</div>
+          <img src="images/service7.jpg" alt="Compressed Air Systems">
+        </div>
         <div class="content">
-          <p class="description">High-efficiency compressed air solutions for your needs.</p>
+          <p class="description">Our highly trained team provides reliable, high-quality compressed air solutions for industrial applications. With a focus on efficiency and performance, we offer customized systems designed to meet the unique needs of each client, ensuring optimal operation across a variety of industries such as manufacturing, healthcare, and automotive. We are committed to executing systems that enhance productivity, reduce energy costs, and uphold the highest standards of reliability and safety, ensuring your operations run smoothly and efficiently.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Heating Networks</div>
-        <img src="images/heating.jpg" alt="Heating Systems">
+        <div class="imageContent">
+          <div class="title">Heating Networks</div>
+          <img src="images/service8.jpg" alt="Heating Systems">
+        </div>
         <div class="content">
-          <p class="description">Modern and energy-efficient heating solutions.</p>
+          <p class="description">we customize heating solutions for homes, offices, and commercial facilities to ensure warmth, comfort, and energy efficiency, regardless of the season. With a commitment to excellence, we tailor each solution to meet the unique needs of every client, ensuring reliability, efficiency, and long-lasting performance. Our expert team is dedicated to delivering high-quality heating systems that provide consistent comfort while reducing energy costs and environmental impact.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Swimming Pools</div>
-        <img src="images/swimming-pools.jpg" alt="Swimming Pools">
+        <div class="imageContent">
+          <div class="title">Swimming Pools</div>
+          <img src="images/service9.jpg" alt="Swimming Pools">
+        </div>
         <div class="content">
-          <p class="description">Top Tier swimming pool service for homes and resorts.</p>
+          <p class="description">our scope covers designing, constructing, and maintaining high-quality swimming pools for residential, commercial, and resort properties. Whether you're looking to create a luxurious backyard oasis or a functional pool for recreational or fitness purposes, we are committed to delivering custom solutions that meet your specific needs and exceed your expectations. From concept to completion, we ensure that each pool we build offers both style and durability.</p>
         </div>
       </div>
       <div class="service-item">
-        <div class="title">Medical Gas</div>
-        <img src="images/medical-gas.jpg" alt="Medical Gas Systems">
+        <div class="imageContent">
+          <div class="title">Medical Gas</div>
+          <img src="images/service10.jpg" alt="Medical Gas Systems">
+        </div>
         <div class="content">
-          <p class="description">Specialized gas systems for medical facilities.</p>
+          <p class="description">we provide safe, reliable, and high-quality medical gas solutions for healthcare facilities, including hospitals, clinics, and medical centers. We are dedicated to delivering essential gases that meet the stringent standards required for medical applications, ensuring patient safety and supporting healthcare providers in delivering the best possible care. Our focus is on providing systems that are not only efficient and reliable but also comply with the highest safety and regulatory standards to ensure optimal performance in critical medical environments.</p>
         </div>
       </div>
     </div>
@@ -481,37 +512,6 @@ function preloadImages(callback) {
         document.getElementById("buttoniiiiii").addEventListener("click", function () {
             window.location.href = "index.html#final";
         });
-
-    const serviceItems = document.querySelectorAll('.service-item');
-    let index = 0;
-
-    // Expand and collapse logic
-    function expandServiceItem(item) {
-      serviceItems.forEach(i => i.classList.remove('expanded'));
-      item.classList.add('expanded');
-    }
-
-    // Auto-loop through services
-    function loopServices() {
-      setInterval(() => {
-        expandServiceItem(serviceItems[index]);
-        index = (index + 1) % serviceItems.length;
-      }, 4000); // Change every 3 seconds
-    }
-
-    // Click to expand
-    serviceItems.forEach(item => {
-      item.addEventListener('click', () => {
-        serviceItems.forEach(i => i.classList.remove('expanded'));
-        item.classList.add('expanded');
-      });
-    });
-
-    // Start loop on page load
-    window.onload = () => {
-      expandServiceItem(serviceItems[0]);
-      loopServices();
-    };
   </script>
 </body>
 </html>
