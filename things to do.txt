@@ -1,0 +1,7 @@
+1. make images in project page also clickable
+2. make size of loading screen gif and menu in phone screens larger
+3. fix size difference in villas/ pro4
+4. add areas in home page leading to projects, services and clients page
+5. add downloadable link for summit profile (power point)
+6. add a text in menu saying who made the website
+7. keep looking for ideas and upgrading website
