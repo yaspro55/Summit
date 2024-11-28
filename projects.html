@@ -23,6 +23,9 @@
         z-index: 1;
         border-bottom: solid rgba(0, 0, 0, 0.342);
       }
+      a {
+        cursor: url(pointer.png), auto;
+      }
 
     /* Header Styling */
     header {
@@ -214,9 +217,11 @@
 
 
     .projects img {
+      display: block; /* Remove any inline spacing or gaps caused by inline elements */
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 0; /* Remove any rounding unless intentional */
     }
 
     .projects p {
