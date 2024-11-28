@@ -180,7 +180,7 @@
         color: #ffa500;
     }
 
-    /* Loading Screen */
+    /*loading screen*/
     .loading-screen {
         position: fixed;
         top: 0;
@@ -192,22 +192,14 @@
         justify-content: center;
         align-items: center;
         background-color: #fbfbfb;
-    }
-
-    .loading-screen img {
-        width: 130px;
-    }
-
-    @media (max-width: 1050px) {
-        .loading-screen img {
-            width: 80px;
-        }
-    }
-
-    .loading-screen {
-        transition: opacity 0.5s ease-out;
-    }
-    .skip {
+      }
+      .loading-screen img {
+        width: 130px; /* Adjust size of preloader image */
+      }
+      .loading-screen {
+          transition: opacity 0.5s ease-out;
+      }
+      .skip {
         position: absolute;
         bottom: 10px;
         right: 10px;
@@ -220,6 +212,14 @@
       }
       .skip p {
         font: 0.8em sans-serif;
+      }
+      @media (max-width: 1050px) {
+        .loading-screen img{
+            width: 180px;
+          }
+          .skip {
+            bottom: 100px;
+          }
       }
 
   </style>
