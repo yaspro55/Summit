@@ -33,9 +33,33 @@
       }
 
       a {
-        cursor: url(pointer.png), auto;
-        text-decoration: none;
-      }
+            color: inherit; /* Keeps the base text color */
+            cursor: url(pointer.png), auto;
+            text-decoration: none; /* Removes the default underline */
+            position: relative; /* For hover effects */
+            transition: color 0.3s, border-bottom 0.3s; /* Smooth hover transition */
+        }
+
+        a:hover {
+            color: #FFA500; /* Highlighted color on hover */
+            cursor: url(pointer.png), auto;
+        }
+
+        a h1, a span {
+            cursor: url(pointer.png), auto; /* Ensures child elements indicate clickability */
+        }
+
+        .image-content a img {
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+            cursor: url(pointer.png), auto;
+        }
+
+        .image-content a img:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow */
+            cursor: url(pointer.png), auto;
+        }
+
 
       header {
         width: 100%;
