@@ -701,10 +701,18 @@
         margin: 0 auto; /* Center carousel horizontally */
         padding: 0;
         overflow: hidden;
+        cursor: url(pointer.png), auto;
         position: relative;
         border-radius: 10px; /* Optional rounded corners */
         background-color: #f0f0f0; /* Fallback background */
+        transition: transform 0.3s, box-shadow 0.3s;
       }
+
+        .carousel:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9); /* Add a shadow */
+            cursor: url(pointer.png), auto;
+        }
 
       .carousel img {
         width: 100%; 
@@ -717,12 +725,34 @@
         top: 0;
         left: 0;
         opacity: 0; /* Hidden by default */
+        z-index: 0;
         transition: opacity 1s ease-in-out;
       }
 
 
       .carousel img.active {
         opacity: 1; /* Show active image */
+        z-index: 1;
+      }
+
+      .carousel .carousel-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3.5em;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        font-weight: bold;
+        text-align: center;
+        pointer-events: none; /* Ensures the text doesn't interfere with interaction */
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 2;
+      }
+
+      .carousel img.active + .carousel-text {
+        opacity: 1;
       }
 
       .dots {
@@ -732,6 +762,7 @@
         transform: translateX(-50%);
         display: flex;
         gap: 8px; /* Space between dots */
+        z-index: 2;
       }
 
       .dots button {
@@ -740,7 +771,7 @@
         border: none;
         border-radius: 50%;
         background-color: #ccc;
-        cursor: pointer;
+        cursor: url(pointer.png), auto;
         transition: background-color 0.3s;
       }
 
@@ -905,9 +936,35 @@
             <span class="highlightone">PROJECTS</span></h1></a>
             <p></p>
         </div>
-        <div class="image-content">
-            <a href="projects.html"><img src="bg6.png" alt="Summit TECS Engineering Image"  style="height: 380px; width: 755px;"></a>
-        </div>
+        <div class="carousel-container">
+          <div class="carousel projectcarousel">
+            <img src="bg2.png" class="active" alt="Project Image 1" onclick="window.location.href = 'pro1.html'">
+            <div class="carousel-text">Commercial <br> Buildings</div>
+
+            <img src="pro4.jpg" alt="Project Image 2" onclick="window.location.href = 'pro2.html'">
+            <div class="carousel-text">Pharmaceutical <br> Factories</div>
+
+            <img src="pro3.jpg" alt="Project Image 3" onclick="window.location.href = 'pro3.html'">
+            <div class="carousel-text">Admin Buildings</div>
+
+            <img src="bg10.png" alt="Project Image 4" onclick="window.location.href = 'pro4.html'">
+            <div class="carousel-text">Residential Buildings</div>
+
+            <img src="pro2.jpg" alt="Project Image 5" onclick="window.location.href = 'pro5.html'">
+            <div class="carousel-text">Health Care</div>
+
+            <img src="pro6.jpg" alt="Project Image 6" onclick="window.location.href = 'pro6.html'">
+            <div class="carousel-text">Educational Buildings</div>
+            <div class="dots">
+              <button class="active"></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+            </div>
+          </div>
+          </div>
         <a href="projects.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
 
@@ -930,14 +987,43 @@
             <p></p>
         </div>
         <div class="carousel-container">
-          <div class="carousel">
+          <div class="carousel servicecarousel">
             <img src="images/service1.jpg" class="active" alt="Project Image 1">
+            <div class="carousel-text">Central Air Conditioning</div>
+
             <img src="images/service2.jpg" alt="Project Image 2">
+            <div class="carousel-text">Plumbing</div>
+
             <img src="images/service3.jpg" alt="Project Image 3">
+            <div class="carousel-text">Firefighting</div>
+
             <img src="images/service4.jpg" alt="Project Image 4">
+            <div class="carousel-text">Electrical</div>
+
             <img src="images/service5.jpg" alt="Project Image 5">
+            <div class="carousel-text">Smart Home Technologies</div>
+
+            <img src="images/service6.jpg" alt="Project Image 6">
+            <div class="carousel-text">Steam Networks</div>
+
+            <img src="images/service7.jpg" alt="Project Image 7">
+            <div class="carousel-text">Compressed Air</div>
+
+            <img src="images/service8.jpg" alt="Project Image 8">
+            <div class="carousel-text">Heating Networks</div>
+
+            <img src="images/service9.jpg" alt="Project Image 9">
+            <div class="carousel-text">Swimming Pools</div>
+
+            <img src="images/service10.jpg" alt="Project Image 10">
+            <div class="carousel-text">Medical Gas</div>
             <div class="dots">
               <button class="active"></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
               <button></button>
               <button></button>
               <button></button>
@@ -1221,67 +1307,118 @@ containers.forEach((container, index) => {
         index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
 });
 
-    document.querySelectorAll('.projects').forEach((project) => {
-    console.log('Initializing carousel...');
-    const images = document.querySelectorAll('.carousel img');
-    const dots = document.querySelectorAll('.dots button');
+document.querySelectorAll('.servicecarousel').forEach((carousel) => {
+    const images = carousel.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.dots button');
     let currentIndex = 0;
     let startX = 0, endX = 0;
     let timer;
 
     function showImage(index) {
-      images.forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === index);
-      });
-      currentIndex = index;
+        images.forEach((img, i) => img.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentIndex = index;
     }
 
     function nextImage() {
-      showImage((currentIndex + 1) % images.length);
+        showImage((currentIndex + 1) % images.length);
     }
 
     function previousImage() {
-      showImage((currentIndex - 1 + images.length) % images.length);
+        showImage((currentIndex - 1 + images.length) % images.length);
     }
 
-    // Dot click event
     dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        clearInterval(timer); // Pause automatic slide on manual interaction
-        showImage(index);
-        startAutoSlide(); // Restart automatic slide
-      });
+        dot.addEventListener('click', () => {
+            clearInterval(timer);
+            showImage(index);
+            startAutoSlide();
+        });
     });
 
-    // Swipe detection
-    project.querySelector('.carousel').addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
     });
 
-    project.querySelector('.carousel').addEventListener('touchmove', (e) => {
-      endX = e.touches[0].clientX;
+    carousel.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
     });
 
-    project.querySelector('.carousel').addEventListener('touchend', () => {
-      if (startX - endX > 50) {
-        nextImage();
-      } else if (endX - startX > 50) {
-        previousImage();
-      }
+    carousel.addEventListener('touchend', () => {
+        if (startX - endX > 50) nextImage();
+        else if (endX - startX > 50) previousImage();
     });
 
-    // Auto-slide functionality
     function startAutoSlide() {
-      timer = setInterval(nextImage, 2500); // Change image every 3 seconds
+        timer = setInterval(nextImage, 2500);
     }
 
-    // Initialize
-    showImage(0); // Show the first image
-    startAutoSlide(); // Start automatic sliding
-  });
+    showImage(0);
+    startAutoSlide();
+});
+
+
+  document.querySelectorAll('.projectcarousel').forEach((carousel) => {
+    const images = carousel.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.dots button');
+    let currentIndex = 0;
+    let startX = 0, endX = 0;
+    let timer;
+
+    function showImage(index) {
+        images.forEach((img, i) => img.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentIndex = index;
+    }
+
+    function nextImage() {
+        showImage((currentIndex + 1) % images.length);
+    }
+
+    function previousImage() {
+        showImage((currentIndex - 1 + images.length) % images.length);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(timer);
+            showImage(index);
+            startAutoSlide();
+        });
+    });
+
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        if (startX - endX > 50) nextImage();
+        else if (endX - startX > 50) previousImage();
+    });
+
+    function startAutoSlide() {
+        timer = setInterval(nextImage, 2500);
+    }
+
+    showImage(0);
+    startAutoSlide();
+});
+
+  
+    document.querySelector('.servicecarousel').addEventListener('click', (event) => {
+        // Check if the click event is from a dot or other interactive element
+        if (event.target.classList.contains('dots') || event.target.closest('.dots button')) {
+            // Prevent redirection
+            event.stopPropagation();
+            return;
+        }
+        // Redirect for other clicks
+        window.location.href = 'servises.html';
+    });
     </script>
   </body>
 </html>
