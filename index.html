@@ -374,34 +374,13 @@
             height: auto;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle image shadow */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hover-content {
-                padding: 20px 0;
-                width: 95%;
-            }
-
-            .text-content h1 {
-                font-size: 2em;
-            }
-
-            .text-content p {
-                font-size: 1.1em;
-            }
-
-            .image-content {
-                width: 100%;
-            }
-        }
-
-        /* Final Section Styling */
         #final {
-            background-color: #f9f9f9; /* Light background for contrast */
+            background-color: #f9f9f9;
             padding: 40px 0;
-            border-top: 1px solid #ddd; /* Light border at the top */
+            border-top: 1px solid #ddd;
             margin-bottom: 0;
         }
 
@@ -490,17 +469,6 @@
 
         .send-btn:hover {
             background-color: #d48d08;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .contact-section {
-                padding: 20px;
-            }
-
-            .contact-info, .contact-form {
-                text-align: left;
-            }
         }
         @media (max-width: 1090px) {
           .left-buttons{
@@ -612,36 +580,7 @@
         .trans-nav-btn-menu {
             left: 60%;
         }
-        @media (max-width: 1050px) {
-          .nav-menu {
-            display: flex;
-          }
-          .left-buttons {
-            display: none;
-          }
-          .right-buttons {
-            display: none;
-          }
-          .text-content p {
-            font-size: 0.8em;
-        }
-        .highlight {
-          font-size: 0.8em;
-        }
-        .imgDisplay {
-            position: absolute;
-            height: 600px;
-        }
-        .special-text {
-            bottom: 78%;
-        }
-        .arrow {
-            top: 17%;
-        }
-        .content {
-            margin-top: 600px;
-        }
-        }
+        
        /* Core Values Container */
       .switching-container {
           position: relative;
@@ -689,9 +628,9 @@
 
       /* Value Image */
       .valueimg img {
-          width: 400px;
+          width: 450px;
           height: 300px;
-          max-width: 300px;
+          max-width: 450px;
           margin-bottom: 15px;
           border-radius: 10px;
       }
@@ -743,6 +682,160 @@
         display: inline;
         font-size: 35px;
       }
+
+      .carousel-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto; /* Center carousel horizontally */
+        padding: 0;
+        max-width: 755px; /* Set maximum width */
+        position: relative;
+      }
+
+      .carousel {
+        width: 100%; /* Full width of the container */
+        max-height: 380px;
+        aspect-ratio: 16 / 9; /* Maintain 16:9 ratio */
+        margin: 0 auto; /* Center carousel horizontally */
+        padding: 0;
+        overflow: hidden;
+        cursor: url(pointer.png), auto;
+        position: relative;
+        border-radius: 10px; /* Optional rounded corners */
+        background-color: #f0f0f0; /* Fallback background */
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+        .carousel:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9); /* Add a shadow */
+            cursor: url(pointer.png), auto;
+        }
+
+      .carousel img {
+        width: 100%; 
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        object-fit: cover; /* Ensures images cover the entire carousel without distortion */
+        object-position: center; /* Centers the image */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; /* Hidden by default */
+        z-index: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+
+      .carousel img.active {
+        opacity: 1; /* Show active image */
+        z-index: 1;
+      }
+
+      .carousel .carousel-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3.5em;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        font-weight: bold;
+        text-align: center;
+        pointer-events: none; /* Ensures the text doesn't interfere with interaction */
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 2;
+      }
+
+      .carousel img.active + .carousel-text {
+        opacity: 1;
+      }
+
+      .dots {
+        position: absolute;
+        bottom: 20px; /* Adjust spacing from the bottom */
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px; /* Space between dots */
+        z-index: 2;
+      }
+
+      .dots button {
+        width: 12px;
+        height: 12px;
+        border: none;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: url(pointer.png), auto;
+        transition: background-color 0.3s;
+      }
+
+      .dots button.active {
+        background-color: #333; /* Active dot color */
+      }
+
+    #content7 img{
+        width: 755px;
+        height: 380px;
+    }
+
+      @media (max-width: 1050px) {
+          .nav-menu {
+            display: flex;
+          }
+          .left-buttons {
+            display: none;
+          }
+          .right-buttons {
+            display: none;
+          }
+          .text-content p {
+            font-size: 1.8em;
+        }
+        .highlight {
+          font-size: 1.9em;
+        }
+        .imgDisplay {
+            position: absolute;
+            height: 600px;
+        }
+        .special-text {
+            bottom: 78%;
+        }
+        .arrow {
+            top: 17%;
+        }
+        .content {
+            margin-top: 600px;
+        }
+        .contact-section {
+                padding: 20px;
+            }
+
+            .contact-info, .contact-form {
+                text-align: left;
+            }
+            .hover-content {
+                padding: 20px 0;
+                width: 95%;
+            }
+
+            .image-content {
+                width: 100%;
+            }
+            .carousel-container {
+            padding: 10px;
+          }
+
+          .carousel {
+            aspect-ratio: 16 / 9; /* Maintain the same aspect ratio */
+          }
+        }
     </style>
   </head>
   <body>
@@ -843,9 +936,35 @@
             <span class="highlightone">PROJECTS</span></h1></a>
             <p></p>
         </div>
-        <div class="image-content">
-            <a href="projects.html"><img src="bg6.png" alt="Summit TECS Engineering Image"  style="height: 380px; width: 755px;"></a>
-        </div>
+        <div class="carousel-container">
+          <div class="carousel projectcarousel">
+            <img src="bg2.png" class="active" alt="Project Image 1" onclick="window.location.href = 'pro1.html'">
+            <div class="carousel-text">Commercial <br> Buildings</div>
+
+            <img src="pro4.jpg" alt="Project Image 2" onclick="window.location.href = 'pro2.html'">
+            <div class="carousel-text">Pharmaceutical <br> Factories</div>
+
+            <img src="pro3.jpg" alt="Project Image 3" onclick="window.location.href = 'pro3.html'">
+            <div class="carousel-text">Admin Buildings</div>
+
+            <img src="bg10.png" alt="Project Image 4" onclick="window.location.href = 'pro4.html'">
+            <div class="carousel-text">Residential Buildings</div>
+
+            <img src="pro2.jpg" alt="Project Image 5" onclick="window.location.href = 'pro5.html'">
+            <div class="carousel-text">Health Care</div>
+
+            <img src="pro6.jpg" alt="Project Image 6" onclick="window.location.href = 'pro6.html'">
+            <div class="carousel-text">Educational Buildings</div>
+            <div class="dots">
+              <button class="active"></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+            </div>
+          </div>
+          </div>
         <a href="projects.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
 
@@ -861,15 +980,57 @@
         <a href="partners.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
 
-    <section class="hover-content" id="content7">
+    <section class="hover-content projects" id="content7">
         <div class="text-content">
             <a href="servises.html"><h1>OUR<br> 
             <span class="highlightone">SERVICES</span></h1></a>
             <p></p>
         </div>
-        <div class="image-content">
-            <a href="servises.html"><img src="images/service7.jpg" alt="Summit TECS Engineering Image" style="height: 380px; width: 755px;"></a>
-        </div>
+        <div class="carousel-container">
+          <div class="carousel servicecarousel">
+            <img src="images/service1.jpg" class="active" alt="Project Image 1">
+            <div class="carousel-text">Central Air Conditioning</div>
+
+            <img src="images/service2.jpg" alt="Project Image 2">
+            <div class="carousel-text">Plumbing</div>
+
+            <img src="images/service3.jpg" alt="Project Image 3">
+            <div class="carousel-text">Firefighting</div>
+
+            <img src="images/service4.jpg" alt="Project Image 4">
+            <div class="carousel-text">Electrical</div>
+
+            <img src="images/service5.jpg" alt="Project Image 5">
+            <div class="carousel-text">Smart Home Technologies</div>
+
+            <img src="images/service6.jpg" alt="Project Image 6">
+            <div class="carousel-text">Steam Networks</div>
+
+            <img src="images/service7.jpg" alt="Project Image 7">
+            <div class="carousel-text">Compressed Air</div>
+
+            <img src="images/service8.jpg" alt="Project Image 8">
+            <div class="carousel-text">Heating Networks</div>
+
+            <img src="images/service9.jpg" alt="Project Image 9">
+            <div class="carousel-text">Swimming Pools</div>
+
+            <img src="images/service10.jpg" alt="Project Image 10">
+            <div class="carousel-text">Medical Gas</div>
+            <div class="dots">
+              <button class="active"></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+              <button></button>
+            </div>
+          </div>
+          </div>
         <a href="servises.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
 
@@ -934,7 +1095,7 @@
 
               <div class="contact-info">
                   <h2>Our Address</h2>
-                  <a href="https://maps.app.goo.gl/8RTakXBZAo8XMFtq6"><img src="location-icon.png" style="height: 20px; position: relative; bottom: -4px; left: 5px;">
+                  <a href="https://maps.app.goo.gl/8RTakXBZAo8XMFtq6"><img src="location-icon.png" style="height: 28px; position: relative; bottom: -7px; left: 5px;">
                   426 N Elgesh St, Gate 4 Hadayek Elahram floor 3</a>
 
                   <h2>Phone</h2>
@@ -1146,7 +1307,118 @@ containers.forEach((container, index) => {
         index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
 });
 
+document.querySelectorAll('.servicecarousel').forEach((carousel) => {
+    const images = carousel.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.dots button');
+    let currentIndex = 0;
+    let startX = 0, endX = 0;
+    let timer;
 
+    function showImage(index) {
+        images.forEach((img, i) => img.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentIndex = index;
+    }
+
+    function nextImage() {
+        showImage((currentIndex + 1) % images.length);
+    }
+
+    function previousImage() {
+        showImage((currentIndex - 1 + images.length) % images.length);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(timer);
+            showImage(index);
+            startAutoSlide();
+        });
+    });
+
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        if (startX - endX > 50) nextImage();
+        else if (endX - startX > 50) previousImage();
+    });
+
+    function startAutoSlide() {
+        timer = setInterval(nextImage, 2500);
+    }
+
+    showImage(0);
+    startAutoSlide();
+});
+
+
+  document.querySelectorAll('.projectcarousel').forEach((carousel) => {
+    const images = carousel.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.dots button');
+    let currentIndex = 0;
+    let startX = 0, endX = 0;
+    let timer;
+
+    function showImage(index) {
+        images.forEach((img, i) => img.classList.toggle('active', i === index));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        currentIndex = index;
+    }
+
+    function nextImage() {
+        showImage((currentIndex + 1) % images.length);
+    }
+
+    function previousImage() {
+        showImage((currentIndex - 1 + images.length) % images.length);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            clearInterval(timer);
+            showImage(index);
+            startAutoSlide();
+        });
+    });
+
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        endX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        if (startX - endX > 50) nextImage();
+        else if (endX - startX > 50) previousImage();
+    });
+
+    function startAutoSlide() {
+        timer = setInterval(nextImage, 2500);
+    }
+
+    showImage(0);
+    startAutoSlide();
+});
+
+  
+    document.querySelector('.servicecarousel').addEventListener('click', (event) => {
+        // Check if the click event is from a dot or other interactive element
+        if (event.target.classList.contains('dots') || event.target.closest('.dots button')) {
+            // Prevent redirection
+            event.stopPropagation();
+            return;
+        }
+        // Redirect for other clicks
+        window.location.href = 'servises.html';
+    });
     </script>
   </body>
 </html>
