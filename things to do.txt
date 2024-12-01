@@ -1,8 +1,23 @@
-1. make images in project page also clickable***********DONE*************
+1. keep looking for ideas and upgrading website
 2. make size of loading screen gif in phone screens larger***********DONE*************
-3. make size of menu in phone screens larger
+3. make size of menu in phone screens larger***********DONE*************
 4. fix size difference in villas/ pro4***********DONE*************
 6. add areas in home page leading to projects, services and clients page***********DONE*************
 7. add downloadable link for summit profile (power point)
 8. add a text in menu saying who made the website
-9. keep looking for ideas and upgrading website
+9. make images in project page also clickable***********DONE*************
+10. add and area rising from zero to number of projects like korra
+11. make font in home page bigger***********DONE*************
+12. make location icon bigger***********DONE*************
+13. make homepage photo apear on link
+14. make our projects and our services areas in home changing photos of images inside them with name
+15. send images inside our projects and our services areas to dad***********DONE*************
+16. add an area in homepage with changing photos for summit news
+17. add an area in homepage with changing photos for photo gallery
+18. add video gallery area in homepage
+19. add first image in profile in homepage
+20. add an area for hiring in homepage like career area in korra
+  (Mechanical Site Engineer 2 years experience),
+  (Electrical Site Engineer 2 years experience),
+  (Mechanical technical office Engineer 2 years experience),
+  (Accountant 4 years experience)
