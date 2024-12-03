@@ -6,18 +6,18 @@
 7. add downloadable link for summit profile (power point)
 8. add a text in menu saying who made the website
 9. make images in project page also clickable***********DONE*************
-10. add an area rising from zero to number of projects like korra
+10. add an area rising from zero to number of projects like korra***********DONE*************
 11. make font in home page bigger***********DONE*************
 12. make location icon bigger***********DONE*************
-13. make homepage photo apear on link
+13. make homepage photo apear on link***********DONE*************
 14. make our projects and our services areas in home changing photos of images inside them with name***********DONE*************
 15. send images inside our projects and our services areas to dad***********DONE*************
 16. add an area in homepage with changing photos and text for summit news
 17. add an area in homepage with changing photos for photo gallery
-18. add video gallery area in homepage
-19. add first image in profile in homepage
-20. add an area for hiring in homepage like career area in korra
-  (Mechanical Site Engineer 2 years experience),
-  (Electrical Site Engineer 2 years experience),
-  (Mechanical technical office Engineer 2 years experience),
-  (Accountant 4 years experience)
+18. add video gallery area in homepage***********DONE*************
+19. add first image in profile in homepage***********DONE*************
+20. add an area for hiring in homepage like career area in korra***********DONE*************
+  (Mechanical Site Engineer 2 years experience),***********DONE*************
+  (Electrical Site Engineer 2 years experience),***********DONE*************
+  (Mechanical technical office Engineer 2 years experience),***********DONE*************
+  (Accountant 4 years experience)***********DONE*************

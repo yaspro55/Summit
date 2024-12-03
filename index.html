@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>Summit TECS</title>
+    <meta property="og:title" content="Summit" />
+    <meta property="og:description" content="At Summit We make anything happens." />
+    <meta property="og:url" content="https://www.summittecs.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.summittecs.com/linkimg.jpg" />
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
       rel="stylesheet"
@@ -369,7 +374,8 @@
             transform: translateX(0);
         }
 
-        .image-content img {
+        .image-content img,
+        .image-content video {
             width: 100%;
             height: auto;
             object-fit: cover;
@@ -784,6 +790,98 @@
         height: 380px;
     }
 
+    .rise {
+        background-color: #e5e2e293;
+        width: 50%;
+        margin: 20px auto;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: background-color 0.5s ease; /* Updated to ensure compatibility */
+        z-index: 1; /* Ensure it's above other elements */
+        cursor: url(pointer.png), auto;
+    }
+
+    .rise:hover {
+        background-color: #ffffff; /* Fixed hover transition */
+        cursor: url(pointer.png), auto;
+    }
+
+
+    .rise h1 {
+        color: #194b7c;
+        margin-bottom: 20px;
+        margin-top: 0;
+        font-size: 3rem;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rise h1 .completion-icon {
+        font-size: 2.5rem;
+        color: #27ae60;
+        margin-left: 10px;
+        animation: bounce 1s infinite alternate;
+    }
+
+    .number-cont {
+        font-size: 8rem; /* Larger font size */
+        font-weight: bold;
+        color: #16a085;
+        position: relative;
+        margin: 20px auto 10px auto; /* Center the number and add spacing */
+        display: flex;
+        justify-content: center;
+    }
+
+    .number-cont::after {
+        content: '+';
+        font-size: 4rem; /* Match the size of the "+" sign */
+        color: #16a085;
+        margin-left: 10px;
+        align-self: center;
+    }
+
+
+    .number-cont::before {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(to right, #1abc9c, #2ecc71);
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+    }
+
+    .rise p {
+        font-size: 1.5rem;
+        color: #7f8c8d;
+        margin-top: 15px;
+    }
+
+    .number-cont p {
+      font-size: 3rem;
+    }
+
+    @keyframes bounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-5px);
+        }
+    }
+
+
+
+
+
       @media (max-width: 1050px) {
           .nav-menu {
             display: flex;
@@ -862,6 +960,7 @@
       <button id="buttonii">About-us</button>
       <button id="buttoniii">Clients</button>
       <button id="buttoniiiiii">Contact-us</button>
+      <button id="buttoniiiiiii">Careers</button>
   </div>
     <header>
       <div class="left-buttons">
@@ -892,7 +991,7 @@
         with their extensive technical expertise, sets us apart from the competition. <br>
           </div>
           <div class="image-content">
-              <img src="goals.png" style="height: 450px;" alt="Summit TECS Goals Image">
+              <img src="profile.png" style="height: 450px;" alt="Summit TECS Goals Image">
           </div>
       </section>
 
@@ -967,6 +1066,17 @@
           </div>
         <a href="projects.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
+    <section class="hover-content" id="content12">
+      <div class="rise pro-completed">
+          <h1>
+              Project Completion
+              <span class="completion-icon">&#10004;</span>
+          </h1>
+          <div class="number-cont">
+              <p class="number">0</p> 
+      </div>
+      <p>Successfully completed projects</p>
+  </section>
 
     <section class="hover-content" id="content6">
         <div class="text-content">
@@ -1033,9 +1143,18 @@
           </div>
         <a href="servises.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
+    <section class="hover-content" id="content8">
+      <div class="text-content">
+        <h1>EXCELLENCE<br> 
+        <span class="highlightone">IS WHAT WE DO</span></h1>
+    </div>
+      <div class="image-content">
+        <video src="residentialvid1.mp4" loop autoplay muted alt="Summit TECS Engineering Image"></video>
+      </div>
+  </section>
 
       <!-- Section 4 -->
-      <section class="hover-content" id="content8">
+      <section class="hover-content" id="content9">
         <div class="text-content">
             <h1>SUMMIT<br>
                 <span class="highlightone">CORE VALUES</span>
@@ -1043,7 +1162,7 @@
         </div>
         <div class="switching-container">
             <!-- Each value container -->
-            <div class="hover-content value-container active" id="content9">
+            <div class="hover-content value-container active" id="content10">
                 <h2 class="valuename">Collaboration</h2>
                 <div class="valueimg">
                     <img src="collaboration.png" alt="Collaboration Image">
@@ -1079,8 +1198,7 @@
         </div>
     </section>   
     
-          <!-- Section 2 -->
-          <section class="hover-content" id="content10">
+          <section class="hover-content" id="content11">
             <div class="text-content">
               <h1>WE ARE<br> 
                 <span class="highlightone">HIRING!!!</span></h1>
@@ -1091,7 +1209,7 @@
             </div>
             <a href="partners.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
         </section>
-      
+        
           <!-- Final Section -->
           <section class="hover-content" id="final">
               <div class="text-content">
@@ -1279,6 +1397,7 @@ document.getElementById("buttoniiii").addEventListener("click", () => window.loc
 document.getElementById("buttonzero").addEventListener("click", () => window.location.href = "index.html");
 document.getElementById("buttoni").addEventListener("click", () => window.location.href = "index.html");
 document.getElementById("buttoniiiii").addEventListener("click", () => window.location.href = "servises.html");
+document.getElementById("buttoniiiiiii").addEventListener("click", () => window.location.href = "hiring.html");
 document.getElementById("buttonthreedotfive").addEventListener("click", () => window.location.href = "servises.html");
 
 // Value Slider Logic
@@ -1432,6 +1551,41 @@ document.querySelectorAll('.servicecarousel').forEach((carousel) => {
         // Redirect for other clicks
         window.location.href = 'servises.html';
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const content12 = document.querySelector('#content12');
+    const numberElement = content12.querySelector('.number');
+    let hasScrolled = false;
+
+    function animateNumber() {
+        let current = 0;
+        const target = 76;
+        const duration = 2500; // Animation duration in ms
+        const stepTime = Math.ceil(duration / target);
+
+        const interval = setInterval(() => {
+            current++;
+            numberElement.textContent = current;
+            if (current === target) {
+                clearInterval(interval);
+            }
+        }, stepTime);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasScrolled) {
+                hasScrolled = true;
+                animateNumber();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(content12);
+});
+
+
+
     </script>
   </body>
 </html>
