@@ -791,7 +791,7 @@
     }
 
     .rise {
-        background: linear-gradient(to right, #e0f7fa, #65cbd8);
+        background-color: #a7f0f9;
         width: 50%;
         margin: 20px auto;
         border-radius: 10px;
@@ -800,12 +800,16 @@
         position: relative;
         box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
         overflow: hidden;
-        transition: background 0.5s ease; /* Explicitly define background for transition */
+        transition: background-color 0.5s ease; /* Updated to ensure compatibility */
+        z-index: 1; /* Ensure it's above other elements */
+        cursor: url(pointer.png), auto;
     }
 
     .rise:hover {
-        background: linear-gradient(to left, #65cbd8, #e0f7fa); /* Corrected hover effect */
+        background-color: #9dfff7; /* Fixed hover transition */
+        cursor: url(pointer.png), auto;
     }
+
 
     .rise h1 {
         color: #34495e;
@@ -826,23 +830,23 @@
     }
 
     .number-cont {
-        font-size: 6rem;
+        font-size: 8rem; /* Larger font size */
         font-weight: bold;
-        width: 50%;
         color: #16a085;
         position: relative;
-        margin: 10px auto; /* Added spacing for the number */
-        display: inline-flex;
-        align-items: center;
+        margin: 20px auto 10px auto; /* Center the number and add spacing */
+        display: flex;
         justify-content: center;
     }
 
     .number-cont::after {
         content: '+';
-        font-size: 3rem;
+        font-size: 4rem; /* Match the size of the "+" sign */
         color: #16a085;
-        margin-left: 5px;
+        margin-left: 10px;
+        align-self: center;
     }
+
 
     .number-cont::before {
         content: '';
