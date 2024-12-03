@@ -35,6 +35,13 @@
       height: 70px;
     }
 
+    a {
+      color: inherit; /* Keeps the base text color */
+      cursor: url(pointer.png), auto;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /*loading screen*/
     .loading-screen {
         position: fixed;
@@ -268,16 +275,16 @@
   margin: 10px 0 0 auto;
   padding: 10px 20px;
   font-size: 1em;
-  background: linear-gradient(to right, #ff8000, #ffcc33);
+  background-image: linear-gradient(to right, #ff8000, #ffcc33);
   border: none;
   border-radius: 5px;
   color: #fff;
   cursor: url(pointer.png), auto;
-  transition: background 0.3s ease;
+  transition: background-image 0.3s ease;
 }
 
 .job button:hover {
-  background: linear-gradient(to right, #ffcc33, #ff8000);
+  background-image: linear-gradient(to right, #ffcc33, #ff8000);
 }
 
   </style>
@@ -327,22 +334,22 @@
       <div class="job">
         <h3>Mechanical Site Engineer</h3>
         <p>Experience: 2 years</p>
-        <button>Apply Now</button>
+        <a href="job1.html"><button>Apply Now</button></a>
       </div>
       <div class="job">
         <h3>Electrical Site Engineer</h3>
         <p>Experience: 2 years</p>
-        <button>Apply Now</button>
+        <a href="job2.html"><button>Apply Now</button></a>
       </div>
       <div class="job">
         <h3>Mechanical Technical Office Engineer</h3>
         <p>Experience: 2 years</p>
-        <button>Apply Now</button>
+        <a href="job3.html"><button>Apply Now</button></a>
       </div>
       <div class="job">
         <h3>Accountant</h3>
         <p>Experience: 4 years</p>
-        <button>Apply Now</button>
+        <a href="job4.html"><button>Apply Now</button></a>
       </div>
     </div>
 </div>
