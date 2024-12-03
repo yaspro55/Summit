@@ -790,6 +790,94 @@
         height: 380px;
     }
 
+    .rise {
+        background: linear-gradient(to right, #e0f7fa, #65cbd8);
+        width: 50%;
+        margin: 20px auto;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: background 0.5s ease; /* Explicitly define background for transition */
+    }
+
+    .rise:hover {
+        background: linear-gradient(to left, #65cbd8, #e0f7fa); /* Corrected hover effect */
+    }
+
+    .rise h1 {
+        color: #34495e;
+        margin-bottom: 20px;
+        margin-top: 0;
+        font-size: 3rem;
+        font-weight: bold;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rise h1 .completion-icon {
+        font-size: 2.5rem;
+        color: #27ae60;
+        margin-left: 10px;
+        animation: bounce 1s infinite alternate;
+    }
+
+    .number-cont {
+        font-size: 6rem;
+        font-weight: bold;
+        width: 50%;
+        color: #16a085;
+        position: relative;
+        margin: 10px auto; /* Added spacing for the number */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .number-cont::after {
+        content: '+';
+        font-size: 3rem;
+        color: #16a085;
+        margin-left: 5px;
+    }
+
+    .number-cont::before {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(to right, #1abc9c, #2ecc71);
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+    }
+
+    .rise p {
+        font-size: 1.5rem;
+        color: #7f8c8d;
+        margin-top: 15px;
+    }
+
+    .number-cont p {
+      font-size: 3rem;
+    }
+
+    @keyframes bounce {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-5px);
+        }
+    }
+
+
+
+
+
       @media (max-width: 1050px) {
           .nav-menu {
             display: flex;
@@ -974,6 +1062,17 @@
           </div>
         <a href="projects.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
     </section>
+    <section class="hover-content" id="content12">
+      <div class="rise pro-completed">
+          <h1>
+              Project Completion
+              <span class="completion-icon">&#10004;</span>
+          </h1>
+          <div class="number-cont">
+              <p class="number">0</p> 
+      </div>
+      <p>Successfully completed projects</p>
+  </section>
 
     <section class="hover-content" id="content6">
         <div class="text-content">
@@ -1095,7 +1194,6 @@
         </div>
     </section>   
     
-          <!-- Section 2 -->
           <section class="hover-content" id="content11">
             <div class="text-content">
               <h1>WE ARE<br> 
@@ -1107,7 +1205,7 @@
             </div>
             <a href="partners.html" style="width: 720px; text-align: left; font-size: 20px;">learn more -></a>
         </section>
-      
+        
           <!-- Final Section -->
           <section class="hover-content" id="final">
               <div class="text-content">
@@ -1449,6 +1547,41 @@ document.querySelectorAll('.servicecarousel').forEach((carousel) => {
         // Redirect for other clicks
         window.location.href = 'servises.html';
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const content12 = document.querySelector('#content12');
+    const numberElement = content12.querySelector('.number');
+    let hasScrolled = false;
+
+    function animateNumber() {
+        let current = 0;
+        const target = 85;
+        const duration = 2000; // Animation duration in ms
+        const stepTime = Math.ceil(duration / target);
+
+        const interval = setInterval(() => {
+            current++;
+            numberElement.textContent = current;
+            if (current === target) {
+                clearInterval(interval);
+            }
+        }, stepTime);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasScrolled) {
+                hasScrolled = true;
+                animateNumber();
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(content12);
+});
+
+
+
     </script>
   </body>
 </html>
