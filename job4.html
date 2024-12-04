@@ -473,7 +473,7 @@
   </header>
 
   <div class="content">
-    <h1>Accountant </h1>
+    <h1>Accountant</h1>
     <div class="job-details">
         <div class="detail">
             <img src="https://img.icons8.com/ios/50/000000/worldwide-location.png" alt="Location Icon" class="icon">
@@ -535,7 +535,7 @@
 
 <div class="contact-section">
   <h1>Contact Us</h1>
-  <h2 class="quote">Apply now</h2>
+  <h2 class="quote">If you find yourself qualified for this opportunity send your cv to this email {<a href="mailto:Info@Summittecs.com" style="cursor: url(pointer.png), auto; color: orange;">info@summittecs.com</a>}</h2>
   
   <div class="contact-form">
     <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" enctype="multipart/form-data">
@@ -551,14 +551,6 @@
       <div class="form-group">
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="cv">Upload Your CV</label>
-        <div id="drop-area" class="drop-area">
-          <p>Drag and drop your CV here, or <span id="file-browser">browse</span></p>
-          <input type="file" id="file-input" name="cv" accept=".pdf,.doc,.docx" hidden>
-        </div>
-        <div id="file-preview"></div>
       </div>
       <button type="submit" class="send-btn">Send Message</button>
     </form>
@@ -630,49 +622,6 @@
         document.getElementById("buttoniiiiiii").addEventListener("click", function () {
             window.location.href = "hiring.html";
         });
-        // File input and drag-and-drop functionality
-const dropArea = document.getElementById('drop-area');
-const fileInput = document.getElementById('file-input');
-const fileBrowser = document.getElementById('file-browser');
-const filePreview = document.getElementById('file-preview');
-
-// Show file input dialog when 'browse' is clicked
-fileBrowser.addEventListener('click', () => fileInput.click());
-
-// Handle drag-and-drop functionality
-dropArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  dropArea.classList.add('hover');
-});
-
-dropArea.addEventListener('dragleave', () => {
-  dropArea.classList.remove('hover');
-});
-
-dropArea.addEventListener('drop', (e) => {
-  e.preventDefault();
-  dropArea.classList.remove('hover');
-  const files = e.dataTransfer.files;
-  handleFile(files[0]);
-});
-
-// Handle file selection via input
-fileInput.addEventListener('change', (e) => {
-  const files = e.target.files;
-  handleFile(files[0]);
-});
-
-// Display selected file and validate
-function handleFile(file) {
-  if (file) {
-    if (['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'].includes(file.type)) {
-      filePreview.textContent = `Selected file: ${file.name}`;
-    } else {
-      filePreview.textContent = 'Invalid file type. Please upload a .pdf, .doc, or .docx file.';
-    }
-  }
-}
-
   </script>
 </body>
 </html>
