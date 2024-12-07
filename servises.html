@@ -2,28 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Services</title>
+  <title>Careers</title>
   <link rel="icon" href="logo.png" type="image/x-icon">
   <style>
-    /* General Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(to right, #f4f4f4, #e0e0e0);
-      color: #333;
-      overflow-x: hidden;
       cursor: url(cursor.png), auto;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333;
     }
 
     /* Header Styling */
     header {
       width: 100%;
-      background-color: rgba(255, 255, 255, 0.341);
+      background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
       color: #333;
       display: flex;
@@ -39,15 +32,14 @@
     }
 
     header img {
-      height: 40px;
+      height: 70px;
     }
 
-    /* Header Section */
-    .header {
-      background: linear-gradient(to right, #00498F, #FF6D1A);
-      padding: 60px 20px;
-      color: white;
-      text-align: center;
+    a {
+      color: inherit; /* Keeps the base text color */
+      cursor: url(pointer.png), auto;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /*loading screen*/
@@ -92,125 +84,11 @@
           }
       }
 
-    .logo {
-      width: 150px;
-      display: block;
-      margin: 0 auto 20px;
-    }
-
-    .header h1 {
-      font-size: 3rem;
-      font-weight: bold;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-    }
-
-    .header p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-top: 15px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Services Section */
-    .services {
-      padding: 50px 20px;
-    }
-
-    .services h2 {
-      font-size: 2rem;
-      color: #00498F;
-      text-align: center;
-      margin-bottom: 40px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .services-grid {
-      margin: 0 auto;
-    }
-
-    .service-item {
-      padding: 20px;
-      border-radius: 16px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      margin-bottom: 150px;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      cursor: url(pointer.png), auto;
-    }
-
-    .service-item img {
-      width: 90%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 16px;
-      display: block;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .imageContent {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .title {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 6rem; /* Adjust font size */
-      font-weight: bold;
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-      z-index: 2; /* Ensures the title stays on top of the image */
-      text-align: center;
-      pointer-events: none; /* Prevents interaction with the title */
-    }
-
-    /* Adjust Description Position and Styling */
-    .service-item .content {
-      margin-top: 20px;
-      padding: 15px;
-      width: 90%;
-    }
-
-    .service-item span {
-      display: block;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      font-style: italic;
-      opacity: 0.8;
-    }
-        .special {
-          display: inline;
-          font-size: 2rem;
-          margin: 0;
-          font-style: normal;
-          opacity: 1;
-        }
-
-    .service-item .description {
-      color: #333;
-      text-align: left;
-      line-height: 2;
-      font-size: 1.3rem;
-      font-weight: 400;
-      padding: 10px;
-      width: 90%;
-    }
-    /* Hamburger Menu */
-    .nav-menu {
+     /* Hamburger Menu */
+     .nav-menu {
             position: fixed;
-            top: 6px;
-            right: 6px;
+            top: 15px;
+            right: 10px;
             height: 50px;
             width: 50px;
             border-radius: 10px;
@@ -225,16 +103,16 @@
         }
 
         .nav-menu div {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             margin: 2px;
             position: fixed;
             z-index: 900;
         }
         .nav-menu span {
-            background-image: linear-gradient(rgb(10, 136, 255), rgb(124, 183, 255));
-            width: 80%;
-            height: 4px;
+            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
+            width: 100%;
+            height: 6px;
             border-radius: 5px;
             display: block;
             position: absolute;
@@ -248,11 +126,11 @@
           z-index: 900;
         }
         .nav-menu .line1 {
-            transform: translate(-50%, -12px);
+            transform: translate(-50%, -16px);
             z-index: 900;
         }
         .nav-menu .line3 {
-            transform: translate(-50%, 8px);
+            transform: translate(-50%, 10px);
             z-index: 900;
         }
         .openmenu .line1 {
@@ -275,7 +153,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             position: fixed;
             z-index: 800;
@@ -306,45 +184,260 @@
         .trans-nav-btn-menu {
             left: 60%;
         }
-        @media (max-width: 1000px) {
-          .description {
-            font-size: 15px;
-          }
-          header {
-            height: 80px;
-          }
-          header img {
-            height: 70px;
-          }
-          .nav-menu {
-            height: 50px;
-            width: 50px;
-            top: 15px;
-            right: 15px;
-          }
-          .nav-menu div {
-            height: 50px;
-            width: 50px;
-          }
-          .nav-menu span {
-            width: 100%;
-            height: 6px;
-          }
-          .nav-menu .line1 {
-            transform: translate(-50%, -18px);
-          }
-          .nav-menu .line3 {
-            transform: translate(-50%, 12px);
-          }
-          .openmenu .line1 {
-            transform: translate(-50%, -50%) rotate(-45deg);
-            z-index: 900;
-          }
-          .openmenu .line3 {
-              transform: translate(-50%, -50%) rotate(45deg);
-              z-index: 900;
-          }
-        }
+
+    /* Responsive Dots Placement */
+    @media (max-width: 900px) {
+      .nav-btn-menu {
+        width: 50%;
+      }
+      .trans-nav-btn-menu {
+        left: 50%;
+      }
+    }
+
+    .content {
+    margin-top: 80px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content h1 {
+    font-size: 2.5em;
+    color: #ff8000;
+    background: linear-gradient(to right, #ff8000, #ffcc33);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.job-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #ff8000;
+    border-radius: 15px;
+    background-color: #fff7e6;
+    width: 80%;
+}
+
+.detail {
+    text-align: center;
+    flex: 1;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.light {
+    color: #999;
+    font-size: 0.9em;
+}
+.job-overview {
+    margin-top: 30px;
+    padding: 20px;
+    width: 80%;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.job-overview h2 {
+    font-size: 1.5em;
+    color: #ff8000;
+    background: linear-gradient(to right, #ff8000, #ffcc33);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.job-overview p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.job-overview ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.job-overview ul li {
+    font-size: 1em;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 25px;
+    color: #333;
+}
+
+.job-overview ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #ff8000;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+.job-overview ul ul {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+/* Contact Section */
+.contact-section {
+    background: linear-gradient(120deg, #ffffff, #f3f4f6);
+    padding: 50px 20px;
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-section:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-section h1, .contact-section h2 {
+    color: #d48d08;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contact-section .quote {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    color: #444;
+    margin: 5px 0;
+}
+
+.contact-info a {
+    color: #d48d08;
+    text-decoration: underline;
+}
+
+.contact-form {
+    background: none;
+    padding: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+}
+
+.contact-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #d48d08;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border 0.3s;
+}
+
+.contact-form .form-group input:focus,
+.contact-form .form-group textarea:focus {
+    border: 1px solid #d48d08;
+    outline: none;
+}
+
+.contact-form .send-btn {
+    background: linear-gradient(120deg, #d48d08, #ff8000);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s;
+}
+
+.contact-form .send-btn:hover {
+    background: linear-gradient(120deg, #ff8000, #d48d08);
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 30px 10px;
+    }
+
+    .contact-form {
+        margin: 0;
+        box-shadow: none;
+    }
+}
+/* Drag-and-drop area */
+.drop-area {
+  border: 2px dashed #d48d08;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  background-color: #fef9f3;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.drop-area:hover {
+  background-color: #f9f3e9;
+}
+
+.drop-area p {
+  margin: 0;
+  font-size: 1em;
+  color: #555;
+}
+
+.drop-area span {
+  color: #d48d08;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#file-preview {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+
   </style>
 </head>
 <body>
@@ -364,192 +457,157 @@
         <span class="line2"></span>
         <span class="line3"></span>
     </div>
-  </div>
-  <div class="nav-btn-menu">
+</div>
+<div class="nav-btn-menu">
     <button id="buttoni">Home</button>
-    <button id="buttoniiiii">Clients</button>
-    <button id="buttoniiii">Projects</button>
+    <button id="buttoniiiii">Services</button>
+    <button id="buttoniii">Projects</button>
     <button id="buttonii">About-us</button>
+    <button id="buttoniiii">Clients</button>
     <button id="buttoniiiiii">Contact-us</button>
     <button id="buttoniiiiiii">Careers</button>
-  </div>
+</div>
+
   <header>
     <img src="logoname.png" alt="Logo">
   </header>
-  <!-- Header Section -->
-  <div class="header">
-    <img src="logo.png" alt="Logo" class="logo">
-    <h1>OUR SERVICES</h1>
-    <p>
-      We offer comprehensive engineering and construction solutions for electromechanical works across various sectors, including commercial, administrative, residential, and presidential buildings, restaurants, factories (with a focus on pharmaceutical plants), hospitals, airports, and farms.
-    </p>
-  </div>
 
-  <!-- Services Section -->
-  <section class="services">
-    <h2>Explore Our Expert Services</h2>
-    <div class="services-grid">
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Central Air Conditioning</div>
-          <img src="images/service1.jpg" alt="Air Conditioning">
+  <div class="content">
+    <h1>Accountant</h1>
+    <div class="job-details">
+        <div class="detail">
+            <img src="https://img.icons8.com/ios/50/000000/worldwide-location.png" alt="Location Icon" class="icon">
+            <h3>Job Location</h3>
+            <p class="light">GizGiza- hadayek Elahram</p>
         </div>
-        <div class="content">
-          <p class="description">we specialize in providing high-quality air-conditioning solutions for residential, commercial, and industrial spaces. With a strong commitment to comfort, energy efficiency, and reliability, we are dedicated to delivering the best cooling systems tailored to meet the unique needs of every client.
-            <br>
-            <strong class="special">Our Services covers the following</strong>
-            <br>
-            • Air Conditioning Systems: Installation and maintenance of central air conditioning systems "chilled water", split units, VRF systems, and more.
-            <br>
-            • Indoor Air Quality: Installation of air purifiers and filtration systems to ensure cleaner, healthier air—particularly for pharmaceutical factories, healthcare facilities, and other critical environments.
-            <br>
-            • Energy-Efficient Solutions: Eco-friendly and energy-saving systems to help reduce cooling costs.
-            <br>
-            • HVAC System Design: Custom design of air conditioning and ventilation systems for optimal airflow and comfort.            
-            <br>
-            • Maintenance & Repair: Comprehensive servicing to ensure your AC systems run smoothly and efficiently year-round.</p>
+        <div class="detail">
+            <img src="https://img.icons8.com/ios/50/000000/briefcase.png" alt="Position Icon" class="icon">
+            <h3>Position Type</h3>
+            <p class="light">Full-Time</p>
         </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Plumbing</div>
-          <img src="images/service2.jpg" alt="Plumbing">
+        <div class="detail">
+            <img src="https://img.icons8.com/ios/50/000000/manager.png" alt="Reports To Icon" class="icon">
+            <h3>Reports To</h3>
+            <p class="light">Managing director</p>
         </div>
-        <div class="content">
-          <p class="description">We are specialised in providing professional solutions for water and drainage systems in residential, commercial, and industrial applications. These services ensure the efficient and safe management of water supply and waste dispos.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Firefighting</div>
-          <img src="images/service3.jpg" alt="Firefighting">
-        </div>
-        <div class="content">
-          <p class="description">With a team of experienced professionals, state-of-the-art equipment, and a commitment to safety, we provide top-tier fire protection and safety solutions for all types of buildings. 
-            Our mission is to safeguard lives and property by delivering comprehensive fire detection, suppression, and prevention services tailored to meet the unique needs of each client.
-            while ensuring full compliance with international standards and local authority requirements.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Electrical</div>
-          <img src="images/service4.jpg" alt="Electrical Works">
-        </div>
-        <div class="content">
-          <span style="font-size: 20px;">(Power, Lighting, and Low Current)</span>
-          <p class="description">we provide comprehensive electrical solutions tailored to a wide range of needs. Our services are designed to ensure safety, efficiency, and reliability.
-            <br>
-            <strong class="special">We cover the following areas</strong>
-            <br>
-            • Wiring devices, lighting, power cables, earthing, fire alarm, access control, data, CCTV and distribution Panels with latest upgrades to meet modern standards.
-            <br>
-            • Backup Power Systems: Reliable installation of generators and UPS for uninterrupted power supply.
-            <br>
-            • Custom Electrical Solutions: Specialized services for factories, warehouses, restaurants, residential properties, and offices.
-            <br>
-            • With a focus on quality and compliance with all safety standards, we are committed to delivering exceptional results for projects of all sizes. Let us power your success!</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Smart Home Technologies</div>
-          <img src="images/service5.jpg" alt="Smart Home">
-        </div>
-        <div class="content">
-          <p class="description">we specialize in transforming living spaces into intelligent, connected environments with cutting-edge smart home solutions. Our mission is to enhance comfort, convenience, and security by integrating advanced technology into homes, tailored to meet the unique needs of every client.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Steam Networks</div>
-          <img src="images/service6.jpg" alt="Steam Systems">
-        </div>
-        <div class="content">
-          <p class="description">With extensive experience in steam generation, distribution, and management, we are dedicated to deliver efficient, reliable, and safe steam systems that are tailored to meet the specific needs of each client. Our goal is to ensure that every system we design, install, and maintain operates at peak performance, maximizing energy efficiency and safety while minimizing downtime and operational costs.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Compressed Air</div>
-          <img src="images/service7.jpg" alt="Compressed Air Systems">
-        </div>
-        <div class="content">
-          <p class="description">Our highly trained team provides reliable, high-quality compressed air solutions for industrial applications. With a focus on efficiency and performance, we offer customized systems designed to meet the unique needs of each client, ensuring optimal operation across a variety of industries such as manufacturing, healthcare, and automotive. We are committed to executing systems that enhance productivity, reduce energy costs, and uphold the highest standards of reliability and safety, ensuring your operations run smoothly and efficiently.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Heating Networks</div>
-          <img src="images/service8.jpg" alt="Heating Systems">
-        </div>
-        <div class="content">
-          <p class="description">we customize heating solutions for homes, offices, and commercial facilities to ensure warmth, comfort, and energy efficiency, regardless of the season. With a commitment to excellence, we tailor each solution to meet the unique needs of every client, ensuring reliability, efficiency, and long-lasting performance. Our expert team is dedicated to delivering high-quality heating systems that provide consistent comfort while reducing energy costs and environmental impact.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Swimming Pools</div>
-          <img src="images/service9.jpg" alt="Swimming Pools">
-        </div>
-        <div class="content">
-          <p class="description">our scope covers designing, constructing, and maintaining high-quality swimming pools for residential, commercial, and resort properties. Whether you're looking to create a luxurious backyard oasis or a functional pool for recreational or fitness purposes, we are committed to delivering custom solutions that meet your specific needs and exceed your expectations. From concept to completion, we ensure that each pool we build offers both style and durability.</p>
-        </div>
-      </div>
-      <div class="service-item">
-        <div class="imageContent">
-          <div class="title">Medical Gas</div>
-          <img src="images/service10.jpg" alt="Medical Gas Systems">
-        </div>
-        <div class="content">
-          <p class="description">we provide safe, reliable, and high-quality medical gas solutions for healthcare facilities, including hospitals, clinics, and medical centers. We are dedicated to delivering essential gases that meet the stringent standards required for medical applications, ensuring patient safety and supporting healthcare providers in delivering the best possible care. Our focus is on providing systems that are not only efficient and reliable but also comply with the highest safety and regulatory standards to ensure optimal performance in critical medical environments.</p>
-        </div>
+        <div class="detail">
+          <img src="https://img.icons8.com/ios/50/000000/clock.png" alt="Experience Icon" class="icon">
+          <h3>Experience</h3>
+          <p class="light">4 years</p>
       </div>
     </div>
-  </section>
+
+    <div class="job-overview">
+      <h2>Job Overview:</h2>
+<p>
+    We are seeking a detail-oriented and experienced Accountant to join our contracting company. The ideal candidate will be responsible for managing financial records, ensuring compliance with accounting regulations, and providing accurate financial information to support decision-making in the company. The role involves financial transactions, preparing reports, managing accounts payable and receivable, and assisting in the budgeting process.
+</p>
+
+<h2>Key Responsibilities:</h2>
+<ul>
+    <li><strong>Financial Recordkeeping:</strong> Maintain accurate and up-to-date financial records for all transactions related to contracting projects, including payroll, supplier payments, and customer invoicing.</li>
+    <li><strong>Accounts Payable & Receivable:</strong> Process vendor invoices, manage supplier accounts, and ensure timely payments. Client invoicing, monitor collections, and ensure proper cash flow management.</li>
+    <li><strong>Project Cost Tracking:</strong> Track costs and expenses for construction projects, ensuring they align with budgets. Report any discrepancies or issues to the management team.</li>
+    <li><strong>Financial Reporting:</strong> Prepare monthly, quarterly, and annual financial statements, including balance sheets, income statements, and cash flow reports. Provide financial insights and analysis to management.</li>
+    <li><strong>Tax Compliance:</strong> Ensure compliance with local tax laws, including VAT, income tax, and other relevant taxes. Assist with tax filings and documentation for audits.</li>
+    <li><strong>Budgeting & Forecasting:</strong> Assist in the preparation of budgets for new projects, track project performance, and report on variances between projected and actual figures.</li>
+    <li><strong>Reconciliation:</strong> Reconcile bank accounts, accounts payable, and accounts receivable, ensuring accuracy and completeness.</li>
+</ul>
+
+<h2>Qualifications:</h2>
+<ul>
+    <li><strong>Education:</strong> Bachelor’s degree in Accounting, Finance, or a related field.</li>
+    <li><strong>Experience:</strong> Minimum of 2-3 years of accounting experience, preferably in the construction or contracting industry.</li>
+</ul>
+
+<h2>Skills:</h2>
+<ul>
+    <li>Strong knowledge of accounting principles and financial regulations.</li>
+    <li>Proficient in accounting software (e.g., QuickBooks, Sage, or similar) and MS Excel.</li>
+    <li>Attention to detail with excellent organizational and time management skills.</li>
+    <li>Ability to analyze financial data and provide actionable insights.</li>
+    <li>Knowledge of tax laws and financial reporting standards relevant to the contracting industry.</li>
+</ul>
+
+
+    </div>
+</div>
+
+<div class="contact-section">
+  <h1>Contact Us</h1>
+  <h2 class="quote">If you find yourself qualified for this opportunity send your cv to this email {<a href="mailto:Info@Summittecs.com" style="cursor: url(pointer.png), auto; color: orange;">info@summittecs.com</a>}</h2>
+  
+  <div class="contact-form">
+    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" enctype="multipart/form-data">
+      <input type="hidden" name="access_key" value="e218f665-24ca-4db6-a046-4349016069b3">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="send-btn">Send Message</button>
+    </form>
+  </div>
+</div>
+
+
 
   <script>
-    const images = document.querySelectorAll('img');
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.style.overflow = "hidden"; // Disable scrolling
 
-function preloadImages(callback) {
-          let imagesLoaded = 0;
-          images.forEach((image) => {
-              const img = new Image();
-              img.src = image.src;
+      const images = Array.from(document.querySelectorAll("img"));
+      let loaded = 0;
 
-              img.onload = () => {
-                  imagesLoaded++;
-                  if (imagesLoaded === images.length) callback();
-              };
+      const checkAllLoaded = () => {
+        if (++loaded === images.length || images.length === 0) {
+          const loadingScreen = document.getElementById("loading-screen");
+          loadingScreen.style.opacity = "0";
+          setTimeout(() => {
+            loadingScreen.style.display = "none";
+            document.body.style.overflow = ""; // Re-enable scrolling
+          }, 500); // Matches fade-out duration
+        }
+      };
 
-              img.onerror = () => {
-                  console.error(`Failed to load image: ${src}`);
-                  imagesLoaded++;
-                  if (imagesLoaded === images.length) callback();
-              };
-          });
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        preloadImages(() => {
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.style.opacity = '0'; // Add fade-out effect
-            setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
-        });
+      images.forEach(img => {
+        if (img.complete) {
+          checkAllLoaded();
+        } else {
+          img.onload = checkAllLoaded;
+          img.onerror = checkAllLoaded;
+        }
+      });
+
+      if (images.length === 0) checkAllLoaded(); // If no images, hide immediately
     });
-    
-    const menu = document.querySelector('.nav-menu');
-    const menuBtn = document.querySelector('.nav-btn-menu');
-    menu.addEventListener('click', () => {
-      menu.classList.toggle('openmenu');
-      menuBtn.classList.toggle('trans-nav-btn-menu');
-    });
-    document.getElementById("buttoniiii").addEventListener("click", function () {
-            window.location.href = "projects.html";
+
+    // Navigation Menu Toggle
+    let menu = document.querySelector('.nav-menu');
+      let menuBtn = document.querySelector('.nav-btn-menu');
+
+      menu.addEventListener('click', () => {
+          menu.classList.toggle('openmenu');
+          menuBtn.classList.toggle('trans-nav-btn-menu');
+      });
+      document.getElementById("buttoniiii").addEventListener("click", function () {
+            window.location.href = "partners.html";
         });
         document.getElementById("buttoni").addEventListener("click", function () {
             window.location.href = "index.html";
         });
         document.getElementById("buttoniiiii").addEventListener("click", function () {
-            window.location.href = "partners.html";
+            window.location.href = "servises.html";
+        });
+        document.getElementById("buttoniii").addEventListener("click", function () {
+            window.location.href = "projects.html";
         });
         document.getElementById("buttonii").addEventListener("click", function () {
             window.location.href = "index.html#content";
@@ -558,7 +616,10 @@ function preloadImages(callback) {
         document.getElementById("buttoniiiiii").addEventListener("click", function () {
             window.location.href = "index.html#final";
         });
-        document.getElementById("buttoniiiiiii").addEventListener("click", () => window.location.href = "hiring.html");
+
+        document.getElementById("buttoniiiiiii").addEventListener("click", function () {
+            window.location.href = "hiring.html";
+        });
   </script>
 </body>
 </html>
