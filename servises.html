@@ -510,30 +510,33 @@
   <script>
     const images = document.querySelectorAll('img');
 
-function preloadImages(callback) {
-          let imagesLoaded = 0;
-          images.forEach((image) => {
-              const img = new Image();
-              img.src = image.src;
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.style.overflow = "hidden"; // Disable scrolling
 
-              img.onload = () => {
-                  imagesLoaded++;
-                  if (imagesLoaded === images.length) callback();
-              };
+      const images = Array.from(document.querySelectorAll("img"));
+      let loaded = 0;
 
-              img.onerror = () => {
-                  console.error(`Failed to load image: ${src}`);
-                  imagesLoaded++;
-                  if (imagesLoaded === images.length) callback();
-              };
-          });
-      }
-      document.addEventListener("DOMContentLoaded", () => {
-        preloadImages(() => {
-            const loadingScreen = document.getElementById('loading-screen');
-            loadingScreen.style.opacity = '0'; // Add fade-out effect
-            setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
-        });
+      const checkAllLoaded = () => {
+        if (++loaded === images.length || images.length === 0) {
+          const loadingScreen = document.getElementById("loading-screen");
+          loadingScreen.style.opacity = "0";
+          setTimeout(() => {
+            loadingScreen.style.display = "none";
+            document.body.style.overflow = ""; // Re-enable scrolling
+          }, 500); // Matches fade-out duration
+        }
+      };
+
+      images.forEach(img => {
+        if (img.complete) {
+          checkAllLoaded();
+        } else {
+          img.onload = checkAllLoaded;
+          img.onerror = checkAllLoaded;
+        }
+      });
+
+      if (images.length === 0) checkAllLoaded(); // If no images, hide immediately
     });
     
     const menu = document.querySelector('.nav-menu');

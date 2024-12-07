@@ -560,36 +560,34 @@
 
 
   <script>
-    function preloadImages(callback) {
-    const images = document.querySelectorAll('img'); // Select all img elements
-    let imagesLoaded = 0;
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.style.overflow = "hidden"; // Disable scrolling
 
-    images.forEach((img) => {
-      if (img.complete) {
-        // If the image is already cached, count it as loaded
-        imagesLoaded++;
-        if (imagesLoaded === images.length) callback();
-      } else {
-        img.onload = () => {
-          imagesLoaded++;
-          if (imagesLoaded === images.length) callback();
-        };
-        img.onerror = () => {
-          console.error(`Failed to load image: ${img.src}`);
-          imagesLoaded++;
-          if (imagesLoaded === images.length) callback();
-        };
-      }
-    });
-  }
+      const images = Array.from(document.querySelectorAll("img"));
+      let loaded = 0;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    preloadImages(() => {
-      const loadingScreen = document.getElementById('loading-screen');
-      loadingScreen.style.opacity = '0'; // Add fade-out effect
-      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+      const checkAllLoaded = () => {
+        if (++loaded === images.length || images.length === 0) {
+          const loadingScreen = document.getElementById("loading-screen");
+          loadingScreen.style.opacity = "0";
+          setTimeout(() => {
+            loadingScreen.style.display = "none";
+            document.body.style.overflow = ""; // Re-enable scrolling
+          }, 500); // Matches fade-out duration
+        }
+      };
+
+      images.forEach(img => {
+        if (img.complete) {
+          checkAllLoaded();
+        } else {
+          img.onload = checkAllLoaded;
+          img.onerror = checkAllLoaded;
+        }
+      });
+
+      if (images.length === 0) checkAllLoaded(); // If no images, hide immediately
     });
-  });
 
     // Navigation Menu Toggle
     let menu = document.querySelector('.nav-menu');
