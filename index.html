@@ -17,924 +17,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
     <link rel="icon" href="logo.png" type="image/x-icon">
-    <style>
-      html {
-          scroll-behavior: smooth;
-      }
-
-      /* Reset and Base Styles */
-      body {
-        margin: 0;
-        font-family: "Raleway", sans-serif;
-        overflow-x: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: url("cursor.png"), auto;
-      }
-
-      body button {
-        cursor: url("pointer.png"), auto;
-      }
-
-      a {
-            color: inherit; /* Keeps the base text color */
-            cursor: url(pointer.png), auto;
-            text-decoration: none; /* Removes the default underline */
-            position: relative; /* For hover effects */
-            transition: color 0.3s, border-bottom 0.3s; /* Smooth hover transition */
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        a:hover {
-            color: #FFA500; /* Highlighted color on hover */
-            cursor: url(pointer.png), auto;
-        }
-
-        a h1, a span {
-            cursor: url(pointer.png), auto; /* Ensures child elements indicate clickability */
-        }
-
-        .image-content a img {
-            transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
-            cursor: url(pointer.png), auto;
-        }
-
-        .image-content a img:hover {
-            transform: scale(1.05); /* Slight zoom effect */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Add a shadow */
-            cursor: url(pointer.png), auto;
-        }
-
-
-      header {
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-        backdrop-filter: blur(10px); /* Blur effect for a modern look */
-        color: #333;
-        display: flex;
-        justify-content: space-between;
-        padding: 10px 20px; /* Adjust padding */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 70px;
-        z-index: 500;
-      }
-
-      /* Button Styles */
-      header button {
-        background: transparent;
-        color: #333;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        position: relative;
-        transition: color 0.3s;
-        cursor: url("pointer.png"), auto;
-      }
-
-      header button::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: black;
-        transition: width 0.3s;
-      }
-
-      header button:hover {
-        color: #0078d7; /* On hover, text color changes */
-      }
-
-      header button:hover::after {
-        width: 100%; /* Black line appears under the text */
-      }
-
-      .left-buttons {
-        display: flex;
-        gap: 50px;
-        margin-left: 100px;
-        transition: margin 1s;
-      }
-
-      .right-buttons {
-        display: flex;
-        gap: 50px;
-        margin-right: 100px;
-        transition: margin 1s;
-      }
-
-      .imgDisplay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh; /* Full screen height */
-        background-size: cover;
-        background-position: center;
-        z-index: 1;
-        transition: transform 1s ease-in-out;
-      }
-
-      .content {
-        position: relative;
-        z-index: 2;
-        padding: 20px;
-        width: 100%;
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center the sections */
-        justify-content: flex-start; /* Start from the top */
-        margin-top: 100vh; /* Start below the background image */
-      }
-
-        .logos {
-            width: 400px;
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-            backdrop-filter: blur(10px); /* Blur effect for modern look */
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px; /* Reduced padding */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-            position: fixed;
-            top: -270px;
-            height: 400px;
-            border-radius: 5000px;
-            z-index: 500;
-        }
-        .logo {
-          width: 300px;
-          position: relative;
-          top: 260px;
-        }
-        .highlight {
-        color: rgb(15, 0, 98);
-        font-weight: 700;
-        margin-right: 5px;
-      }
-
-      .special-text {
-        font-size: 50px;
-        font-weight: bold;
-        color: white;
-        opacity: 0;
-        position: absolute;
-        top: 50%; /* Center vertically */
-        left: 50%; /* Center horizontally */
-        transform: translate(-50%, -50%); /* Adjust centering due to top and left */
-        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-        z-index: 5;
-        text-align: center;
-    }
-
-      .visible-text {
-        opacity: 1;
-        transform: translate(-50%, -60%);
-      }
-
-      .arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 50px;
-        color: white;
-        cursor: url("pointer.png"), auto;
-        z-index: 100;
-      }
-
-      .left-arrow {
-        left: 10px;
-      }
-
-      .right-arrow {
-        right: 10px;
-      }
-
-      /*loading screen*/
-    .loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        z-index: 1000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #fbfbfb;
-      }
-      .loading-screen img {
-        width: 130px; /* Adjust size of preloader image */
-      }
-      .loading-screen {
-          transition: opacity 0.5s ease-out;
-      }
-      .skip {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-      }
-      .skip button {
-        border: none;
-        background: none;
-        font: 1em sans-serif;
-        color: #ff8000;
-      }
-      .skip p {
-        font: 0.8em sans-serif;
-      }
-      @media (max-width: 1050px) {
-        .loading-screen img{
-            width: 180px;
-          }
-          .skip {
-            bottom: 100px;
-          }
-      }
-
-      .hidden {
-        display: none;
-      }
-      .highlight {
-            color: #FFA500;
-        }
-
-        /* New Section Styling */
-        .intro-section {
-            width: 100%;
-            color: #004d99;
-            text-align: center;
-            font-size: 3em; /* Large text */
-            font-weight: bold;
-            margin: 20px 0; 
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        .t1 {
-            margin-right: 500px;
-        }
-        .t2 {
-            margin-right: 250px;
-        }
-        .t3{
-            margin-right: 0;
-        }
-        .t4 {
-            margin-left: 250px;
-        }
-        .t5 {
-            margin-left: 500px;
-        }
-
-        /* Section layout and animations */
-        .hover-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 0;
-            width: 90%;
-            max-width: 1200px;
-            opacity: 0; /* Initially invisible */
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-            margin: 50px 0; /* Gap between sections */
-            gap: 30px;
-        }
-
-        .hover-content.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Heading animation */
-        .text-content h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
-            color: #004d99;
-            font-weight: 900;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease-out;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .hover-content.active .text-content h1 {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Paragraph animation */
-        .text-content p {
-            line-height: 15px;
-            display: inline;
-            font-size: 1.5em;
-            color: #666;
-            line-height: 1.6;
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s ease-out;
-            transition-delay: 0.2s;
-        }
-        .valuep {
-          font-size: 1.2em;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .hover-content.active .text-content p {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Image animation */
-        .image-content {
-            width: 80%;
-            max-width: 800px;
-            opacity: 0;
-            transform: translateX(-50px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.8s ease-out;
-            transition-delay: 0.4s;
-        }
-
-        .hover-content.active .image-content {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .image-content img,
-        .image-content video {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        #final {
-            background-color: #f9f9f9;
-            padding: 40px 0;
-            border-top: 1px solid #ddd;
-            margin-bottom: 0;
-        }
-
-        #final .text-content h1 {
-            font-size: 2.5em;
-            color: #004d99;
-        }
-
-        #final .text-content p {
-            font-size: 1.2em;
-            color: #666;
-            line-height: 1.6;
-        }
-        /* Contact Section */
-        .contact-section {
-            background-color: #fff;
-            padding: 0px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
-            color: #d48d08;
-            text-align: center;
-        }
-
-        .quote {
-            text-align: center;
-            font-style: italic;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .contact-info p {
-            font-size: 1.1em;
-        }
-
-        .contact-info a {
-            color: #d48d08;
-            text-decoration: none;
-        }
-
-        .contact-form {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 10px;
-            margin-right: 50px;
-            margin-left: 50px;
-        }
-
-        .contact-form h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .send-btn {
-            background-color: #d48d08;
-            color: #fff;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.1em;
-        }
-
-        .send-btn:hover {
-            background-color: #d48d08;
-        }
-        @media (max-width: 1090px) {
-          .left-buttons{
-            margin-left: 50px;
-          }
-          .right-buttons{
-            margin-right: 50px;
-          }
-        }
-        @media (max-width: 1000px) {
-          .left-buttons{
-            margin-left: 20px;
-          }
-          .right-buttons{
-            margin-right: 20px;
-          }
-        }
-        .highlightone {
-          color: orange;
-          font-weight: 900;
-        }
-
-        /* Hamburger Menu */
-      .nav-menu {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            height: 50px;
-            width: 50px;
-            border-radius: 10px;
-            z-index: 10000;
-            cursor: url("pointer.png"), auto;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-menu div {
-            width: 50px;
-            height: 50px;
-            margin: 2px;
-            position: fixed;
-            z-index: 10000;
-        }
-        .nav-menu span {
-            background-image: linear-gradient(rgb(255, 106, 0), rgb(255, 200, 0));
-            width: 100%;
-            height: 6px;
-            border-radius: 5px;
-            display: block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: transform 0.5s, width 0.5s;
-        }
-
-        .nav-menu .line1 {
-            transform: translate(-50%, -18px);
-        }
-        .nav-menu .line3 {
-            transform: translate(-50%, 12px);
-        }
-        .openmenu .line1 {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-        .openmenu .line3 {
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-        .openmenu .line2 {
-            width: 0;
-        }
-
-        /* Menu Styling */
-        .nav-btn-menu {
-            background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
-            width: 40%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            justify-content: center;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 100%;
-            transition: left 0.5s ease;
-            box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-        }
-
-        .nav-btn-menu button {
-            padding: 10px 20px;
-            border: none;
-            background: none;
-            color: #333;
-            font-size: 40px;
-            font-weight: 700;
-            font-family: "Roboto", sans-serif;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-            transition: color 0.3s, transform 0.3s;
-            cursor: url('pointer.png'), auto;
-        }
-
-        .nav-btn-menu button:hover {
-            color: #FF8C00;
-            transform: scale(1.1); /* Scale on hover */
-        }
-
-        .trans-nav-btn-menu {
-            left: 60%;
-        }
-        
-       /* Core Values Container */
-      .switching-container {
-          position: relative;
-          width: 600px;
-          overflow: hidden;
-          height: 850px; /* Fixed height to ensure uniform appearance */
-          display: flex;
-          align-items: center; /* Center vertically */
-          justify-content: center; /* Center horizontally */
-      }
-
-      /* Value Container */
-      .value-container {
-          position: absolute; /* Absolute positioning within the switching container */
-          top: 0;
-          left: 100%; /* Initially off-screen */
-          width: 90%;
-          height: 90%;
-          padding: 20px;
-          background: #f9f9f9;
-          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-          border-radius: 50px 0 50px 0;
-          transition: all 0.6s ease;
-          text-align: center;
-          opacity: 0; /* Hidden by default */
-          display: flex;
-          flex-direction: column;
-          align-items: center; /* Align children in the center */
-          justify-content: center; /* Center content vertically */
-      }
-
-      /* Active Value */
-      .value-container.active {
-          left: 0; /* Bring into view */
-          opacity: 1; /* Fully visible */
-          z-index: 1; /* Ensure it's on top */
-      }
-
-      /* Value Name */
-      .valuename {
-          font-size: 3.5em;
-          color: #004d99;
-          margin-bottom: 15px;
-      }
-
-      /* Value Image */
-      .valueimg img {
-          width: 450px;
-          height: 300px;
-          max-width: 450px;
-          margin-bottom: 15px;
-          border-radius: 10px;
-      }
-
-      /* Value Description */
-      .valuedisc {
-          font-size: 2em;
-          color: #666;
-          line-height: 1.6;
-      }
-
-      /* Navigation Arrows */
-      .nav-arrows {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 20px;
-          position: absolute;
-          bottom: 10px;
-          width: 100%; /* Spanning the full width of the container */
-          z-index: 2;
-      }
-
-      /* Navigation Buttons */
-      .nav-arrows button {
-          width: 100px;
-          height: 100px;
-          display: flex;
-          position: relative;
-          bottom: 280px;
-          align-items: center;
-          justify-content: center;
-          background: none;
-          border: none;
-          border-radius: 50%;
-          color: rgb(214, 107, 0);
-          font-size: 100px;
-          padding-bottom: 25px;
-          padding: 17px 15px 15px 15px;
-          cursor: url(pointer.png), auto;
-          transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-          outline: none;
-      }
-      .nav-arrows button:hover {
-          background: linear-gradient(135deg, #a6a6a6, #535353);
-          transform: scale(1.1); /* Slightly enlarge on hover */
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-      }
-      .highlightmaster {
-        display: inline;
-        font-size: 35px;
-      }
-
-      .carousel-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto; /* Center carousel horizontally */
-        padding: 0;
-        max-width: 755px; /* Set maximum width */
-        position: relative;
-      }
-
-      .carousel {
-        width: 100%; /* Full width of the container */
-        max-height: 380px;
-        aspect-ratio: 16 / 9; /* Maintain 16:9 ratio */
-        margin: 0 auto; /* Center carousel horizontally */
-        padding: 0;
-        overflow: hidden;
-        cursor: url(pointer.png), auto;
-        position: relative;
-        border-radius: 10px; /* Optional rounded corners */
-        background-color: #f0f0f0; /* Fallback background */
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-
-        .carousel:hover {
-            transform: scale(1.05); /* Slight zoom effect */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9); /* Add a shadow */
-            cursor: url(pointer.png), auto;
-        }
-
-      .carousel img {
-        width: 100%; 
-        height: 100%;
-        max-width: none;
-        max-height: none;
-        object-fit: cover; /* Ensures images cover the entire carousel without distortion */
-        object-position: center; /* Centers the image */
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0; /* Hidden by default */
-        z-index: 0;
-        transition: opacity 1s ease-in-out;
-      }
-
-
-      .carousel img.active {
-        opacity: 1; /* Show active image */
-        z-index: 1;
-      }
-
-      .carousel .carousel-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 3.5em;
-        color: white;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        font-weight: bold;
-        text-align: center;
-        pointer-events: none; /* Ensures the text doesn't interfere with interaction */
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        z-index: 2;
-      }
-
-      .carousel img.active + .carousel-text {
-        opacity: 1;
-      }
-
-      .dots {
-        position: absolute;
-        bottom: 20px; /* Adjust spacing from the bottom */
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px; /* Space between dots */
-        z-index: 2;
-      }
-
-      .dots button {
-        width: 12px;
-        height: 12px;
-        border: none;
-        border-radius: 50%;
-        background-color: #ccc;
-        cursor: url(pointer.png), auto;
-        transition: background-color 0.3s;
-      }
-
-      .dots button.active {
-        background-color: #333; /* Active dot color */
-      }
-
-    #content7 img{
-        width: 755px;
-        height: 380px;
-    }
-
-    .rise {
-        background-color: #e5e2e293;
-        width: 50%;
-        margin: 20px auto;
-        border-radius: 10px;
-        padding: 30px;
-        text-align: center;
-        position: relative;
-        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        transition: background-color 0.5s ease; /* Updated to ensure compatibility */
-        z-index: 1; /* Ensure it's above other elements */
-        cursor: url(pointer.png), auto;
-    }
-
-    .rise:hover {
-        background-color: #ffffff; /* Fixed hover transition */
-        cursor: url(pointer.png), auto;
-    }
-
-
-    .rise h1 {
-        color: #194b7c;
-        margin-bottom: 20px;
-        margin-top: 0;
-        font-size: 3rem;
-        font-weight: bold;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .rise h1 .completion-icon {
-        font-size: 2.5rem;
-        color: #27ae60;
-        margin-left: 10px;
-        animation: bounce 1s infinite alternate;
-    }
-
-    .number-cont {
-        font-size: 8rem; /* Larger font size */
-        font-weight: bold;
-        color: #16a085;
-        position: relative;
-        margin: 20px auto 10px auto; /* Center the number and add spacing */
-        display: flex;
-        justify-content: center;
-    }
-
-    .number-cont::after {
-        content: '+';
-        font-size: 4rem; /* Match the size of the "+" sign */
-        color: #16a085;
-        margin-left: 10px;
-        align-self: center;
-    }
-
-
-    .number-cont::before {
-        content: '';
-        display: block;
-        height: 2px;
-        width: 100%;
-        background: linear-gradient(to right, #1abc9c, #2ecc71);
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-    }
-
-    .rise p {
-        font-size: 1.5rem;
-        color: #7f8c8d;
-        margin-top: 15px;
-    }
-
-    .number-cont p {
-      font-size: 3rem;
-    }
-
-    @keyframes bounce {
-        from {
-            transform: translateY(0);
-        }
-        to {
-            transform: translateY(-5px);
-        }
-    }
-
-
-
-
-
-      @media (max-width: 1050px) {
-          .nav-menu {
-            display: flex;
-          }
-          .left-buttons {
-            display: none;
-          }
-          .right-buttons {
-            display: none;
-          }
-          .text-content p {
-            font-size: 1.8em;
-        }
-        .highlight {
-          font-size: 1.9em;
-        }
-        .imgDisplay {
-            position: absolute;
-            height: 600px;
-        }
-        .special-text {
-            bottom: 78%;
-        }
-        .arrow {
-            top: 17%;
-        }
-        .content {
-            margin-top: 600px;
-        }
-        .contact-section {
-                padding: 20px;
-            }
-
-            .contact-info, .contact-form {
-                text-align: left;
-            }
-            .hover-content {
-                padding: 20px 0;
-                width: 95%;
-            }
-
-            .image-content {
-                width: 100%;
-            }
-            .carousel-container {
-            padding: 10px;
-          }
-
-          .carousel {
-            aspect-ratio: 16 / 9; /* Maintain the same aspect ratio */
-          }
-        }
-    </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="loading-screen" id="loading-screen">
@@ -1262,7 +345,19 @@
                       <button type="submit" class="send-btn" style="cursor: url(pointer.png), auto;">Send Message</button>
                   </form>
               </div>
+              
           </div>
+      </section>
+
+      <section id="credits" class="credits-section">
+        <div class="credits-container">
+          <h2>Developed By</h2>
+          <p class="developer-name">yassin amr</p>
+          <p class="developer-contact">
+            <strong>Email:</strong> <a href="mailto:yassin5amr55@gmail.com">yassin5amr55@gmail.com</a><br>
+            <strong>Phone:</strong> <a href="tel:+201066004890">+201066004890</a>
+          </p>
+        </div>
       </section>
     </div>
     
@@ -1272,320 +367,319 @@
     <i class="fas fa-chevron-right arrow right-arrow"></i>
     <script>
       // Preloading Images and Initial Background Setup
-window.onload = function () {
-    const body = document.querySelector('.imgDisplay');
-    const loadingScreen = document.getElementById("loading-screen");
-    const specialTextElement = document.getElementById("special-text");
+        window.onload = function () {
+            const body = document.querySelector('.imgDisplay');
+            const loadingScreen = document.getElementById("loading-screen");
+            const specialTextElement = document.getElementById("special-text");
 
-    const images = [
-        "bg1.png", "bg2.png", "bg3.png", "bg4.png", "bg5.png",
-        "bg6.png", "bg7.png", "bg8.png", "bg9.png", "bg10.png"
-    ];
+            const images = [
+                "bg1.png", "bg2.png", "bg3.png", "bg4.png", "bg5.png",
+                "bg6.png", "bg7.png", "bg8.png", "bg9.png", "bg10.png"
+            ];
 
-    const specialTexts = [
-        "Building The Future", "Perfections", "Elegance",
-        "Excellence In <br> Construction", "Machine Rooms",
-        "Luxury Commercial <br> Buildings", "Commercial Application",
-        "Hygiene <br> Application", "Pharma Application",
-        "Luxury Residential <br> Building"
-    ];
+            const specialTexts = [
+                "Building The Future", "Perfections", "Elegance",
+                "Excellence In <br> Construction", "Machine Rooms",
+                "Luxury Commercial <br> Buildings", "Commercial Application",
+                "Hygiene <br> Application", "Pharma Application",
+                "Luxury Residential <br> Building"
+            ];
 
-    let currentImageIndex = 0;
+            let currentImageIndex = 0;
 
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.style.overflow = "hidden"; // Disable scrolling
+            function preloadImages(callback) {
+            document.body.style.overflow = "hidden";
+                let imagesLoaded = 0;
+                images.forEach((src) => {
+                    const img = new Image();
+                    img.src = src;
 
-      const images = Array.from(document.querySelectorAll("img"));
-      let loaded = 0;
+                    img.onload = () => {
+                        imagesLoaded++;
+                        if (imagesLoaded === images.length) callback();
+                    };
 
-      const checkAllLoaded = () => {
-        if (++loaded === images.length || images.length === 0) {
-          const loadingScreen = document.getElementById("loading-screen");
-          loadingScreen.style.opacity = "0";
-          setTimeout(() => {
-            loadingScreen.style.display = "none";
-            document.body.style.overflow = ""; // Re-enable scrolling
-          }, 500); // Matches fade-out duration
+                    img.onerror = () => {
+                        console.error(`Failed to load image: ${src}`);
+                        imagesLoaded++;
+                        if (imagesLoaded === images.length) callback();
+                    };
+                });
+            }
+
+            preloadImages(() => {
+                loadingScreen.style.transition = 'opacity 0.5s ease-out'; // Smooth fade-out transition
+                loadingScreen.style.opacity = '0';
+                document.body.style.overflow = "";
+                setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out
+
+                body.style.visibility = "visible";
+                updateBackground();
+                setInterval(nextImage, 4000);
+            });
+
+            function updateBackground() {
+                body.style.backgroundImage = `url(${images[currentImageIndex]})`;
+                specialTextElement.innerHTML = specialTexts[currentImageIndex];
+                specialTextElement.classList.add("visible-text");
+                setTimeout(() => specialTextElement.classList.remove("visible-text"), 2500);
+            }
+
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateBackground();
+            }
+
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateBackground();
+            }
+
+            document.querySelector(".right-arrow").addEventListener("click", nextImage);
+            document.querySelector(".left-arrow").addEventListener("click", prevImage);
+        };
+
+        // Navigation Menu Toggle
+        let menu = document.querySelector('.nav-menu');
+        let menuBtn = document.querySelector('.nav-btn-menu');
+
+        menu.addEventListener('click', () => {
+            menu.classList.toggle('openmenu');
+            menuBtn.classList.toggle('trans-nav-btn-menu');
+        });
+
+        // Scroll Animation
+        const sections = document.querySelectorAll('.hover-content');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Sync Widths for Contact Section
+        const contact = document.querySelector('.contact-section');
+        const final = document.getElementById('final');
+
+        function syncWidths() {
+            const finalWidth = final.offsetWidth;
+            contact.style.width = `${finalWidth}px`;
         }
-      };
 
-      images.forEach(img => {
-        if (img.complete) {
-          checkAllLoaded();
-        } else {
-          img.onload = checkAllLoaded;
-          img.onerror = checkAllLoaded;
+        syncWidths();
+        window.addEventListener('resize', syncWidths);
+
+        // Smooth Scrolling Navigation
+        document.getElementById("buttonone").addEventListener("click", () => {
+            document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        document.getElementById("buttonii").addEventListener("click", () => {
+            document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        document.getElementById("buttonfour").addEventListener("click", () => {
+            document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+        document.getElementById("buttoniiiiii").addEventListener("click", () => {
+            document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+
+        // Page Navigation Buttons
+        document.getElementById("buttontwo").addEventListener("click", () => window.location.href = "partners.html");
+        document.getElementById("buttoniii").addEventListener("click", () => window.location.href = "partners.html");
+        document.getElementById("buttonthree").addEventListener("click", () => window.location.href = "projects.html");
+        document.getElementById("buttoniiii").addEventListener("click", () => window.location.href = "projects.html");
+        document.getElementById("buttonzero").addEventListener("click", () => window.location.href = "index.html");
+        document.getElementById("buttoni").addEventListener("click", () => window.location.href = "index.html");
+        document.getElementById("buttoniiiii").addEventListener("click", () => window.location.href = "servises.html");
+        document.getElementById("buttoniiiiiii").addEventListener("click", () => window.location.href = "hiring.html");
+        document.getElementById("buttonthreedotfive").addEventListener("click", () => window.location.href = "servises.html");
+
+        // Value Slider Logic
+        const containers = document.querySelectorAll(".value-container");
+        const prevArrow = document.getElementById("prev-arrow");
+        const nextArrow = document.getElementById("next-arrow");
+        let currentIndex = 0;
+
+        function updateActiveValue(newIndex) {
+            containers[currentIndex].classList.remove("active");
+            containers[newIndex].classList.add("active");
+            containers.forEach((container, index) => {
+                container.style.transform =
+                    index < newIndex ? "translateX(-100%)" :
+                    index > newIndex ? "translateX(100%)" : "translateX(0)";
+            });
+            currentIndex = newIndex;
         }
-      });
 
-      if (images.length === 0) checkAllLoaded(); // If no images, hide immediately
-    });
+        prevArrow.addEventListener("click", () => {
+            const newIndex = (currentIndex - 1 + containers.length) % containers.length;
+            updateActiveValue(newIndex);
+        });
 
-    function updateBackground() {
-        body.style.backgroundImage = `url(${images[currentImageIndex]})`;
-        specialTextElement.innerHTML = specialTexts[currentImageIndex];
-        specialTextElement.classList.add("visible-text");
-        setTimeout(() => specialTextElement.classList.remove("visible-text"), 2500);
-    }
+        nextArrow.addEventListener("click", () => {
+            const newIndex = (currentIndex + 1) % containers.length;
+            updateActiveValue(newIndex);
+        });
 
-    function nextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        updateBackground();
-    }
+        setInterval(() => {
+            const newIndex = (currentIndex + 1) % containers.length;
+            updateActiveValue(newIndex);
+        }, 5000);
 
-    function prevImage() {
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        updateBackground();
-    }
+        // Initialize container positions
+        containers.forEach((container, index) => {
+            container.style.transform =
+                index === currentIndex ? "translateX(0)" :
+                index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
+        });
 
-    document.querySelector(".right-arrow").addEventListener("click", nextImage);
-    document.querySelector(".left-arrow").addEventListener("click", prevImage);
-};
+        document.querySelectorAll('.servicecarousel').forEach((carousel) => {
+            const images = carousel.querySelectorAll('img');
+            const dots = carousel.querySelectorAll('.dots button');
+            let currentIndex = 0;
+            let startX = 0, endX = 0;
+            let timer;
 
-// Navigation Menu Toggle
-let menu = document.querySelector('.nav-menu');
-let menuBtn = document.querySelector('.nav-btn-menu');
+            function showImage(index) {
+                images.forEach((img, i) => img.classList.toggle('active', i === index));
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+                currentIndex = index;
+            }
 
-menu.addEventListener('click', () => {
-    menu.classList.toggle('openmenu');
-    menuBtn.classList.toggle('trans-nav-btn-menu');
-});
+            function nextImage() {
+                showImage((currentIndex + 1) % images.length);
+            }
 
-// Scroll Animation
-const sections = document.querySelectorAll('.hover-content');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.3 });
+            function previousImage() {
+                showImage((currentIndex - 1 + images.length) % images.length);
+            }
 
-sections.forEach(section => observer.observe(section));
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(timer);
+                    showImage(index);
+                    startAutoSlide();
+                });
+            });
 
-// Sync Widths for Contact Section
-const contact = document.querySelector('.contact-section');
-const final = document.getElementById('final');
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
 
-function syncWidths() {
-    const finalWidth = final.offsetWidth;
-    contact.style.width = `${finalWidth}px`;
-}
+            carousel.addEventListener('touchmove', (e) => {
+                endX = e.touches[0].clientX;
+            });
 
-syncWidths();
-window.addEventListener('resize', syncWidths);
+            carousel.addEventListener('touchend', () => {
+                if (startX - endX > 50) nextImage();
+                else if (endX - startX > 50) previousImage();
+            });
 
-// Smooth Scrolling Navigation
-document.getElementById("buttonone").addEventListener("click", () => {
-    document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-document.getElementById("buttonii").addEventListener("click", () => {
-    document.getElementById("content").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-document.getElementById("buttonfour").addEventListener("click", () => {
-    document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
-});
-document.getElementById("buttoniiiiii").addEventListener("click", () => {
-    document.getElementById("final").scrollIntoView({ behavior: "smooth", block: "start" });
-});
+            function startAutoSlide() {
+                timer = setInterval(nextImage, 2500);
+            }
 
-// Page Navigation Buttons
-document.getElementById("buttontwo").addEventListener("click", () => window.location.href = "partners.html");
-document.getElementById("buttoniii").addEventListener("click", () => window.location.href = "partners.html");
-document.getElementById("buttonthree").addEventListener("click", () => window.location.href = "projects.html");
-document.getElementById("buttoniiii").addEventListener("click", () => window.location.href = "projects.html");
-document.getElementById("buttonzero").addEventListener("click", () => window.location.href = "index.html");
-document.getElementById("buttoni").addEventListener("click", () => window.location.href = "index.html");
-document.getElementById("buttoniiiii").addEventListener("click", () => window.location.href = "servises.html");
-document.getElementById("buttoniiiiiii").addEventListener("click", () => window.location.href = "hiring.html");
-document.getElementById("buttonthreedotfive").addEventListener("click", () => window.location.href = "servises.html");
-
-// Value Slider Logic
-const containers = document.querySelectorAll(".value-container");
-const prevArrow = document.getElementById("prev-arrow");
-const nextArrow = document.getElementById("next-arrow");
-let currentIndex = 0;
-
-function updateActiveValue(newIndex) {
-    containers[currentIndex].classList.remove("active");
-    containers[newIndex].classList.add("active");
-    containers.forEach((container, index) => {
-        container.style.transform =
-            index < newIndex ? "translateX(-100%)" :
-            index > newIndex ? "translateX(100%)" : "translateX(0)";
-    });
-    currentIndex = newIndex;
-}
-
-prevArrow.addEventListener("click", () => {
-    const newIndex = (currentIndex - 1 + containers.length) % containers.length;
-    updateActiveValue(newIndex);
-});
-
-nextArrow.addEventListener("click", () => {
-    const newIndex = (currentIndex + 1) % containers.length;
-    updateActiveValue(newIndex);
-});
-
-setInterval(() => {
-    const newIndex = (currentIndex + 1) % containers.length;
-    updateActiveValue(newIndex);
-}, 5000);
-
-// Initialize container positions
-containers.forEach((container, index) => {
-    container.style.transform =
-        index === currentIndex ? "translateX(0)" :
-        index < currentIndex ? "translateX(-100%)" : "translateX(100%)";
-});
-
-document.querySelectorAll('.servicecarousel').forEach((carousel) => {
-    const images = carousel.querySelectorAll('img');
-    const dots = carousel.querySelectorAll('.dots button');
-    let currentIndex = 0;
-    let startX = 0, endX = 0;
-    let timer;
-
-    function showImage(index) {
-        images.forEach((img, i) => img.classList.toggle('active', i === index));
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        currentIndex = index;
-    }
-
-    function nextImage() {
-        showImage((currentIndex + 1) % images.length);
-    }
-
-    function previousImage() {
-        showImage((currentIndex - 1 + images.length) % images.length);
-    }
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            clearInterval(timer);
-            showImage(index);
+            showImage(0);
             startAutoSlide();
         });
-    });
-
-    carousel.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-        endX = e.touches[0].clientX;
-    });
-
-    carousel.addEventListener('touchend', () => {
-        if (startX - endX > 50) nextImage();
-        else if (endX - startX > 50) previousImage();
-    });
-
-    function startAutoSlide() {
-        timer = setInterval(nextImage, 2500);
-    }
-
-    showImage(0);
-    startAutoSlide();
-});
 
 
-  document.querySelectorAll('.projectcarousel').forEach((carousel) => {
-    const images = carousel.querySelectorAll('img');
-    const dots = carousel.querySelectorAll('.dots button');
-    let currentIndex = 0;
-    let startX = 0, endX = 0;
-    let timer;
+        document.querySelectorAll('.projectcarousel').forEach((carousel) => {
+            const images = carousel.querySelectorAll('img');
+            const dots = carousel.querySelectorAll('.dots button');
+            let currentIndex = 0;
+            let startX = 0, endX = 0;
+            let timer;
 
-    function showImage(index) {
-        images.forEach((img, i) => img.classList.toggle('active', i === index));
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-        currentIndex = index;
-    }
+            function showImage(index) {
+                images.forEach((img, i) => img.classList.toggle('active', i === index));
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+                currentIndex = index;
+            }
 
-    function nextImage() {
-        showImage((currentIndex + 1) % images.length);
-    }
+            function nextImage() {
+                showImage((currentIndex + 1) % images.length);
+            }
 
-    function previousImage() {
-        showImage((currentIndex - 1 + images.length) % images.length);
-    }
+            function previousImage() {
+                showImage((currentIndex - 1 + images.length) % images.length);
+            }
 
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            clearInterval(timer);
-            showImage(index);
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(timer);
+                    showImage(index);
+                    startAutoSlide();
+                });
+            });
+
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchmove', (e) => {
+                endX = e.touches[0].clientX;
+            });
+
+            carousel.addEventListener('touchend', () => {
+                if (startX - endX > 50) nextImage();
+                else if (endX - startX > 50) previousImage();
+            });
+
+            function startAutoSlide() {
+                timer = setInterval(nextImage, 2500);
+            }
+
+            showImage(0);
             startAutoSlide();
         });
-    });
 
-    carousel.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-    });
+        
+            document.querySelector('.servicecarousel').addEventListener('click', (event) => {
+                // Check if the click event is from a dot or other interactive element
+                if (event.target.classList.contains('dots') || event.target.closest('.dots button')) {
+                    // Prevent redirection
+                    event.stopPropagation();
+                    return;
+                }
+                // Redirect for other clicks
+                window.location.href = 'servises.html';
+            });
 
-    carousel.addEventListener('touchmove', (e) => {
-        endX = e.touches[0].clientX;
-    });
+            document.addEventListener('DOMContentLoaded', () => {
+            const content12 = document.querySelector('#content12');
+            const numberElement = content12.querySelector('.number');
+            let hasScrolled = false;
 
-    carousel.addEventListener('touchend', () => {
-        if (startX - endX > 50) nextImage();
-        else if (endX - startX > 50) previousImage();
-    });
+            function animateNumber() {
+                let current = 0;
+                const target = 76;
+                const duration = 2500; // Animation duration in ms
+                const stepTime = Math.ceil(duration / target);
 
-    function startAutoSlide() {
-        timer = setInterval(nextImage, 2500);
-    }
-
-    showImage(0);
-    startAutoSlide();
-});
-
-  
-    document.querySelector('.servicecarousel').addEventListener('click', (event) => {
-        // Check if the click event is from a dot or other interactive element
-        if (event.target.classList.contains('dots') || event.target.closest('.dots button')) {
-            // Prevent redirection
-            event.stopPropagation();
-            return;
-        }
-        // Redirect for other clicks
-        window.location.href = 'servises.html';
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-    const content12 = document.querySelector('#content12');
-    const numberElement = content12.querySelector('.number');
-    let hasScrolled = false;
-
-    function animateNumber() {
-        let current = 0;
-        const target = 76;
-        const duration = 2500; // Animation duration in ms
-        const stepTime = Math.ceil(duration / target);
-
-        const interval = setInterval(() => {
-            current++;
-            numberElement.textContent = current;
-            if (current === target) {
-                clearInterval(interval);
+                const interval = setInterval(() => {
+                    current++;
+                    numberElement.textContent = current;
+                    if (current === target) {
+                        clearInterval(interval);
+                    }
+                }, stepTime);
             }
-        }, stepTime);
-    }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting && !hasScrolled) {
-                hasScrolled = true;
-                animateNumber();
-            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !hasScrolled) {
+                        hasScrolled = true;
+                        animateNumber();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(content12);
         });
-    }, { threshold: 0.5 });
-
-    observer.observe(content12);
-});
-
-
-
     </script>
   </body>
 </html>
