@@ -1,0 +1,14 @@
+- [x] Fix paths in pages/projects.html
+- [x] Fix paths in pages/servises.html
+- [x] Fix paths(css,html,js) in pages/partners.html
+- [x] Fix paths(css,html,js) in pages/pro1.html
+- [x] Fix paths(css,html,js) in pages/pro2.html
+- [x] Fix paths(css,html,js) in pages/pro3.html
+- [x] Fix paths(css,html,js) in pages/pro4.html
+- [x] Fix paths(css,html,js) in pages/pro5.html
+- [x] Fix paths(css,html,js) in pages/pro6.html
+- [x] Fix paths(css,html,js) in pages/job1.html
+- [x] Fix paths(css,html,js) in pages/job2.html
+- [x] Fix paths(css,html,js) in pages/job3.html
+- [x] Fix paths(css,html,js) in pages/job4.html
+- [x] Fix paths(css,html,js) in assets/css/index.css
