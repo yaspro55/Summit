@@ -1,0 +1,16 @@
+This is the website for Summit Engineering Company, a contracting firm specializing in electromechanical works, construction, and related services. The site is built using HTML, CSS, and JavaScript, with a responsive design featuring a fixed header, hamburger navigation menu, loading screens, and image carousels for projects.
+
+Key pages include:
+- index.html: Home page with company overview, services, about, and contact sections.
+- pages/projects.html: Overview of project categories (Commercial Buildings, Pharmaceutical Factories, Admin Buildings, Residential Buildings, Health Care, Educational Buildings) with links to detailed project pages.
+- pages/pro1.html to pages/pro6.html: Detailed project pages with image carousels showcasing specific projects like Volvo Showroom, Almasa Cap Floor, Bitter Sweet, Aspero Restaurant, Ellie Home, Variegato Restaurant, Wok and Walk Restaurant, Del Sol Cafe.
+- pages/servises.html: Services page (not fully read, but likely lists electromechanical services).
+- pages/partners.html: Key clients/partners page with a grid of partner logos and sequential animation.
+- pages/hiring.html: Careers page listing job openings with links to individual job pages.
+- pages/job1.html to pages/job4.html: Individual job description pages for Mechanical Site Engineer, Electrical Site Engineer, Mechanical Technical Office Engineer, and Accountant, including job details, responsibilities, qualifications, and contact forms.
+- assets/css/index.css: Main stylesheet for the site.
+- assets/images/: Directory containing images like logos, cursors, project photos, partner logos, etc.
+
+The site uses custom cursors, gradient backgrounds, and interactive elements like navigation menus and carousels. All pages have consistent styling with orange accents (#ff8000), loading screens, and responsive design for mobile and desktop.
+
+Note: There are some path issues in the files (e.g., favicon paths, cursor URLs, image sources) that may need fixing for proper functionality, but this description focuses on the site's structure and content.
