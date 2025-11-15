@@ -500,10 +500,11 @@
 
         // Skip to Main Content Button Functionality
         const skipBtn = document.getElementById('skip-to-content');
+        let loadingComplete = false;
         
         window.addEventListener('scroll', () => {
-            // Show button only when at the very top (within 100px)
-            if (window.scrollY < 100) {
+            // Show button only when at the very top (within 100px) and loading is complete
+            if (window.scrollY < 100 && loadingComplete) {
                 skipBtn.classList.add('visible');
             } else {
                 skipBtn.classList.remove('visible');
@@ -517,9 +518,24 @@
             });
         });
 
-        // Initial check on page load
-        if (window.scrollY < 100) {
-            skipBtn.classList.add('visible');
+        // Wait for loading screen to disappear before showing button
+        const loadingObserver = new MutationObserver(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen && loadingScreen.style.display === 'none') {
+                loadingComplete = true;
+                if (window.scrollY < 100) {
+                    skipBtn.classList.add('visible');
+                }
+                loadingObserver.disconnect();
+            }
+        });
+
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingObserver.observe(loadingScreen, { 
+                attributes: true, 
+                attributeFilter: ['style'] 
+            });
         }
 
         // Value Slider Logic

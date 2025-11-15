@@ -308,7 +308,7 @@
       font-family: Arial, sans-serif;
       border-radius: 50px;
       cursor: url(../assets/images/pointer.webp), auto;
-      z-index: 1000;
+      z-index: 500;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -486,10 +486,11 @@
 
         // Skip to Main Content Button Functionality
         const skipBtn = document.getElementById('skip-to-content');
+        let loadingComplete = false;
         
         window.addEventListener('scroll', () => {
-            // Show button only when at the very top (within 200px from top)
-            if (window.scrollY < 200) {
+            // Show button only when at the very top (within 200px from top) and loading is complete
+            if (window.scrollY < 200 && loadingComplete) {
                 skipBtn.classList.add('visible');
             } else {
                 skipBtn.classList.remove('visible');
@@ -503,9 +504,24 @@
             });
         });
 
-        // Initial check on page load
-        if (window.scrollY < 200) {
-            skipBtn.classList.add('visible');
+        // Wait for loading screen to disappear before showing button
+        const loadingObserver = new MutationObserver(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen && loadingScreen.style.display === 'none') {
+                loadingComplete = true;
+                if (window.scrollY < 200) {
+                    skipBtn.classList.add('visible');
+                }
+                loadingObserver.disconnect();
+            }
+        });
+
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingObserver.observe(loadingScreen, { 
+                attributes: true, 
+                attributeFilter: ['style'] 
+            });
         }
   </script>
 </body>

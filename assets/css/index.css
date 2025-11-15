@@ -967,7 +967,7 @@ to {
   font-family: "Raleway", sans-serif;
   border-radius: 50px;
   cursor: url("../images/pointer.webp"), auto;
-  z-index: 1000;
+  z-index: 500;
   display: flex;
   align-items: center;
   gap: 8px;
