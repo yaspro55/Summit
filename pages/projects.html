@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <title>Our Projects - Summit TECS Portfolio</title>
   <link rel="icon" href="../assets/images/logo.webp" type="image/x-icon">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
   <style>
     body {
       cursor: url(../assets/images/cursor.webp), auto;
@@ -289,17 +293,73 @@
         font-size: 2rem;
       }
     }
+
+    /* Skip to Main Content Button */
+    .skip-to-content-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: transparent;
+      border: 2px solid rgba(255, 140, 0, 0.8);
+      color: #FF8C00;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: Arial, sans-serif;
+      border-radius: 50px;
+      cursor: url(../assets/images/pointer.webp), auto;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .skip-to-content-btn.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .skip-to-content-btn:hover {
+      background: rgba(255, 140, 0, 0.1);
+      border-color: #FF8C00;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 140, 0, 0.3);
+    }
+
+    .skip-to-content-btn i {
+      font-size: 14px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-5px);
+      }
+      60% {
+        transform: translateY(-3px);
+      }
+    }
+
+    /* Hide on mobile and tablet */
+    @media (max-width: 1024px) {
+      .skip-to-content-btn {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="loading-screen" id="loading-screen">
     <img src="../assets/images/preloader.gif" alt="Loading..." />
-    <div class="skip">
-      <button onclick="const loadingScreen = document.getElementById('loading-screen');
-      loadingScreen.style.opacity = '0'; // Add fade-out effect
-      setTimeout(() => loadingScreen.style.display = 'none', 500); // Hide after fade-out">skip loading...</button>
-      <p>images may not appear properly</p>
-    </div>
   </div>
   <div class="nav-menu">
     <div>
@@ -320,6 +380,12 @@
   <header>
     <a href="/"><img src="../assets/images/logoname.webp" alt="Logo"></a>
   </header>
+
+  <!-- Skip to Main Content Button -->
+  <button id="skip-to-content" class="skip-to-content-btn">
+    Skip to Main Content
+    <i class="fas fa-chevron-down"></i>
+  </button>
 
   <img src="../assets/images/projects.webp" class="projectsimg" alt="Projects Background">
   
@@ -417,6 +483,30 @@
             window.location.href = "../#final";
         });
         document.getElementById("buttoniiiiiii").addEventListener("click", () => window.location.href = "hiring.html");
+
+        // Skip to Main Content Button Functionality
+        const skipBtn = document.getElementById('skip-to-content');
+        
+        window.addEventListener('scroll', () => {
+            // Show button only when at the very top (within 200px from top)
+            if (window.scrollY < 200) {
+                skipBtn.classList.add('visible');
+            } else {
+                skipBtn.classList.remove('visible');
+            }
+        });
+
+        skipBtn.addEventListener('click', () => {
+            document.querySelector('.content').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        });
+
+        // Initial check on page load
+        if (window.scrollY < 200) {
+            skipBtn.classList.add('visible');
+        }
   </script>
 </body>
 </html>

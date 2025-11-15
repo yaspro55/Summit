@@ -952,3 +952,65 @@ to {
 .developer-contact a:hover {
   text-decoration: underline;
 }
+
+/* Skip to Main Content Button */
+.skip-to-content-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: transparent;
+  border: 2px solid rgba(255, 140, 0, 0.8);
+  color: #FF8C00;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  border-radius: 50px;
+  cursor: url("../images/pointer.webp"), auto;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.skip-to-content-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.skip-to-content-btn:hover {
+  background: rgba(255, 140, 0, 0.1);
+  border-color: #FF8C00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.3);
+}
+
+.skip-to-content-btn i {
+  font-size: 14px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Hide on mobile and tablet */
+@media (max-width: 1024px) {
+  .skip-to-content-btn {
+    display: none !important;
+  }
+}
