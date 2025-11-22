@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    // GitHub Pages URL routing
+    (function() {
+      var path = window.location.pathname;
+      var routes = {
+        '/projects': '/pages/projects.html',
+        '/partners': '/pages/partners.html',
+        '/services': '/pages/servises.html',
+        '/careers': '/pages/hiring.html',
+        '/careers/mechanical-site-engineer': '/pages/job1.html',
+        '/careers/electrical-site-engineer': '/pages/job2.html',
+        '/careers/mechanical-technical-office-engineer': '/pages/job3.html',
+        '/careers/accountant': '/pages/job4.html',
+        '/projects/commercial-buildings': '/pages/pro1.html',
+        '/projects/pharmaceutical-factories': '/pages/pro2.html',
+        '/projects/admin-buildings': '/pages/pro3.html',
+        '/projects/residential-buildings': '/pages/pro4.html',
+        '/projects/healthcare': '/pages/pro5.html',
+        '/projects/educational-buildings': '/pages/pro6.html'
+      };
+
+      // Remove trailing slash
+      path = path.replace(/\/$/, '');
+
+      if (routes[path]) {
+        window.location.replace(routes[path]);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
